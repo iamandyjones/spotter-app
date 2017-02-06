@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
+import { uid } from '../utils/ExerciseUtils';
 
 class WorkoutDashboard extends Component { 
 
@@ -11,8 +12,8 @@ class WorkoutDashboard extends Component {
 
     	this.state = {
     		exercises: [
-    			{ title: "Bench Press", workout: "Chest and Back", id: 101 },
-    			{ title: "Lat Pull Down", workout: "Chest and Back", id: 102 }
+    			{ title: "Bench Press", workout: "Chest and Back", id: uid() },
+    			{ title: "Lat Pull Down", workout: "Chest and Back", id: uid() }
     		], 
     		timer: { elapsed: 0, runningSince: null}
     	};
@@ -44,7 +45,7 @@ class WorkoutDashboard extends Component {
 
   	createExercise(exercise){
 
-  		const e = Object.assign(exercise, { id: 103 });
+  		const e = Object.assign(exercise, { id: uid() });
 
   		// Here we need to create the new timer but with a unique id
 

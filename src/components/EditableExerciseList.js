@@ -8,7 +8,13 @@ class EditableExerciseList extends Component {
 
 		const exercises = this.props.exercises.map((timer) => (
 
-			<EditableExercise key={timer.id} title={timer.title} workout={timer.workout} id={timer.id} onFormSubmit={this.props.onFormSubmit} onDeleteClick={this.props.onDeleteClick} />
+			<EditableExercise 
+				key={timer.id} 
+				id={timer.id} 
+				title={timer.title} 
+				workout={timer.workout} 
+				onFormSubmit={this.props.onFormSubmit} 
+				onDeleteClick={this.props.onDeleteClick} />
 
 		));
 

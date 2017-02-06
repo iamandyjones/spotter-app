@@ -5,13 +5,32 @@ class ExerciseForm extends Component {
 	constructor(props){
 		super(props);
 
+		this.state = {
+			title: this.props.title || '',
+			workout: this.props.workout || '',
+		};
+
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleTitleChange = this.handleTitleChange.bind(this);
+		this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
 	}
 
 
 	handleSubmit(){
 
-		this.props.onFormSubmit({id: this.props.id, title: this.refs.title.value, workout: this.refs.workout.value});
+		this.props.onFormSubmit({id: this.props.id, title: this.state.title, workout: this.state.workout});
+
+	}
+
+	handleTitleChange(e){
+
+		this.setState({title: e.target.value});
+
+	}
+
+	handleWorkoutChange(e){
+
+		this.setState({workout: e.target.value});
 
 	}
 
@@ -23,10 +42,10 @@ class ExerciseForm extends Component {
 
 			<div>
 				<label>Title</label>
-				<input type="text" defaultValue={this.props.title} ref="title" />
+				<input type="text" value={this.state.title} onChange={this.handleTitleChange} />
 
 				<label>Workout</label>
-				<input type="text" defaultValue={this.props.workout} ref="workout" />
+				<input type="text" value={this.state.workout} onChange={this.handleWorkoutChange} />
 
 				<button onClick={this.handleSubmit}>{submitText}</button>
 				<button onClick={this.props.onFormCancel}>Cancel</button>
