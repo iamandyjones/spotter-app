@@ -1,0 +1,19 @@
+{
+  "exercises": [
+    {
+      "id": 1,
+      "title": "Title 1",
+      "author": "andy"
+    },
+    {
+      "id": 2,
+      "title": "Title 2",
+      "author": "andy"
+    },
+  ],
+  "timer":
+    { 
+      "elapsed": 0, 
+      "runningSince": null
+    }
+}

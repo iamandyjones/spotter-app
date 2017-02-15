@@ -4,6 +4,7 @@ import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
 import { uid } from '../utils/ExerciseUtils';
+import { getExercises, getTimer, startTimer } from '../utils/ApiUtils';
 
 class WorkoutDashboard extends Component { 
 
@@ -11,11 +12,8 @@ class WorkoutDashboard extends Component {
     	super(props);
 
     	this.state = {
-    		exercises: [
-    			{ title: "Bench Press", workout: "Chest and Back", id: uid() },
-    			{ title: "Lat Pull Down", workout: "Chest and Back", id: uid() }
-    		], 
-    		timer: { elapsed: 0, runningSince: null}
+    		exercises: [], 
+    		timer: {}
     	};
 
     	this.handleCreateForm = this.handleCreateForm.bind(this);
@@ -23,6 +21,19 @@ class WorkoutDashboard extends Component {
     	this.handleDelete = this.handleDelete.bind(this);
     	this.handleStartClick = this.handleStartClick.bind(this);
     	this.handleStopClick = this.handleStopClick.bind(this);
+    	this.hydrateExerciseState = this.hydrateExerciseState.bind(this);
+    	this.hydrateTimerState = this.hydrateTimerState.bind(this);
+
+  	}
+
+  	componentDidMount(){
+  		
+  		this.hydrateExerciseState();
+  		this.hydrateTimerState();
+
+  		setInterval(this.hydrateExerciseState, 5000);
+  		setInterval(this.hydrateTimerState, 5000);
+
   	}
 
   	handleCreateForm(exercise){
@@ -43,11 +54,27 @@ class WorkoutDashboard extends Component {
 
   	}
 
+  	hydrateExerciseState(){
+
+  		getExercises((data) => (
+  				this.setState({exercises: data})
+  			)
+  		);
+
+  	}
+
+  	hydrateTimerState(){
+
+  		getTimer((data) => (
+  				this.setState({timer: data})
+  			)
+  		);
+
+  	}
+
   	createExercise(exercise){
 
   		const e = Object.assign(exercise, { id: uid() });
-
-  		// Here we need to create the new timer but with a unique id
 
   		this.setState({ exercises: this.state.exercises.concat(e) });
 
@@ -82,6 +109,8 @@ class WorkoutDashboard extends Component {
 		this.setState({ 
 			timer: Object.assign({}, this.state.timer, { runningSince: now })
 		});
+
+		startTimer({runningSince: now});
 
 	}
 

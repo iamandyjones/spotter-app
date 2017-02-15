@@ -5,16 +5,9 @@ import TimerButton from './TimerButton';
 
 class Timer extends Component {
 
-	constructor(props){
-		super(props);
-
-		this.forceUpdateInterval = this.forceUpdateInterval.bind(this);
-
-	}
-
 	componentDidMount(){
 
-		this.forceUpdateInterval();
+		this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
 		
 	}
 
@@ -27,7 +20,6 @@ class Timer extends Component {
 
 	componentWillUnmount(){
 
-		// Not sure this is working.....
 		clearInterval(this.forceUpdateInterval);
 
 	}
