@@ -6,13 +6,13 @@ class EditableExerciseList extends Component {
 
 	render(){
 
-		const exercises = this.props.exercises.map((timer) => (
+		const exercises = this.props.exercises.map((exercise) => (
 
 			<EditableExercise 
-				key={timer.id} 
-				id={timer.id} 
-				title={timer.title} 
-				workout={timer.workout} 
+				key={exercise.id} 
+				id={exercise.id} 
+				title={exercise.title} 
+				workout={exercise.workout} 
 				onFormSubmit={this.props.onFormSubmit} 
 				onDeleteClick={this.props.onDeleteClick} />
 

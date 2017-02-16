@@ -1,19 +1,18 @@
 {
   "exercises": [
     {
-      "id": 1,
-      "title": "Title 1",
-      "author": "andy"
+      "id": "id-lqkjley4rtobgv4k",
+      "title": "Bench Press",
+      "workout": "Chest"
     },
     {
-      "id": 2,
-      "title": "Title 2",
-      "author": "andy"
-    },
-  ],
-  "timer":
-    { 
-      "elapsed": 0, 
-      "runningSince": null
+      "id": "id-me2274p70c0gbi2j",
+      "title": "Pull Ups",
+      "workout": "Back"
     }
+  ],
+  "timer": {
+    "elapsed": 0,
+    "runningSince": null
+  }
 }

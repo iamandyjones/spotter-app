@@ -11,13 +11,6 @@ class Timer extends Component {
 		
 	}
 
-	forceUpdateInterval(){
-		
-		return setInterval(function(){
-			this.forceUpdate();
-		}.bind(this), 50);
-	}
-
 	componentWillUnmount(){
 
 		clearInterval(this.forceUpdateInterval);
@@ -33,6 +26,7 @@ class Timer extends Component {
 			<div>
 				{elapsedString}
 				<TimerButton timerRunning={!!this.props.runningSince} onStartClick={this.props.onStartClick} onStopClick={this.props.onStopClick} />
+				<button onClick={this.props.onRestartClick}>Restart</button>
 			</div>
 
 		)

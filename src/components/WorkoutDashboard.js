@@ -4,7 +4,7 @@ import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
 import { uid } from '../utils/ExerciseUtils';
-import { getExercises, getTimer, startTimer } from '../utils/ApiUtils';
+import { getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
 
 class WorkoutDashboard extends Component { 
 
@@ -21,6 +21,7 @@ class WorkoutDashboard extends Component {
     	this.handleDelete = this.handleDelete.bind(this);
     	this.handleStartClick = this.handleStartClick.bind(this);
     	this.handleStopClick = this.handleStopClick.bind(this);
+      this.handleRestartClick = this.handleRestartClick.bind(this);
     	this.hydrateExerciseState = this.hydrateExerciseState.bind(this);
     	this.hydrateTimerState = this.hydrateTimerState.bind(this);
 
@@ -78,6 +79,8 @@ class WorkoutDashboard extends Component {
 
   		this.setState({ exercises: this.state.exercises.concat(e) });
 
+      createExercise(e);
+
   	}
 
   	deleteExercise(exerciseId){
@@ -85,6 +88,8 @@ class WorkoutDashboard extends Component {
   		this.setState({
   			exercises: this.state.exercises.filter(e => e.id!==exerciseId),
   		});
+
+      deleteExercise(exerciseId);
 
   	}
 
@@ -100,17 +105,20 @@ class WorkoutDashboard extends Component {
   			}),
   		});
 
+      editExercise(attrs.id, { title: attrs.title, workout: attrs.workout });
+
   	}
 
   	handleStartClick(){
 
 		const now = Date.now();
 
-		this.setState({ 
+		this.setState({
 			timer: Object.assign({}, this.state.timer, { runningSince: now })
 		});
 
-		startTimer({runningSince: now});
+		toggleTimer({elapsed: this.state.timer.elapsed, runningSince: now});
+
 
 	}
 
@@ -121,8 +129,18 @@ class WorkoutDashboard extends Component {
 		this.setState({ 
 			timer: Object.assign({}, this.state.timer, { elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null })
 		});
+
+    toggleTimer({elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null});
 		
 	}
+
+  handleRestartClick(){
+
+    this.setState({ timer: { elapsed: 0, runningSince: null } });
+
+    toggleTimer({elapsed: 0, runningSince: null});
+
+  }
 
 	render(){
 
@@ -130,8 +148,8 @@ class WorkoutDashboard extends Component {
 			<div>
 
 				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleDelete} />
-	        	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
-	        	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} />
+      	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
+      	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
 
 			</div>
 		)
