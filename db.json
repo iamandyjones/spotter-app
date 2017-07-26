@@ -1,14 +1,26 @@
 {
-  "exercises": [
+  "workouts": [
     {
-      "id": "id-lqkjley4rtobgv4k",
-      "title": "Bench Press",
-      "workout": "Chest"
+      "id": "111",
+      "title": "Chest and Back"
     },
     {
-      "id": "id-me2274p70c0gbi2j",
-      "title": "Pull Ups",
-      "workout": "Back"
+      "id": "222",
+      "title": "Pull Sesh"
+    }
+  ],
+  "exercises": [
+    {
+      "title": "Press Ups New name",
+      "workout": "",
+      "workoutId": 111,
+      "id": "id-4qhhwu4ml6b"
+    },
+    {
+      "id": "id-mbz9g0rhrh",
+      "title": "bent over row",
+      "workout": "",
+      "workoutId": 222
     }
   ],
   "timer": {

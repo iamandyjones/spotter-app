@@ -52,7 +52,7 @@ class EditableExercise extends Component {
 
 			return (
 				<div className="item">
-				<ExerciseForm id={this.props.id} title={this.props.title} workout={this.props.workout} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
+				<ExerciseForm id={this.props.id} title={this.props.title} workout={this.props.workout} workoutId={this.props.workoutId} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
 				</div>
 			);
 

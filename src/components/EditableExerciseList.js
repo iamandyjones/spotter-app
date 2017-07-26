@@ -13,6 +13,7 @@ class EditableExerciseList extends Component {
 				id={exercise.id} 
 				title={exercise.title} 
 				workout={exercise.workout} 
+				workoutId={exercise.workoutId} 
 				onFormSubmit={this.props.onFormSubmit} 
 				onDeleteClick={this.props.onDeleteClick} />
 

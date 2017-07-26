@@ -7,7 +7,7 @@ class ExerciseForm extends Component {
 
 		this.state = {
 			title: this.props.title || '',
-			workout: this.props.workout || '',
+			workout: this.props.workout || ''
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,7 +18,7 @@ class ExerciseForm extends Component {
 
 	handleSubmit(){
 
-		this.props.onFormSubmit({id: this.props.id, title: this.state.title, workout: this.state.workout});
+		this.props.onFormSubmit({id: this.props.id, title: this.state.title, workout: this.state.workout, workoutId: this.props.workoutId});
 
 	}
 

@@ -15,9 +15,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Spotter</h2>
         </div>
-        <p className="App-intro">Gym tracking app</p>
+        <p className="App-intro">Spotter App</p>
 
-        <WorkoutDashboard />
+        <WorkoutDashboard id={111} />
 
       </div>
     );

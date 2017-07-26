@@ -15,14 +15,24 @@ function parseJSON(response) {
 }
 
 
-function getExercises(success) {
-  return fetch('/api/exercises', {
+function getWorkout(id, success) {
+  return fetch('/api/workouts/'+id, {
   headers: {
     'Accept': 'application/json',
   },
   }).then(checkStatus)
     .then(parseJSON)
-    .then(success);
+    .then(success); 
+}
+
+function getExercises(id, success) {
+  return fetch('/api/exercises?workoutId='+id, {
+  headers: {
+    'Accept': 'application/json',
+  },
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(success); 
 }
 
 function createExercise(data) {
@@ -79,5 +89,5 @@ function editExercise(id, data) {
 }
 
 
-export { getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise };
+export { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise };
 

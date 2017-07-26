@@ -4,112 +4,118 @@ import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
 import { uid } from '../utils/ExerciseUtils';
-import { getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
+import { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
 
 class WorkoutDashboard extends Component { 
 
 	constructor(props) {
-    	super(props);
+  	super(props);
 
-    	this.state = {
-    		exercises: [], 
-    		timer: {}
-    	};
+  	this.state = {
+  		workout: {},
+      exercises: [], 
+  		timer: {}
+  	};
 
-    	this.handleCreateForm = this.handleCreateForm.bind(this);
-    	this.handleEditForm = this.handleEditForm.bind(this);
-    	this.handleDelete = this.handleDelete.bind(this);
-    	this.handleStartClick = this.handleStartClick.bind(this);
-    	this.handleStopClick = this.handleStopClick.bind(this);
-      this.handleRestartClick = this.handleRestartClick.bind(this);
-    	this.hydrateExerciseState = this.hydrateExerciseState.bind(this);
-    	this.hydrateTimerState = this.hydrateTimerState.bind(this);
+  	this.handleCreateForm = this.handleCreateForm.bind(this);
+  	this.handleEditForm = this.handleEditForm.bind(this);
+  	this.handleDelete = this.handleDelete.bind(this);
+  	this.handleStartClick = this.handleStartClick.bind(this);
+  	this.handleStopClick = this.handleStopClick.bind(this);
+    this.handleRestartClick = this.handleRestartClick.bind(this);
+  	this.hydrateWorkoutState = this.hydrateWorkoutState.bind(this);
+  	this.hydrateTimerState = this.hydrateTimerState.bind(this);
 
-  	}
+	}
 
-  	componentDidMount(){
-  		
-  		this.hydrateExerciseState();
-  		this.hydrateTimerState();
+	componentDidMount(){
+		
+		this.hydrateWorkoutState();
+		this.hydrateTimerState();
 
-  		setInterval(this.hydrateExerciseState, 5000);
-  		setInterval(this.hydrateTimerState, 5000);
+		setInterval(this.hydrateWorkoutState, 5000);
+		setInterval(this.hydrateTimerState, 5000);
 
-  	}
+	}
 
-  	handleCreateForm(exercise){
+	handleCreateForm(exercise){
 
-  		this.createExercise(exercise);
+		this.createExercise(exercise);
 
-  	}
+	}
 
-  	handleEditForm(exercise){
+	handleEditForm(exercise){
 
-  		this.editExercise(exercise);
+		this.editExercise(exercise);
 
-  	}
+	}
 
-  	handleDelete(exerciseId){
+	handleDelete(exerciseId){
 
-  		this.deleteExercise(exerciseId);
+		this.deleteExercise(exerciseId);
 
-  	}
+	}
 
-  	hydrateExerciseState(){
+	hydrateWorkoutState(){
 
-  		getExercises((data) => (
-  				this.setState({exercises: data})
-  			)
-  		);
+		getWorkout(this.props.id, (data) => (
+				this.setState({workout: data})
+			)  
+		);
 
-  	}
+    getExercises(this.props.id, (data) => (
+        this.setState({exercises: data})
+      )  
+    );
 
-  	hydrateTimerState(){
+	}
 
-  		getTimer((data) => (
-  				this.setState({timer: data})
-  			)
-  		);
+	hydrateTimerState(){
 
-  	}
+		getTimer((data) => (
+				this.setState({timer: data})
+			)
+		);
 
-  	createExercise(exercise){
+	}
 
-  		const e = Object.assign(exercise, { id: uid() });
+	createExercise(exercise){
 
-  		this.setState({ exercises: this.state.exercises.concat(e) });
+		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.id });
 
-      createExercise(e);
+		this.setState({ exercises: this.state.exercises.concat(e) });
 
-  	}
+    createExercise(e);
 
-  	deleteExercise(exerciseId){
+	}
 
-  		this.setState({
-  			exercises: this.state.exercises.filter(e => e.id!==exerciseId),
-  		});
+	deleteExercise(exerciseId){
 
-      deleteExercise(exerciseId);
+		this.setState({
+			exercises: this.state.exercises.filter(e => e.id!==exerciseId),
+		});
 
-  	}
+    deleteExercise(exerciseId);
 
-  	editExercise(attrs){
+	}
 
-  		this.setState({ 
-  			exercises: this.state.exercises.map((exercise) => {
-  				if(exercise.id === attrs.id){
-  					return Object.assign({}, exercise, { title: attrs.title, workout: attrs.workout } );
-  				} else {
-  					return exercise;
-  				}
-  			}),
-  		});
+	editExercise(attrs){
 
-      editExercise(attrs.id, { title: attrs.title, workout: attrs.workout });
+		this.setState({ 
+			exercises: this.state.exercises.map((exercise) => {
+				if(exercise.id === attrs.id){
+					return Object.assign({}, exercise, { title: attrs.title, workout: attrs.workout } );
+				} else {
+					return exercise;
+				}
+			}),
+		});
 
-  	}
+    editExercise(attrs.id, { title: attrs.title, workout: attrs.workout, workoutId: attrs.workoutId });
 
-  	handleStartClick(){
+	}
+
+	handleStartClick(){
 
 		const now = Date.now();
 
@@ -147,6 +153,7 @@ class WorkoutDashboard extends Component {
 		return (
 			<div>
 
+        <h2>{this.state.workout.title}</h2>
 				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleDelete} />
       	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
       	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
