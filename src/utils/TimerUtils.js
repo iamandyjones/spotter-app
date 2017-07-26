@@ -31,3 +31,19 @@ function pad(numberString, size) {
 	return padded;
 	
 }
+
+export function printDate(ms) {
+
+	var d = new Date(ms);
+	var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+	return days[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+
+}
+
+export function printTime(ms) {
+
+	var d = new Date(ms);
+	return d.getHours() + ':' + d.getMinutes();
+
+}

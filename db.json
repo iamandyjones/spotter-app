@@ -2,11 +2,13 @@
   "workouts": [
     {
       "id": "111",
-      "title": "Chest and Back"
+      "title": "Chest and Back",
+      "date": 1501077594601
     },
     {
       "id": "222",
-      "title": "Pull Sesh"
+      "title": "Pull Sesh",
+      "date": 1501077594601
     }
   ],
   "exercises": [
@@ -24,7 +26,7 @@
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 10697,
     "runningSince": null
   }
 }

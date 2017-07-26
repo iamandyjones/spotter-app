@@ -4,6 +4,7 @@ import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
 import { uid } from '../utils/ExerciseUtils';
+import { printDate, printTime } from '../utils/TimerUtils';
 import { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
 
 class WorkoutDashboard extends Component { 
@@ -154,6 +155,7 @@ class WorkoutDashboard extends Component {
 			<div>
 
         <h2>{this.state.workout.title}</h2>
+        <h3>{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
 				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleDelete} />
       	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
       	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
