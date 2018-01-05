@@ -14,6 +14,15 @@ function parseJSON(response) {
   return response.json();
 }
 
+function getWorkouts(success) {
+  return fetch('/api/workouts/', {
+  headers: {
+    'Accept': 'application/json',
+  },
+  }).then(checkStatus)
+    .then(parseJSON)
+    .then(success); 
+}
 
 function getWorkout(id, success) {
   return fetch('/api/workouts/'+id, {
@@ -23,6 +32,17 @@ function getWorkout(id, success) {
   }).then(checkStatus)
     .then(parseJSON)
     .then(success); 
+}
+
+function createWorkout(data) {
+  return fetch('/api/workouts', {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  }).then(checkStatus)
 }
 
 function getExercises(id, success) {
@@ -37,7 +57,7 @@ function getExercises(id, success) {
 
 function createExercise(data) {
   return fetch('/api/exercises', {
-  method: 'post',
+  method: 'POST',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
@@ -48,7 +68,7 @@ function createExercise(data) {
 
 function deleteExercise(id) {
   return fetch('/api/exercises/'+id, {
-  method: 'delete',
+  method: 'DELETE',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
@@ -68,7 +88,7 @@ function getTimer(success) {
 
 function toggleTimer(data) {
   return fetch('/api/timer/', {
-  method: 'put',
+  method: 'PUT',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
@@ -79,7 +99,7 @@ function toggleTimer(data) {
 
 function editExercise(id, data) {
   return fetch('/api/exercises/'+id, {
-  method: 'put',
+  method: 'PATCH',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
@@ -89,5 +109,5 @@ function editExercise(id, data) {
 }
 
 
-export { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise };
+export { getWorkout, getWorkouts, createWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise };
 

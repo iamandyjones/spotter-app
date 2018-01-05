@@ -14,13 +14,13 @@ function millisecondsToHuman(ms) {
 	const minutes = Math.floor((ms / 1000 / 60) % 60);
 	const hours = Math.floor(ms / 1000 / 60 / 60);
 
-	const humanized = [
+	const humanised = [
 		pad(hours.toString(), 2),
 		pad(minutes.toString(), 2),
 		pad(seconds.toString(), 2),
 	].join(':');
 
-	return humanized;
+	return humanised;
 
 }
 
@@ -37,13 +37,13 @@ export function printDate(ms) {
 	var d = new Date(ms);
 	var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-	return days[d.getDay()] + ' ' + d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+	return `${days[d.getDay()]} ${d.getDate()}/${(d.getMonth()+1)}/${d.getFullYear()}`;
 
 }
 
 export function printTime(ms) {
 
 	var d = new Date(ms);
-	return d.getHours() + ':' + d.getMinutes();
+	return `${d.getHours()}:${d.getMinutes()}`;
 
 }

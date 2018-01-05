@@ -12,10 +12,11 @@ class EditableExerciseList extends Component {
 				key={exercise.id} 
 				id={exercise.id} 
 				title={exercise.title} 
-				workout={exercise.workout} 
-				workoutId={exercise.workoutId} 
+				workout={exercise.workout}  
+				sets={exercise.sets}
 				onFormSubmit={this.props.onFormSubmit} 
-				onDeleteClick={this.props.onDeleteClick} />
+				onDeleteClick={this.props.onDeleteClick}
+				onSetChange={this.props.onSetChange} />
 
 		));
 

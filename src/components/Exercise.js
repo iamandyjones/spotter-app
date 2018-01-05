@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import SetList from './SetList';
+
 class Exercise extends Component {
 
 	constructor(props){
@@ -23,6 +25,9 @@ class Exercise extends Component {
 				<p>{this.props.workout}</p>
 				<div onClick={this.props.onEditClick}>Edit</div>
 				<div onClick={this.handleDeleteClick}>Delete</div>
+
+				<SetList id={this.props.id} sets={this.props.sets} onSetChange={this.props.onSetChange} />
+
 			</div>
 
 		);

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
-import { uid } from '../utils/ExerciseUtils';
+import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
 import { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
 
@@ -39,15 +39,15 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	handleCreateForm(exercise){
+	handleCreateForm(id, exercise){
 
-		this.createExercise(exercise);
+		this.createExercise(id, exercise);
 
 	}
 
-	handleEditForm(exercise){
+	handleEditForm(id, exercise){
 
-		this.editExercise(exercise);
+		this.editExercise(id, exercise);
 
 	}
 
@@ -64,10 +64,10 @@ class WorkoutDashboard extends Component {
 			)  
 		);
 
-    getExercises(this.props.id, (data) => (
-        this.setState({exercises: data})
-      )  
-    );
+	    getExercises(this.props.id, (data) => (
+	        this.setState({exercises: data})
+	      )  
+	    );
 
 	}
 
@@ -80,13 +80,13 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	createExercise(exercise){
+	createExercise(id, exercise){
 
-		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.id });
+		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.id, sets: [] });
 
 		this.setState({ exercises: this.state.exercises.concat(e) });
 
-    createExercise(e);
+    	createExercise(e);
 
 	}
 
@@ -100,19 +100,19 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	editExercise(attrs){
+	editExercise(id, attrs){
 
 		this.setState({ 
 			exercises: this.state.exercises.map((exercise) => {
-				if(exercise.id === attrs.id){
-					return Object.assign({}, exercise, { title: attrs.title, workout: attrs.workout } );
+				if(exercise.id === id){
+					return Object.assign({}, exercise, attrs );
 				} else {
 					return exercise;
 				}
 			}),
 		});
 
-    editExercise(attrs.id, { title: attrs.title, workout: attrs.workout, workoutId: attrs.workoutId });
+    editExercise(id, attrs);
 
 	}
 
@@ -156,7 +156,7 @@ class WorkoutDashboard extends Component {
 
         <h2>{this.state.workout.title}</h2>
         <h3>{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleDelete} />
+				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleDelete} onSetChange={this.handleEditForm} />
       	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
       	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
 

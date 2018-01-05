@@ -33,9 +33,9 @@ class EditableExercise extends Component {
 
 	}
 
-	handleFormSubmit(exercise){
+	handleFormSubmit(id, exercise){
 
-		this.props.onFormSubmit(exercise);
+		this.props.onFormSubmit(id, exercise);
 		this.closeForm();
 
 	}
@@ -52,7 +52,7 @@ class EditableExercise extends Component {
 
 			return (
 				<div className="item">
-				<ExerciseForm id={this.props.id} title={this.props.title} workout={this.props.workout} workoutId={this.props.workoutId} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
+				<ExerciseForm id={this.props.id} title={this.props.title} workout={this.props.workout} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
 				</div>
 			);
 
@@ -60,7 +60,7 @@ class EditableExercise extends Component {
 
 			return (
 				<div className="item">
-				<Exercise id={this.props.id} title={this.props.title} workout={this.props.workout} onEditClick={this.handleEdit} onDeleteClick={this.props.onDeleteClick}  />
+				<Exercise id={this.props.id} title={this.props.title} workout={this.props.workout} sets={this.props.sets} onEditClick={this.handleEdit} onDeleteClick={this.props.onDeleteClick} onSetChange={this.props.onSetChange}  />
 				</div>
 			);
 

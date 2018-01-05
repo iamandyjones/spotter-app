@@ -26,9 +26,9 @@ class ToggleExerciseForm extends Component {
 
 	}
 
-	handleFormSubmit(exercise){
+	handleFormSubmit(id, exercise){
 
-		this.props.onFormSubmit(exercise);
+		this.props.onFormSubmit(id, exercise);
 		this.setState({ isOpen: false });		
 
 	}

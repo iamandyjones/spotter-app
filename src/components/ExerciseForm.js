@@ -15,10 +15,9 @@ class ExerciseForm extends Component {
 		this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
 	}
 
-
 	handleSubmit(){
 
-		this.props.onFormSubmit({id: this.props.id, title: this.state.title, workout: this.state.workout, workoutId: this.props.workoutId});
+		this.props.onFormSubmit(this.props.id, { title: this.state.title, workout: this.state.workout });
 
 	}
 

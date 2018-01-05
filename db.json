@@ -9,24 +9,58 @@
       "id": "222",
       "title": "Pull Sesh",
       "date": 1501077594601
+    },
+    {
+      "id": "id-8z7i54boj1r",
+      "title": "New Workout",
+      "date": 1515097989544
     }
   ],
   "exercises": [
     {
-      "title": "Press Ups New name",
-      "workout": "",
-      "workoutId": 111,
-      "id": "id-4qhhwu4ml6b"
-    },
-    {
       "id": "id-mbz9g0rhrh",
       "title": "bent over row",
       "workout": "",
-      "workoutId": 222
+      "workoutId": 222,
+      "sets": []
+    },
+    {
+      "title": "Push ups",
+      "workout": "heavy",
+      "id": "id-19s7gch9k08",
+      "workoutId": 111,
+      "sets": [
+        {
+          "reps": "10",
+          "load": "50k",
+          "id": "id-bjsm2oc4lt"
+        }
+      ]
+    },
+    {
+      "title": "Exercise",
+      "workout": "",
+      "id": "id-iexlc01c86",
+      "workoutId": 111,
+      "sets": []
     }
   ],
   "timer": {
-    "elapsed": 10697,
+    "elapsed": 0,
     "runningSince": null
-  }
+  },
+  "exercise-list": [
+    {
+      "name": "Bench Press"
+    },
+    {
+      "name": "Pull Ups"
+    },
+    {
+      "name": "Lat Pull Down"
+    },
+    {
+      "name": "Bent Over Row"
+    }
+  ]
 }
