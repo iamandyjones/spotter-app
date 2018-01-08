@@ -14,6 +14,11 @@
       "id": "id-8z7i54boj1r",
       "title": "New Workout",
       "date": 1515097989544
+    },
+    {
+      "id": "id-l2t6j9bsyi",
+      "title": "New Workout",
+      "date": 1515416960827
     }
   ],
   "exercises": [
@@ -34,6 +39,11 @@
           "reps": "10",
           "load": "50k",
           "id": "id-bjsm2oc4lt"
+        },
+        {
+          "reps": "",
+          "load": "",
+          "id": "id-xmi6j9iqz5l"
         }
       ]
     },
@@ -43,6 +53,19 @@
       "id": "id-iexlc01c86",
       "workoutId": 111,
       "sets": []
+    },
+    {
+      "title": "Flies",
+      "workout": "",
+      "id": "id-psiuaq5uibm",
+      "workoutId": 111,
+      "sets": [
+        {
+          "reps": "",
+          "load": "",
+          "id": "id-u1q2j63ov5m"
+        }
+      ]
     }
   ],
   "timer": {

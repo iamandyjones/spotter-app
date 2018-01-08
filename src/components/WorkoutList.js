@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { getWorkouts, createWorkout } from '../utils/ApiUtils';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
-
-import '@material/fab/dist/mdc.fab.css';
+import ButtonFab from './ButtonFab';
 
 class WorkoutList extends Component {
 
@@ -49,11 +48,7 @@ class WorkoutList extends Component {
 			<div>
 				<div>{workouts}</div>
 				<p onClick={this.handleNewWorkout}>Add New Workout</p>
-				<button className="mdc-fab material-icons" aria-label="Favorite">
-				  <span className="mdc-fab__icon">
-				    favorite
-				  </span>
-				</button>
+				<ButtonFab label="add" ripple />
 			</div>
 		)
 
