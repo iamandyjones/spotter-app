@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { getWorkouts, createWorkout } from '../utils/ApiUtils';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
 import ButtonFab from './ButtonFab';
+import '@material/list/dist/mdc.list.css';
+
+
 
 class WorkoutList extends Component {
 
@@ -10,7 +14,7 @@ class WorkoutList extends Component {
 
 		super(props);
 
-		this.state = { workouts: [] }
+		this.state = { workouts: [], fetched: false }
 
 		this.handleNewWorkout = this.handleNewWorkout.bind(this);
 
@@ -18,7 +22,7 @@ class WorkoutList extends Component {
 
 	componentDidMount(){
 
-		getWorkouts((data) => this.setState({workouts: data}));
+		getWorkouts((data) => this.setState({workouts: data, fetched: true}));
 
 	}
 
@@ -36,19 +40,29 @@ class WorkoutList extends Component {
 
 		const workouts = this.state.workouts.map((workout) => (
 
-			<div key={workout.id}>
-				<p>{workout.title}</p>
-				<p>{printDate(workout.date)} at {printTime(workout.date)}</p>
-			</div>
+			<Link to={`${this.props.workoutPathname}/${workout.id}`} key={workout.id} className="mdc-list-item">
+				
+				<span className="mdc-list-item__graphic" role="presentation">
+					<i className="material-icons" aria-hidden="true">fitness_center</i>
+                  </span>
+				<span className="mdc-list-item__text">
+					{workout.title}
+					<span className="mdc-list-item__secondary-text">{printDate(workout.date)} at {printTime(workout.date)}</span>
+				</span>
+
+			</Link>
 
 		));
 
 		return (
 
 			<div>
-				<div>{workouts}</div>
-				<p onClick={this.handleNewWorkout}>Add New Workout</p>
-				<ButtonFab label="add" ripple />
+				{!this.state.fetched ? <p>Loading...</p> :
+					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list">
+					{workouts}
+					</div>
+				}
+				<ButtonFab onClick={this.handleNewWorkout} label="add" ripple />
 			</div>
 		)
 

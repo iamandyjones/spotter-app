@@ -10,9 +10,12 @@
     "@material/button": "^0.27.0",
     "@material/dialog": "^0.27.0",
     "@material/fab": "^0.27.0",
+    "@material/list": "^0.28.0",
+    "@material/theme": "^0.28.0",
     "@material/typography": "^0.3.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2"
+    "react-dom": "^15.4.2",
+    "react-router-dom": "^4.2.2"
   },
   "scripts": {
     "start": "react-scripts start",

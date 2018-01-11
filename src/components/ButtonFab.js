@@ -17,7 +17,7 @@ class ButtonFab extends Component {
 
 		return (
 
-			<button className="mdc-fab material-icons" aria-label={this.props.label} ref={(el) => this.fab = el}>
+			<button className="mdc-fab material-icons" aria-label={this.props.label} ref={(el) => this.fab = el} onClick={this.props.onClick}>
 				<span className="mdc-fab__icon">
 					{this.props.label}
 				</span>

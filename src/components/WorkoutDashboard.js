@@ -14,13 +14,14 @@ class WorkoutDashboard extends Component {
 
   	this.state = {
   		workout: {},
-      exercises: [], 
+      exercises: [],
   		timer: {}
   	};
 
   	this.handleCreateForm = this.handleCreateForm.bind(this);
   	this.handleEditForm = this.handleEditForm.bind(this);
-  	this.handleDelete = this.handleDelete.bind(this);
+  	this.handleWorkoutDelete = this.handleWorkoutDelete.bind(this);
+  	this.handleExerciseDelete = this.handleExerciseDelete.bind(this);
   	this.handleStartClick = this.handleStartClick.bind(this);
   	this.handleStopClick = this.handleStopClick.bind(this);
     this.handleRestartClick = this.handleRestartClick.bind(this);
@@ -34,8 +35,15 @@ class WorkoutDashboard extends Component {
 		this.hydrateWorkoutState();
 		this.hydrateTimerState();
 
-		setInterval(this.hydrateWorkoutState, 5000);
-		setInterval(this.hydrateTimerState, 5000);
+		this.hydrateWorkoutInterval = setInterval(this.hydrateWorkoutState, 5000);
+		this.hydrateTimerInterval = setInterval(this.hydrateTimerState, 5000);
+
+	}
+
+	componentWillUnmount(){
+
+		clearInterval(this.hydrateWorkoutInterval);
+		clearInterval(this.hydrateTimerInterval);
 
 	}
 
@@ -51,7 +59,14 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	handleDelete(exerciseId){
+	handleWorkoutDelete(workoutId){
+
+		//this.confirmDeletion();
+		//this.deleteWorkout(workoutId);
+
+	}
+
+	handleExerciseDelete(exerciseId){
 
 		this.deleteExercise(exerciseId);
 
@@ -90,13 +105,19 @@ class WorkoutDashboard extends Component {
 
 	}
 
+	deleteWorkout(workoutId){
+
+		this.setState({workout: {}, exercises: []});    	
+
+	}
+
 	deleteExercise(exerciseId){
 
 		this.setState({
 			exercises: this.state.exercises.filter(e => e.id!==exerciseId),
 		});
 
-    deleteExercise(exerciseId);
+    	deleteExercise(exerciseId);
 
 	}
 
@@ -156,7 +177,9 @@ class WorkoutDashboard extends Component {
 
         <h2>{this.state.workout.title}</h2>
         <h3>{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleDelete} onSetChange={this.handleEditForm} />
+        <p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
+
+				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
       	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
       	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
 
