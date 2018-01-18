@@ -39,6 +39,21 @@
       "id": "id-mgoysdrb5p",
       "title": "New Workout",
       "date": 1515514512544
+    },
+    {
+      "id": "id-odz9bc7dwmh",
+      "title": "New Workout",
+      "date": 1515707961632
+    },
+    {
+      "id": "id-z9vxqh8xkjo",
+      "title": "New Workout",
+      "date": 1516222774213
+    },
+    {
+      "id": "id-eupv3qe2r8n",
+      "title": "New Workout",
+      "date": 1516308987432
     }
   ],
   "exercises": [
@@ -47,7 +62,13 @@
       "title": "bent over row",
       "workout": "",
       "workoutId": 222,
-      "sets": []
+      "sets": [
+        {
+          "reps": "20",
+          "load": "10kg",
+          "id": "id-c1yu186ygho"
+        }
+      ]
     },
     {
       "title": "Push ups",
@@ -59,11 +80,6 @@
           "reps": "10",
           "load": "50k",
           "id": "id-bjsm2oc4lt"
-        },
-        {
-          "reps": "",
-          "load": "",
-          "id": "id-xmi6j9iqz5l"
         }
       ]
     },
@@ -89,7 +105,7 @@
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 1373,
     "runningSince": null
   },
   "exercise-list": [

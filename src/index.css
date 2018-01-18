@@ -1,6 +1,17 @@
+:root { --mdc-theme-background: #e3e3e3; }
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: rgba(0, 0, 0, 0.05);
+  background: var(--mdc-theme-background);
 }
+
+
+
+.list-divided .mdc-list-item { border-bottom: 1px solid rgba(0, 0, 0, .12); }
+.list-divided .mdc-list-item:last-child { border: 0; }
+
+
+
+.mdc-card { background: #fff; }

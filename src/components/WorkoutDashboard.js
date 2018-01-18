@@ -175,8 +175,8 @@ class WorkoutDashboard extends Component {
 		return (
 			<div>
 
-        <h2>{this.state.workout.title}</h2>
-        <h3>{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
+        <h2 className="mdc-typography--title">{this.state.workout.title}</h2>
+        <h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
         <p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
 
 				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />

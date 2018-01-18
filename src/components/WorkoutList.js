@@ -58,11 +58,11 @@ class WorkoutList extends Component {
 
 			<div>
 				{!this.state.fetched ? <p>Loading...</p> :
-					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list">
+					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list list-divided">
 					{workouts}
 					</div>
 				}
-				<ButtonFab onClick={this.handleNewWorkout} label="add" ripple />
+				<ButtonFab onClick={this.handleNewWorkout} label="add" ripple absolute />
 			</div>
 		)
 

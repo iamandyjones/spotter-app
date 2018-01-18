@@ -1,30 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
+function TimerButton({timerRunning, onStopClick, onStartClick}){
 
-class TimerButton extends Component {
+	if(timerRunning){
 
-	render(){
+		return (	
+			<i className="material-icons" onClick={onStopClick}>pause_circle_outline</i>
+		)
 
-		if(this.props.timerRunning){
+	} else {
 
-			return (
-				<div>
-					<button onClick={this.props.onStopClick}>Stop Timer</button>
-				</div>
-			)
-
-		} else {
-
-			return (
-				<div>
-					<button onClick={this.props.onStartClick}>Start Timer</button>
-				</div>
-			)
-
-		}
+		return (
+			<i className="material-icons" onClick={onStartClick}>play_circle_outline</i>
+		)
 
 	}
 
+}
+
+TimerButton.proptypes = {
+	timerRunning: PropTypes.bool.isRequired,
+	onStopClick: PropTypes.func.isRequired,
+	onStartClick: PropTypes.func.isRequired
 }
 
 export default TimerButton;	

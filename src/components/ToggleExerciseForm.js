@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import ExerciseForm from './ExerciseForm';
+import Button from './Button';
 
 class ToggleExerciseForm extends Component {
 
 	constructor(props){
+
 		super(props);
 		this.state = { isOpen: false }
 
@@ -47,9 +49,7 @@ class ToggleExerciseForm extends Component {
 
 			return (
 
-				<div>
-					<button onClick={this.handleFormOpen}>New</button>
-				</div>
+				<Button label="New Exercise" onClick={this.handleFormOpen} />
 
 			);
 
@@ -57,6 +57,10 @@ class ToggleExerciseForm extends Component {
 
 	}
 
+}
+
+ToggleExerciseForm.propTypes = {
+	onFormSubmit: PropTypes.func.isRequired
 }
 
 export default ToggleExerciseForm;
