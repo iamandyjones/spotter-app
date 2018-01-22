@@ -158,7 +158,7 @@ class WorkoutDashboard extends Component {
 			timer: Object.assign({}, this.state.timer, { elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null })
 		});
 
-    toggleTimer({elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null});
+    	toggleTimer({elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null});
 		
 	}
 

@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { getWorkouts, createWorkout } from '../utils/ApiUtils';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
+import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
 import ButtonFab from './ButtonFab';
 import '@material/list/dist/mdc.list.css';
-
-
 
 class WorkoutList extends Component {
 
@@ -22,7 +21,18 @@ class WorkoutList extends Component {
 
 	componentDidMount(){
 
-		getWorkouts((data) => this.setState({workouts: data, fetched: true}));
+		getWorkouts((data) => {
+			this.setState({workouts: data, fetched: true});
+			this.applyRipples();
+		});
+
+	}
+
+	applyRipples(){
+
+		const listItems = [].slice.call(this.list.querySelectorAll('.mdc-list-item'));
+
+		listItems.forEach(item => MDCRipple.attachTo(item));
 
 	}
 
@@ -58,7 +68,7 @@ class WorkoutList extends Component {
 
 			<div>
 				{!this.state.fetched ? <p>Loading...</p> :
-					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list list-divided">
+					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list list-divided" ref={(el) => this.list = el}>
 					{workouts}
 					</div>
 				}

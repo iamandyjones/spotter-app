@@ -10,7 +10,7 @@ class ButtonFab extends Component {
 	componentDidMount(){
 
 		if(this.props.ripple){
-			MDCRipple.attachTo(this.fab);	
+			MDCRipple.attachTo(this.fab);
 		}
 		
 	}
