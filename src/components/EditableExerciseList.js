@@ -22,9 +22,9 @@ class EditableExerciseList extends Component {
 
 		return (
 			
-			<div className="listing">
-				{exercises}
-			</div>
+			<ul className="mdc-list mdc-list--three-line mdc-list--non-interactive list-divided">
+			{exercises}
+			</ul>
 
 		)
 

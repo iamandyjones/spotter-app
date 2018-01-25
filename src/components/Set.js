@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Chip from './Chip';
 
 class Set extends Component {
 
@@ -7,7 +8,8 @@ class Set extends Component {
 
 		this.state = {
 			reps: this.props.reps,
-			load: this.props.load
+			load: this.props.load,
+			editFormOpen: false
 		}
 
 		this.handleRepsChange = this.handleRepsChange.bind(this);
@@ -41,17 +43,31 @@ class Set extends Component {
 	}
 
 	render(){
-	
-		return (
+		
+		if(this.state.editForm){
 
-			<div>
-				<input type="text" value={this.state.reps} placeholder="Reps" onChange={this.handleRepsChange} />
-				<span> x </span>
-				<input type="text" value={this.state.load} placeholder="Weight" onChange={this.handleLoadChange} />
-				<span onClick={this.handleRemoveSet}>Bin</span>
-			</div>
+			return (
 
-		);
+				<div>
+					<input type="text" value={this.state.reps} placeholder="Reps" onChange={this.handleRepsChange} />
+					<input type="text" value={this.state.load} placeholder="Weight" onChange={this.handleLoadChange} />
+				</div>
+
+			);
+
+		} else {
+
+			return (
+
+				<Chip>
+					{this.state.reps} x {this.state.load}
+					<span className="chip__action" onClick={this.handleRemoveSet}><i className="material-icons md-18">cancel</i></span>
+				</Chip>
+
+			)
+
+		}
+		
 
 	}
 

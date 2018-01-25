@@ -54,6 +54,11 @@
       "id": "id-eupv3qe2r8n",
       "title": "New Workout",
       "date": 1516308987432
+    },
+    {
+      "id": "id-xfei2bekmw",
+      "title": "New Workout",
+      "date": 1516901216971
     }
   ],
   "exercises": [
@@ -67,19 +72,11 @@
           "reps": "20",
           "load": "10kg",
           "id": "id-c1yu186ygho"
-        }
-      ]
-    },
-    {
-      "title": "Push ups",
-      "workout": "heavy",
-      "id": "id-19s7gch9k08",
-      "workoutId": 111,
-      "sets": [
+        },
         {
           "reps": "",
           "load": "",
-          "id": "id-y9rs6rtnxnm"
+          "id": "id-9m2qd22urw5"
         }
       ]
     },
@@ -88,7 +85,13 @@
       "workout": "",
       "id": "id-iexlc01c86",
       "workoutId": 111,
-      "sets": []
+      "sets": [
+        {
+          "reps": "10",
+          "load": "10",
+          "id": "id-3vr0ye20am6"
+        }
+      ]
     },
     {
       "title": "Flies",
@@ -97,15 +100,27 @@
       "workoutId": 111,
       "sets": [
         {
+          "reps": "5",
+          "load": "20",
+          "id": "id-u1q2j63ov5m"
+        },
+        {
           "reps": "",
           "load": "",
-          "id": "id-u1q2j63ov5m"
+          "id": "id-r5gb12cjirj"
         }
       ]
+    },
+    {
+      "title": "Press ups",
+      "workout": "",
+      "id": "id-ityey14s85d",
+      "workoutId": "111",
+      "sets": []
     }
   ],
   "timer": {
-    "elapsed": 1373,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

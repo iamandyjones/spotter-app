@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
 import Set from './Set';
+import Button from './Button';
 import { uid } from '../utils/GlobalUtils';
 
 class SetList extends Component {
@@ -32,9 +32,7 @@ class SetList extends Component {
 
 	handleSetDelete(id){
 
-		const sets = this.props.sets.filter((s)=>{
-			return s.id !== id;
-		});
+		const sets = this.props.sets.filter((s) => s.id !== id);
 		
 		this.changeSets(sets);
 
@@ -66,7 +64,7 @@ class SetList extends Component {
 
 			<div>
 				{sets}
-				<button onClick={this.handleNewSet}>New Set</button>
+				<Button onClick={this.handleNewSet} label="New" />
 			</div>
 
 		);

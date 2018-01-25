@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {MDCDialog} from '@material/dialog/dist/mdc.dialog.js';
 import Button from './Button';
 

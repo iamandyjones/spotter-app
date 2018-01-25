@@ -50,7 +50,7 @@ class WorkoutList extends Component {
 
 		const workouts = this.state.workouts.map((workout) => (
 
-			<Link to={`${this.props.workoutPathname}/${workout.id}`} key={workout.id} className="mdc-list-item">
+			<Link to={`${this.props.path}/${workout.id}`} key={workout.id} className="mdc-list-item">
 				
 				<span className="mdc-list-item__graphic" role="presentation">
 					<i className="material-icons" aria-hidden="true">fitness_center</i>

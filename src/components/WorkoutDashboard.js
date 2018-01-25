@@ -14,7 +14,7 @@ class WorkoutDashboard extends Component {
 
   	this.state = {
   		workout: {},
-      exercises: [],
+      	exercises: [],
   		timer: {}
   	};
 
@@ -74,12 +74,12 @@ class WorkoutDashboard extends Component {
 
 	hydrateWorkoutState(){
 
-		getWorkout(this.props.id, (data) => (
+		getWorkout(this.props.params.id, (data) => (
 				this.setState({workout: data})
 			)  
 		);
 
-	    getExercises(this.props.id, (data) => (
+	    getExercises(this.props.params.id, (data) => (
 	        this.setState({exercises: data})
 	      )  
 	    );
@@ -175,13 +175,13 @@ class WorkoutDashboard extends Component {
 		return (
 			<div>
 
-        <h2 className="mdc-typography--title">{this.state.workout.title}</h2>
-        <h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-        <p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
+				<h2 className="mdc-typography--title">{this.state.workout.title}</h2>
+				<h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
+				<p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
 
 				<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
-      	<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
-      	<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
+				<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
+				<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
 
 			</div>
 		)

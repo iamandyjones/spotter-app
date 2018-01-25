@@ -51,17 +51,17 @@ class EditableExercise extends Component {
 		if(this.state.editFormOpen){
 
 			return (
-				<div className="item">
+				
 				<ExerciseForm id={this.props.id} title={this.props.title} workout={this.props.workout} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
-				</div>
+				
 			);
 
 		} else {
 
 			return (
-				<div className="item">
+				
 				<Exercise id={this.props.id} title={this.props.title} workout={this.props.workout} sets={this.props.sets} onEditClick={this.handleEdit} onDeleteClick={this.props.onDeleteClick} onSetChange={this.props.onSetChange}  />
-				</div>
+				
 			);
 
 		}

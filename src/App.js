@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch, Link } from 'react-router-dom';
+import AppRoute from './components/AppRoute';
 import WorkoutDashboard from './components/WorkoutDashboard';
 import WorkoutList from './components/WorkoutList';
-import Dialog from './components/Dialog';
 import Navigation from './components/Navigation';
 import Toolbar from './components/Toolbar';
+import ToolbarTitle from './components/ToolbarTitle';
 import Canvas from './components/Canvas';
+import Layout from './components/Layout';
 
 // own component
 import '@material/card/dist/mdc.card.css';
@@ -26,7 +28,9 @@ class App extends Component {
 
   }
 
-  handleMenuClick(){
+  handleMenuClick(evt){
+
+    evt.preventDefault();
 
     this.setState({open: !this.state.open});
 
@@ -46,30 +50,31 @@ class App extends Component {
 
       <Navigation open={this.state.open} onNavClose={this.handleNavClose} />
 
-      <Toolbar onMenuClick={this.handleMenuClick} />
-
-      <div className="app__main">        
-
-        {/*<Dialog />*/}
+      <Toolbar onMenuClick={this.handleMenuClick}>
 
         <Switch>
 
-          <Route path='/workouts/:workoutId' render={({match}) => (
+          <Route exact path='/' render={(matchProps) => <ToolbarTitle title="Spotter App" link={matchProps.match.path} />} />
+          <Route path='/workouts' render={(matchProps) => <ToolbarTitle title="Workouts" link={matchProps.match.path} />} />
+          <Route component={ToolbarTitle} />
 
-            <Canvas padded>
+        </Switch>
+
+      </Toolbar>
+
+        <Switch>
+
+          <AppRoute path='/workouts/:id' layout={Layout} component={WorkoutDashboard} /> 
+          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} /> 
+        
+          
+          /*<Route path='/workouts/:workoutId' render={({match}) => (
+
+            <Canvas>
               <WorkoutDashboard id={match.params.workoutId} />
             </Canvas>
 
-          )} />
-
-          <Route path='/workouts' render={({match}) => (
-
-              <Canvas>
-                  <WorkoutList workoutPathname={match.path} limit="2" />
-              </Canvas>
-            
-            
-          )} />
+          )} />*/
           
 
           <Route exact path='/' render={() => (
@@ -159,7 +164,7 @@ class App extends Component {
 
         </Switch>
 
-      </div>
+
 
       </div>
       
