@@ -48,16 +48,16 @@ class WorkoutList extends Component {
 
 	render(){
 
-		const workouts = this.state.workouts.map((workout) => (
+		const workouts = this.state.workouts.map((w) => (
 
-			<Link to={`${this.props.path}/${workout.id}`} key={workout.id} className="mdc-list-item">
+			<Link to={`${this.props.path}/${w.id}`} key={w.id} className="mdc-list-item">
 				
 				<span className="mdc-list-item__graphic" role="presentation">
 					<i className="material-icons" aria-hidden="true">fitness_center</i>
                   </span>
 				<span className="mdc-list-item__text">
-					{workout.title}
-					<span className="mdc-list-item__secondary-text">{printDate(workout.date)} at {printTime(workout.date)}</span>
+					{w.title}
+					<span className="mdc-list-item__secondary-text">{printDate(w.date)} at {printTime(w.date)}</span>
 				</span>
 
 			</Link>

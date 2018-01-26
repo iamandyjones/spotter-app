@@ -17,10 +17,8 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 )
 
 AppRoute.propTypes = {
-
 	component: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
 	layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired
-
 }
 
 export default AppRoute;

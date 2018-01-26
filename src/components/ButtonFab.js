@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
-
 import '@material/fab/dist/mdc.fab.css';
 import './ButtonFab.css';
 
@@ -10,7 +9,9 @@ class ButtonFab extends Component {
 	componentDidMount(){
 
 		if(this.props.ripple){
+
 			MDCRipple.attachTo(this.fab);
+			
 		}
 		
 	}

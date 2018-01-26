@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Button from './Button';
 
 class ExerciseForm extends Component {
 
 	constructor(props){
+		
 		super(props);
 
 		this.state = {
@@ -40,21 +43,36 @@ class ExerciseForm extends Component {
 		return (
 
 			<div>
-				<label>Title</label>
-				<input type="text" value={this.state.title} onChange={this.handleTitleChange} />
 
-				<label>Workout</label>
-				<input type="text" value={this.state.workout} onChange={this.handleWorkoutChange} />
+				<section id="my-mdc-dialog-description" className="mdc-dialog__body">
 
-				<button onClick={this.handleSubmit}>{submitText}</button>
-				<button onClick={this.props.onFormCancel}>Cancel</button>
+					<label>Title</label>
+					<input type="text" value={this.state.title} onChange={this.handleTitleChange} />
 
-			</div>
+					<label>Workout</label>
+					<input type="text" value={this.state.workout} onChange={this.handleWorkoutChange} />
+
+				</section>
+
+				<footer className="mdc-dialog__footer">
+		      
+		      		<Button cssClass="mdc-dialog__footer__button" label="Cancel" onClick={this.props.onFormCancel} />
+		      		<Button cssClass="mdc-dialog__footer__button" label={submitText} onClick={this.handleSubmit} />
+			      
+			    </footer>
+
+		    </div>
 
 		);
 
 	}
 
+}
+
+ExerciseForm.propTypes = {
+	id: PropTypes.string,
+	onFormSubmit: PropTypes.func.isRequired,
+	onFormCancel: PropTypes.func.isRequired
 }
 
 export default ExerciseForm;

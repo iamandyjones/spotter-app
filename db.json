@@ -81,7 +81,7 @@
       ]
     },
     {
-      "title": "Exercise",
+      "title": "Exercise name",
       "workout": "",
       "id": "id-iexlc01c86",
       "workoutId": 111,
@@ -90,31 +90,60 @@
           "reps": "10",
           "load": "10",
           "id": "id-3vr0ye20am6"
-        }
-      ]
-    },
-    {
-      "title": "Flies",
-      "workout": "",
-      "id": "id-psiuaq5uibm",
-      "workoutId": 111,
-      "sets": [
-        {
-          "reps": "5",
-          "load": "20",
-          "id": "id-u1q2j63ov5m"
         },
         {
           "reps": "",
           "load": "",
-          "id": "id-r5gb12cjirj"
+          "id": "id-e33hovpkwms"
         }
       ]
     },
     {
-      "title": "Press ups",
+      "title": "Testing 123",
       "workout": "",
-      "id": "id-ityey14s85d",
+      "id": "id-7y3ztjn32qg",
+      "sets": []
+    },
+    {
+      "title": "Testing 123",
+      "workout": "",
+      "id": "id-t8ze5nlt4ud",
+      "sets": []
+    },
+    {
+      "title": "Testing 123",
+      "workout": "",
+      "id": "id-7oiar1t06ka",
+      "sets": []
+    },
+    {
+      "title": "New exercise",
+      "workout": "workout field",
+      "id": "id-mbx78ssuc3j",
+      "sets": []
+    },
+    {
+      "title": "New exercise",
+      "workout": "",
+      "id": "id-dyjnjm0r12r",
+      "sets": []
+    },
+    {
+      "title": "test",
+      "workout": "",
+      "id": "id-cihrpt0s58i",
+      "sets": []
+    },
+    {
+      "title": "test",
+      "workout": "",
+      "id": "id-lw61zjrj7lr",
+      "sets": []
+    },
+    {
+      "title": "New exercise",
+      "workout": "WORKOUT field",
+      "id": "id-4viy8k8y81y",
       "workoutId": "111",
       "sets": []
     }

@@ -2,19 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Canvas.css';
 
-function Canvas({padded, children}){
+const Canvas = ({ padded, children }) => (
 
-	return (
+	<div className={padded ? "canvas canvas--padded" : "canvas"}>
 
-		<div className={padded ? "canvas canvas--padded" : "canvas"}>
+		{children}
 
-			{children}
+	</div>
 
-		</div>
-
-	)
-
-}
+)
 
 Canvas.propTypes = {
 	padded: PropTypes.bool,

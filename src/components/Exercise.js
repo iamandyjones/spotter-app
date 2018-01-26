@@ -5,7 +5,9 @@ import SetList from './SetList';
 class Exercise extends Component {
 
 	constructor(props){
+
 		super(props);
+
 		this.handleDeleteClick = this.handleDeleteClick.bind(this);
 
 	}
@@ -20,15 +22,22 @@ class Exercise extends Component {
 
 		return (
 
-			<li className="mdc-list-item">
-			<span className="mdc-list-item__text">{this.props.title} - {this.props.workout}
-			<SetList id={this.props.id} sets={this.props.sets} onSetChange={this.props.onSetChange} />
-			</span>
-			<div className="mdc-list-item__meta">
-				<div onClick={this.props.onEditClick}>Edit</div>
-				<div onClick={this.handleDeleteClick}>Delete</div>
-			</div>
-			</li>
+			
+
+				<div className="mdc-list-item__text">{this.props.title} - {this.props.workout}
+
+					<SetList id={this.props.id} sets={this.props.sets} onSetChange={this.props.onSetChange} />
+
+				</div>
+
+				<div className="mdc-list-item__meta">
+
+					<i className="mdc-list-item__meta material-icons" aria-label="More" title="More">more_vert</i>
+					<div onClick={this.props.onEditClick}>Edit</div>
+					<div onClick={this.handleDeleteClick}>Delete</div>
+				</div>
+
+			
 
 		);
 

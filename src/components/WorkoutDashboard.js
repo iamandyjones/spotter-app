@@ -97,7 +97,7 @@ class WorkoutDashboard extends Component {
 
 	createExercise(id, exercise){
 
-		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.id, sets: [] });
+		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.params.id, sets: [] });
 
 		this.setState({ exercises: this.state.exercises.concat(e) });
 

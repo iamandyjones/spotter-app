@@ -6,13 +6,10 @@ import WorkoutList from './components/WorkoutList';
 import Navigation from './components/Navigation';
 import Toolbar from './components/Toolbar';
 import ToolbarTitle from './components/ToolbarTitle';
-import Canvas from './components/Canvas';
 import Layout from './components/Layout';
-
-// own component
-import '@material/card/dist/mdc.card.css';
-
-//import logo from './logo.svg';
+import Card from './components/Card';
+import Grid from './components/Grid';
+import GridCell from './components/GridCell';
 import './App.css';
 
 class App extends Component {
@@ -48,103 +45,43 @@ class App extends Component {
       
       <div className="app mdc-typography">
 
-      <Navigation open={this.state.open} onNavClose={this.handleNavClose} />
+        <Navigation open={this.state.open} onNavClose={this.handleNavClose} />
 
-      <Toolbar onMenuClick={this.handleMenuClick}>
+        <Toolbar onMenuClick={this.handleMenuClick}>
 
-        <Switch>
+          <Switch>
+            <Route exact path='/' render={(matchProps) => <ToolbarTitle title="Spotter App" link={matchProps.match.path} />} />
+            <Route path='/workouts' render={(matchProps) => <ToolbarTitle title="Workouts" link={matchProps.match.path} />} />
+            <Route component={ToolbarTitle} />
+          </Switch>
 
-          <Route exact path='/' render={(matchProps) => <ToolbarTitle title="Spotter App" link={matchProps.match.path} />} />
-          <Route path='/workouts' render={(matchProps) => <ToolbarTitle title="Workouts" link={matchProps.match.path} />} />
-          <Route component={ToolbarTitle} />
-
-        </Switch>
-
-      </Toolbar>
+        </Toolbar>
 
         <Switch>
-
           <AppRoute path='/workouts/:id' layout={Layout} component={WorkoutDashboard} /> 
-          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} /> 
-        
-          
-          /*<Route path='/workouts/:workoutId' render={({match}) => (
-
-            <Canvas>
-              <WorkoutDashboard id={match.params.workoutId} />
-            </Canvas>
-
-          )} />*/
-          
+          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} />
 
           <Route exact path='/' render={() => (
 
-            <div className="mdc-layout-grid">
-            <div className="mdc-layout-grid__inner">
-              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                  
-                  <div className="mdc-card">
-  <section className="mdc-card__primary">
-    <h1 className="mdc-card__title mdc-card__title--large">Title goes here</h1>
-    <h2 className="mdc-card__subtitle">Subtitle here</h2>
-  </section>
-  <section className="mdc-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat.
-  </section>
-  <section className="mdc-card__actions">
-    <button className="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
-    <button className="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
-  </section>
-</div>
+            <Grid>
+              <GridCell>
+                <Card title="Card Title" subtitle="Card subtitle">
+                  <Link to="/workouts">Workouts</Link>
+                </Card>  
+              </GridCell>
 
-                <Link to="/workouts">Workouts</Link>
-              </div>
+              <GridCell span={6}>
+               <Card title="Card Title" subtitle="Card subtitle">
+                  Some text...
+                </Card>
+              </GridCell>
 
-              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
-                <div className="mdc-card">
-  <section className="mdc-card__primary">
-    <h1 className="mdc-card__title mdc-card__title--large">Title goes here</h1>
-    <h2 className="mdc-card__subtitle">Subtitle here</h2>
-  </section>
-  <section className="mdc-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat.
-  </section>
-  <section className="mdc-card__actions">
-    <button className="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
-    <button className="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
-  </section>
-</div>
-              </div>
-
-              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
-<div className="mdc-card">
-  <section className="mdc-card__primary">
-    <h1 className="mdc-card__title mdc-card__title--large">Title goes here</h1>
-    <h2 className="mdc-card__subtitle">Subtitle here</h2>
-  </section>
-  <section className="mdc-card__supporting-text">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-    commodo consequat.
-  </section>
-  <section className="mdc-card__actions">
-    <button className="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
-    <button className="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
-  </section>
-</div>
-              </div>
-
-            </div>
-          </div>
-
-            
+              <GridCell span={6}>
+                <Card title="Card Title" subtitle="Card subtitle">
+                  Some text...
+                </Card>
+              </GridCell>
+            </Grid>
 
           )} />
 
@@ -156,15 +93,11 @@ class App extends Component {
                 <p>404</p>
               </div>
             </div>
-          </div>
-
-            
+          </div>  
 
           )} />
 
         </Switch>
-
-
 
       </div>
       

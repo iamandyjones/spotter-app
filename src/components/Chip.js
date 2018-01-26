@@ -11,10 +11,8 @@ const Chip = ({ children, onClick }) => (
 )
 
 Chip.propTypes = {
-
 	children: PropTypes.node,
 	onClick: PropTypes.func
-
 }
 
 export default Chip;

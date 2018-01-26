@@ -61,7 +61,7 @@ class Set extends Component {
 
 				<Chip>
 					{this.state.reps} x {this.state.load}
-					<span className="chip__action" onClick={this.handleRemoveSet}><i className="material-icons md-18">cancel</i></span>
+					<span className="chip__action" onClick={this.handleRemoveSet}><i className="material-icons md-23">cancel</i></span>
 				</Chip>
 
 			)

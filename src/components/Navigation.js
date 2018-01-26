@@ -43,7 +43,7 @@ class Nav extends Component {
 			  <nav className="mdc-drawer__drawer">
 			    <header className="mdc-drawer__header">
 			      <div className="mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg">
-			        Header here
+			        Spotter App
 			      </div>
 			    </header>
 			    <nav className="mdc-drawer__content mdc-list-group" onClick={this.handleNavClick}>

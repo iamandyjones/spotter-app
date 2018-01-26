@@ -1,35 +1,38 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import EditableExercise from './EditableExercise';
 
-class EditableExerciseList extends Component {
+const EditableExerciseList = (props) => {
 
-	render(){
+	const exercises = props.exercises.map((e) => (
 
-		const exercises = this.props.exercises.map((exercise) => (
+		<EditableExercise 
+			key={e.id} 
+			id={e.id} 
+			title={e.title} 
+			workout={e.workout}  
+			sets={e.sets}
+			onFormSubmit={props.onFormSubmit} 
+			onDeleteClick={props.onDeleteClick}
+			onSetChange={props.onSetChange} />
 
-			<EditableExercise 
-				key={exercise.id} 
-				id={exercise.id} 
-				title={exercise.title} 
-				workout={exercise.workout}  
-				sets={exercise.sets}
-				onFormSubmit={this.props.onFormSubmit} 
-				onDeleteClick={this.props.onDeleteClick}
-				onSetChange={this.props.onSetChange} />
+	));
 
-		));
+	return (
+		
+		<ul className="mdc-list mdc-list--three-line mdc-list--non-interactive list-divided">
+		{exercises}
+		</ul>
 
-		return (
-			
-			<ul className="mdc-list mdc-list--three-line mdc-list--non-interactive list-divided">
-			{exercises}
-			</ul>
+	)
 
-		)
+}
 
-	}
-
+EditableExerciseList.propTypes = {
+	exercises: PropTypes.array.isRequired,
+	onFormSubmit: PropTypes.func.isRequired,
+	onDeleteClick: PropTypes.func.isRequired,
+	onSetChange: PropTypes.func.isRequired
 }
 
 export default EditableExerciseList;
