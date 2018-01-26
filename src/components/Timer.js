@@ -37,9 +37,9 @@ class Timer extends Component {
 
 }
 
-Timer.PropTypes = {
-	elapsed: PropTypes.number.isRequired,
-	runningSince: PropTypes.number.isRequired,
+Timer.propTypes = {
+	elapsed: PropTypes.number,
+	runningSince: PropTypes.number,
 	onStartClick: PropTypes.func.isRequired,
 	onStopClick: PropTypes.func.isRequired,
 	onRestartClick: PropTypes.func.isRequired

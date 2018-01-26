@@ -1,48 +1,46 @@
-import React, { Component } from 'react';
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import SetList from './SetList';
 
-class Exercise extends Component {
+const Exercise = (props) => {
 
-	constructor(props){
+	const handleDeleteClick = () => {
 
-		super(props);
-
-		this.handleDeleteClick = this.handleDeleteClick.bind(this);
+		props.onDeleteClick(props.id);
 
 	}
 
-	handleDeleteClick(){
+	return (
 
-		this.props.onDeleteClick(this.props.id);
+		<React.Fragment>
 
-	}
+			<div className="mdc-list-item__text">{props.title} - {props.workout}
 
-	render(){
+				<SetList id={props.id} sets={props.sets} onSetChange={props.onSetChange} />
 
-		return (
+			</div>
 
-			
+			<div className="mdc-list-item__meta">
 
-				<div className="mdc-list-item__text">{this.props.title} - {this.props.workout}
+				<i className="mdc-list-item__meta material-icons" aria-label="More" title="More">more_vert</i>
+				<div onClick={props.onEditClick}>Edit</div>
+				<div onClick={handleDeleteClick}>Delete</div>
+			</div>
 
-					<SetList id={this.props.id} sets={this.props.sets} onSetChange={this.props.onSetChange} />
+		</React.Fragment>
 
-				</div>
+	);
 
-				<div className="mdc-list-item__meta">
+}
 
-					<i className="mdc-list-item__meta material-icons" aria-label="More" title="More">more_vert</i>
-					<div onClick={this.props.onEditClick}>Edit</div>
-					<div onClick={this.handleDeleteClick}>Delete</div>
-				</div>
-
-			
-
-		);
-
-	}
-
+Exercise.propTypes = {
+	id: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	workout: PropTypes.string,
+	sets: PropTypes.array.isRequired,
+	onSetChange: PropTypes.func.isRequired,
+	onEditClick: PropTypes.func.isRequired,
+	onDeleteClick: PropTypes.func.isRequired
 }
 
 export default Exercise;

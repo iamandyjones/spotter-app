@@ -40,7 +40,7 @@ class ToggleExerciseForm extends Component {
 
 		return (
 
-			<div>
+			<React.Fragment>
 
 				{this.state.isOpen && (
 
@@ -55,7 +55,7 @@ class ToggleExerciseForm extends Component {
 
 				<Button label="New Exercise" onClick={this.handleFormOpen} />
 
-			</div>
+			</React.Fragment>
 
 		)
 

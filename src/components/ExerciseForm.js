@@ -42,7 +42,7 @@ class ExerciseForm extends Component {
 
 		return (
 
-			<div>
+			<React.Fragment>
 
 				<section id="my-mdc-dialog-description" className="mdc-dialog__body">
 
@@ -61,7 +61,7 @@ class ExerciseForm extends Component {
 			      
 			    </footer>
 
-		    </div>
+		    </React.Fragment>
 
 		);
 

@@ -59,6 +59,11 @@
       "id": "id-xfei2bekmw",
       "title": "New Workout",
       "date": 1516901216971
+    },
+    {
+      "id": "id-n0tnijum7u",
+      "title": "New Workout",
+      "date": 1517004902619
     }
   ],
   "exercises": [
@@ -145,11 +150,17 @@
       "workout": "WORKOUT field",
       "id": "id-4viy8k8y81y",
       "workoutId": "111",
-      "sets": []
+      "sets": [
+        {
+          "reps": "",
+          "load": "",
+          "id": "id-4sabb4b4kj"
+        }
+      ]
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 5441,
     "runningSince": null
   },
   "exercise-list": [

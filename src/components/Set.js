@@ -15,6 +15,7 @@ class Set extends Component {
 		this.handleRepsChange = this.handleRepsChange.bind(this);
 		this.handleLoadChange = this.handleLoadChange.bind(this);
 		this.handleRemoveSet = this.handleRemoveSet.bind(this);
+		this.handleOpenForm = this.handleOpenForm.bind(this);
 
 	}
 
@@ -42,9 +43,15 @@ class Set extends Component {
 
 	}
 
+	handleOpenForm(){
+
+		this.setState({editFormOpen: true});
+
+	}
+
 	render(){
 		
-		if(this.state.editForm){
+		if(this.state.editFormOpen){
 
 			return (
 
@@ -59,7 +66,7 @@ class Set extends Component {
 
 			return (
 
-				<Chip>
+				<Chip onClick={this.handleOpenForm}>
 					{this.state.reps} x {this.state.load}
 					<span className="chip__action" onClick={this.handleRemoveSet}><i className="material-icons md-23">cancel</i></span>
 				</Chip>

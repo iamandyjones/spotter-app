@@ -66,14 +66,14 @@ class WorkoutList extends Component {
 
 		return (
 
-			<div>
+			<React.Fragment>
 				{!this.state.fetched ? <p>Loading...</p> :
 					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list list-divided" ref={(el) => this.list = el}>
 					{workouts}
 					</div>
 				}
 				<ButtonFab onClick={this.handleNewWorkout} label="add" ripple absolute />
-			</div>
+			</React.Fragment>
 		)
 
 	}
