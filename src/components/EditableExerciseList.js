@@ -4,7 +4,7 @@ import EditableExercise from './EditableExercise';
 
 const EditableExerciseList = (props) => {
 
-	const exercises = props.exercises.map((e) => (
+	return props.exercises.map((e) => (
 
 		<EditableExercise 
 			key={e.id} 
@@ -17,14 +17,6 @@ const EditableExerciseList = (props) => {
 			onSetChange={props.onSetChange} />
 
 	));
-
-	return (
-		
-		<ul className="mdc-list mdc-list--three-line mdc-list--non-interactive list-divided">
-		{exercises}
-		</ul>
-
-	)
 
 }
 

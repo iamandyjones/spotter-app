@@ -7,7 +7,10 @@ import Navigation from './components/Navigation';
 import Toolbar from './components/Toolbar';
 import ToolbarTitle from './components/ToolbarTitle';
 import Layout from './components/Layout';
+import LayoutEmpty from './components/LayoutEmpty';
 import Card from './components/Card';
+import CardTitle from './components/CardTitle';
+import CardMain from './components/CardMain';
 import Grid from './components/Grid';
 import GridCell from './components/GridCell';
 import './App.css';
@@ -58,28 +61,37 @@ class App extends Component {
         </Toolbar>
 
         <Switch>
-          <AppRoute path='/workouts/:id' layout={Layout} component={WorkoutDashboard} /> 
+          <AppRoute path='/workouts/:id' layout={LayoutEmpty} component={WorkoutDashboard} /> 
           <AppRoute path='/workouts' layout={Layout} component={WorkoutList} />
 
           <Route exact path='/' render={() => (
 
             <Grid>
               <GridCell>
-                <Card title="Card Title" subtitle="Card subtitle">
-                  <Link to="/workouts">Workouts</Link>
+                <Card>
+                  <CardTitle title="Card Title" subtitle="Card subtitle" />
+                  <CardMain>
+                    <Link to="/workouts">Workouts</Link>
+                  </CardMain>
                 </Card>  
               </GridCell>
 
               <GridCell span={6}>
-               <Card title="Card Title" subtitle="Card subtitle">
-                  Some text...
-                </Card>
+               <Card>
+                  <CardTitle title="Card Title" subtitle="Card subtitle" />
+                  <CardMain>
+                    <Link to="/workouts">Workouts</Link>
+                  </CardMain>
+                </Card>  
               </GridCell>
 
               <GridCell span={6}>
-                <Card title="Card Title" subtitle="Card subtitle">
-                  Some text...
-                </Card>
+                <Card>
+                  <CardTitle title="Card Title" subtitle="Card subtitle" />
+                  <CardMain>
+                    <Link to="/workouts">Workouts</Link>
+                  </CardMain>
+                </Card>  
               </GridCell>
             </Grid>
 

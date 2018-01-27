@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import GridCell from './GridCell';
 import ExerciseForm from './ExerciseForm';
 import Exercise from './Exercise';
 import Dialog from './Dialog';
@@ -54,8 +55,8 @@ class EditableExercise extends Component {
 
 		return (
 
-			<li className="mdc-list-item">
-				
+			<GridCell>
+
 				{this.state.editFormOpen && (
 					
 					<Dialog onDialogClose={this.handleFormCancel} title="Edit Exercise">
@@ -66,7 +67,7 @@ class EditableExercise extends Component {
 				
 				<Exercise id={id} title={title} workout={workout} sets={sets} onEditClick={this.handleEdit} onDeleteClick={onDeleteClick} onSetChange={onSetChange}  />
 
-			</li>
+			</GridCell>
 
 		)
 

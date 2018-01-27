@@ -12,7 +12,7 @@ const Grid = ({ children }) => (
 )
 
 Grid.propTypes = {
-	children: PropTypes.array.isRequired
+	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 }
 
 export default Grid;

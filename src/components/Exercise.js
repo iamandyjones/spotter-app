@@ -1,35 +1,66 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SetList from './SetList';
+import Menu from './Menu';
+import Card from './Card';
+import CardTitle from './CardTitle';
+import CardMain from './CardMain';
 
-const Exercise = (props) => {
+class Exercise extends Component {
 
-	const handleDeleteClick = () => {
+	constructor(props){
 
-		props.onDeleteClick(props.id);
+		super(props);
+
+		this.state = {menuOpen: false}
+
+		this.showMenu = this.showMenu.bind(this);
 
 	}
 
-	return (
+	handleDeleteClick(){
 
-		<React.Fragment>
+		this.props.onDeleteClick(this.props.id);
 
-			<div className="mdc-list-item__text">{props.title} - {props.workout}
+	}
 
-				<SetList id={props.id} sets={props.sets} onSetChange={props.onSetChange} />
+	showMenu(){
 
-			</div>
+		this.setState({menuOpen: true});
 
-			<div className="mdc-list-item__meta">
+	}
 
-				<i className="mdc-list-item__meta material-icons" aria-label="More" title="More">more_vert</i>
-				<div onClick={props.onEditClick}>Edit</div>
-				<div onClick={handleDeleteClick}>Delete</div>
-			</div>
+	render(){
 
-		</React.Fragment>
+		const { title, workout, id, sets, onSetChange, onEditClick } = this.props;
 
-	);
+		return (
+
+			<Card>
+					
+				<CardTitle title={title} subtitle={workout}>
+
+					<div className="mdc-menu-anchor">
+						<i className="material-icons" aria-label="More" title="More" onClick={this.showMenu}>more_vert</i>
+						{this.state.menuOpen && <Menu />}
+					</div>
+
+				</CardTitle>
+
+				<CardMain>
+					
+					<SetList id={id} sets={sets} onSetChange={onSetChange} />
+					
+					<div onClick={onEditClick}>Edit</div>
+					<div onClick={this.handleDeleteClick}>Delete</div>
+
+				</CardMain>
+
+			</Card>
+
+		)
+
+	}
 
 }
 
