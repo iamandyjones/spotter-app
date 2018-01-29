@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Set from './Set';
+import CardMain from './CardMain';
+import CardActions from './CardActions';
 import Button from './Button';
 import { uid } from '../utils/GlobalUtils';
+import '@material/list/dist/mdc.list.css';
 
 class SetList extends Component {
 
@@ -62,10 +65,19 @@ class SetList extends Component {
 	
 		return (
 
-			<div>
-				{sets}
-				<Button onClick={this.handleNewSet} label="New" />
-			</div>
+			<React.Fragment>
+
+				<CardMain>
+					<ul className="mdc-list">
+					{sets}
+					</ul>
+				</CardMain>
+				
+				<CardActions>
+					<Button className="mdc-button--compact mdc-card__action" onClick={this.handleNewSet} label="Another Set" />
+				</CardActions>
+
+			</React.Fragment>
 
 		);
 

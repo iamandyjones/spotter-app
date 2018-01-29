@@ -25,7 +25,7 @@ const Toolbar = ({ children, onMenuClick }) => (
 )
 
 Toolbar.propTypes = {
-	children: PropTypes.element,
+	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
 	onMenuClick: PropTypes.func.isRequired
 }
 

@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import AppRoute from './components/AppRoute';
+import LandingGrid from './components/LandingGrid';
 import WorkoutDashboard from './components/WorkoutDashboard';
 import WorkoutList from './components/WorkoutList';
 import Navigation from './components/Navigation';
-import Toolbar from './components/Toolbar';
-import ToolbarTitle from './components/ToolbarTitle';
 import Layout from './components/Layout';
 import LayoutEmpty from './components/LayoutEmpty';
-import Card from './components/Card';
-import CardTitle from './components/CardTitle';
-import CardMain from './components/CardMain';
-import Grid from './components/Grid';
-import GridCell from './components/GridCell';
 import './App.css';
 
 class App extends Component {
@@ -50,52 +44,12 @@ class App extends Component {
 
         <Navigation open={this.state.open} onNavClose={this.handleNavClose} />
 
-        <Toolbar onMenuClick={this.handleMenuClick}>
-
-          <Switch>
-            <Route exact path='/' render={(matchProps) => <ToolbarTitle title="Spotter App" link={matchProps.match.path} />} />
-            <Route path='/workouts' render={(matchProps) => <ToolbarTitle title="Workouts" link={matchProps.match.path} />} />
-            <Route component={ToolbarTitle} />
-          </Switch>
-
-        </Toolbar>
-
         <Switch>
-          <AppRoute path='/workouts/:id' layout={LayoutEmpty} component={WorkoutDashboard} /> 
-          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} />
-
-          <Route exact path='/' render={() => (
-
-            <Grid>
-              <GridCell>
-                <Card>
-                  <CardTitle title="Card Title" subtitle="Card subtitle" />
-                  <CardMain>
-                    <Link to="/workouts">Workouts</Link>
-                  </CardMain>
-                </Card>  
-              </GridCell>
-
-              <GridCell span={6}>
-               <Card>
-                  <CardTitle title="Card Title" subtitle="Card subtitle" />
-                  <CardMain>
-                    <Link to="/workouts">Workouts</Link>
-                  </CardMain>
-                </Card>  
-              </GridCell>
-
-              <GridCell span={6}>
-                <Card>
-                  <CardTitle title="Card Title" subtitle="Card subtitle" />
-                  <CardMain>
-                    <Link to="/workouts">Workouts</Link>
-                  </CardMain>
-                </Card>  
-              </GridCell>
-            </Grid>
-
+          <Route path='/workouts/:id' render={(matchProps) => (
+            <WorkoutDashboard onMenuClick={this.handleMenuClick} workoutId={matchProps.match.params.id} link={matchProps.match.url} />
           )} />
+          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} title="Workouts" onMenuClick={this.handleMenuClick} />
+          <AppRoute exact path='/' layout={LayoutEmpty} component={LandingGrid} onMenuClick={this.handleMenuClick} />
 
           <Route render={() => (
             

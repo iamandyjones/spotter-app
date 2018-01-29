@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SetList from './SetList';
-import Menu from './Menu';
 import Card from './Card';
 import CardTitle from './CardTitle';
-import CardMain from './CardMain';
 
 class Exercise extends Component {
 
@@ -12,21 +10,13 @@ class Exercise extends Component {
 
 		super(props);
 
-		this.state = {menuOpen: false}
-
-		this.showMenu = this.showMenu.bind(this);
+		this.handleDeleteClick = this.handleDeleteClick.bind(this);
 
 	}
 
 	handleDeleteClick(){
 
 		this.props.onDeleteClick(this.props.id);
-
-	}
-
-	showMenu(){
-
-		this.setState({menuOpen: true});
 
 	}
 
@@ -37,24 +27,23 @@ class Exercise extends Component {
 		return (
 
 			<Card>
-					
-				<CardTitle title={title} subtitle={workout}>
+				
+				<div className="mdc-card__horizontal-block">
 
-					<div className="mdc-menu-anchor">
-						<i className="material-icons" aria-label="More" title="More" onClick={this.showMenu}>more_vert</i>
-						{this.state.menuOpen && <Menu />}
+					<CardTitle title={title} subtitle={workout}>
+
+					</CardTitle>
+
+					<div className="mdc-card__media-item">
+						<div className="mdc-card__actions">
+							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={onEditClick}>mode_edit</i>
+							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={this.handleDeleteClick}>delete</i>
+						</div>
 					</div>
 
-				</CardTitle>
+				</div>
 
-				<CardMain>
-					
-					<SetList id={id} sets={sets} onSetChange={onSetChange} />
-					
-					<div onClick={onEditClick}>Edit</div>
-					<div onClick={this.handleDeleteClick}>Delete</div>
-
-				</CardMain>
+				<SetList id={id} sets={sets} onSetChange={onSetChange} />
 
 			</Card>
 

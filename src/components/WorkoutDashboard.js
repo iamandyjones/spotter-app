@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
 import Timer from './Timer';
 import Grid from './Grid';
+import LayoutEmpty from './LayoutEmpty';
+import Toolbar from './Toolbar';
+import ToolbarTitle from './ToolbarTitle';
+import Menu from './Menu';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
 import { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
@@ -75,12 +79,12 @@ class WorkoutDashboard extends Component {
 
 	hydrateWorkoutState(){
 
-		getWorkout(this.props.params.id, (data) => (
+		getWorkout(this.props.workoutId, (data) => (
 				this.setState({workout: data})
 			)  
 		);
 
-	    getExercises(this.props.params.id, (data) => (
+	    getExercises(this.props.workoutId, (data) => (
 	        this.setState({exercises: data})
 	      )  
 	    );
@@ -98,7 +102,7 @@ class WorkoutDashboard extends Component {
 
 	createExercise(id, exercise){
 
-		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.params.id, sets: [] });
+		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.workoutId, sets: [] });
 
 		this.setState({ exercises: this.state.exercises.concat(e) });
 
@@ -174,20 +178,38 @@ class WorkoutDashboard extends Component {
 	render(){
 
 		return (
-			<div>
 
-				<h2 className="mdc-typography--title">{this.state.workout.title}</h2>
-				<h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-				<p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
+			<Fragment>
 
-				<Grid>
-					<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
-				</Grid>
+				<Toolbar onMenuClick={this.props.onMenuClick}>
 
-				<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
-				<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
+		            <ToolbarTitle title={this.state.workout.title} link={this.props.link} />
 
-			</div>
+					<section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+						<i className="material-icons mdc-toolbar__icon" aria-label="More" title="More">more_vert</i>
+						<div className="mdc-menu-anchor">
+							<Menu />
+						</div>
+					</section>
+
+		        </Toolbar>
+				
+				<LayoutEmpty>
+
+					<h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
+					<p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
+
+					<Grid>
+						<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
+					</Grid>
+
+					<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
+					<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
+
+				</LayoutEmpty>
+
+			</Fragment>
+
 		)
 
 	}

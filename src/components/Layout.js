@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Canvas from './Canvas';
 
-const Layout = (props) => (
+const Layout = ({children}) => (
 
 	<div className="app__main">
 
 		<Canvas>
 
-			{props.children}
+			{children}
 
 		</Canvas>
 	
@@ -17,7 +17,7 @@ const Layout = (props) => (
 )
 
 Layout.propTypes = {
-	children: PropTypes.element.isRequired
+	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 }
 
 export default Layout;

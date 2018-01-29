@@ -86,24 +86,6 @@
       ]
     },
     {
-      "title": "Exercise name",
-      "workout": "",
-      "id": "id-iexlc01c86",
-      "workoutId": 111,
-      "sets": [
-        {
-          "reps": "10",
-          "load": "10",
-          "id": "id-3vr0ye20am6"
-        },
-        {
-          "reps": "",
-          "load": "",
-          "id": "id-e33hovpkwms"
-        }
-      ]
-    },
-    {
       "title": "Testing 123",
       "workout": "",
       "id": "id-7y3ztjn32qg",
@@ -152,22 +134,38 @@
       "workoutId": "111",
       "sets": [
         {
+          "reps": "2",
+          "load": "14kg",
+          "id": "id-4sabb4b4kj"
+        },
+        {
+          "reps": "6",
+          "load": "16kg",
+          "id": "id-rrz8lvtbyp"
+        },
+        {
           "reps": "",
           "load": "",
-          "id": "id-4sabb4b4kj"
+          "id": "id-v8xqpy41qps"
         }
       ]
     },
     {
-      "title": "exercise title",
+      "title": "Bench Press",
       "workout": "",
-      "id": "id-fhigatys7vd",
+      "id": "id-d40fysq1mvu",
       "workoutId": "111",
-      "sets": []
+      "sets": [
+        {
+          "reps": "3",
+          "load": "10kg",
+          "id": "id-p9dmet0j13f"
+        }
+      ]
     }
   ],
   "timer": {
-    "elapsed": 5441,
+    "elapsed": 6763,
     "runningSince": null
   },
   "exercise-list": [

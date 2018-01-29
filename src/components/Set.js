@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Chip from './Chip';
+import SelectBox from './Select';
+import './Set.css';
 
 class Set extends Component {
 
@@ -8,14 +9,12 @@ class Set extends Component {
 
 		this.state = {
 			reps: this.props.reps,
-			load: this.props.load,
-			editFormOpen: false
+			load: this.props.load
 		}
 
 		this.handleRepsChange = this.handleRepsChange.bind(this);
 		this.handleLoadChange = this.handleLoadChange.bind(this);
 		this.handleRemoveSet = this.handleRemoveSet.bind(this);
-		this.handleOpenForm = this.handleOpenForm.bind(this);
 
 	}
 
@@ -43,38 +42,22 @@ class Set extends Component {
 
 	}
 
-	handleOpenForm(){
-
-		this.setState({editFormOpen: true});
-
-	}
-
 	render(){
-		
-		if(this.state.editFormOpen){
 
-			return (
+		const reps = [1,2,3,4,5,6,7,8,9,10];
+		const weights = ["2kg","4kg","6kg","8kg","10kg","12kg","14kg","16kg","18kg","20kg"];
 
-				<div>
-					<input type="text" value={this.state.reps} placeholder="Reps" onChange={this.handleRepsChange} />
-					<input type="text" value={this.state.load} placeholder="Weight" onChange={this.handleLoadChange} />
-				</div>
+		return (
 
-			);
+			<li className="mdc-list-item">
 
-		} else {
+				<SelectBox options={reps} value={this.state.reps} defaultValue="Reps" onChange={this.handleRepsChange} />
+				<SelectBox options={weights} value={this.state.load} defaultValue="Weight" onChange={this.handleLoadChange} />
+				<i className="mdc-list-item__meta material-icons" onClick={this.handleRemoveSet}>remove_circle_outline</i>
 
-			return (
+			</li>
 
-				<Chip onClick={this.handleOpenForm}>
-					{this.state.reps} x {this.state.load}
-					<span className="chip__action" onClick={this.handleRemoveSet}><i className="material-icons md-23">cancel</i></span>
-				</Chip>
-
-			)
-
-		}
-		
+		)
 
 	}
 

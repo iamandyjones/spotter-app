@@ -1,18 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LayoutEmpty = ({children}) => (
+const CardAction = ({ children }) => (
 
-	<div className="app__main">
-
+	<section className="mdc-card__actions">
 		{children}
-	
-	</div>
+	</section>
 
 )
 
-LayoutEmpty.propTypes = {
+CardAction.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 }
 
-export default LayoutEmpty;
+export default CardAction;

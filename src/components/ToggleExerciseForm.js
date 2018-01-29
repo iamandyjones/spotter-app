@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ExerciseForm from './ExerciseForm';
 import Dialog from './Dialog';
-import Button from './Button';
+import ButtonFab from './ButtonFab';
 
 class ToggleExerciseForm extends Component {
 
@@ -53,7 +53,7 @@ class ToggleExerciseForm extends Component {
 					)
 				}
 
-				<Button label="New Exercise" onClick={this.handleFormOpen} />
+				<ButtonFab absolute ripple label="add" onClick={this.handleFormOpen} />
 
 			</React.Fragment>
 
