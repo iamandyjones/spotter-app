@@ -7,7 +7,7 @@ import Grid from './Grid';
 import LayoutEmpty from './LayoutEmpty';
 import Toolbar from './Toolbar';
 import ToolbarTitle from './ToolbarTitle';
-import Menu from './Menu';
+import ToolbarMenu from './ToolbarMenu';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
 import { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
@@ -32,6 +32,7 @@ class WorkoutDashboard extends Component {
     this.handleRestartClick = this.handleRestartClick.bind(this);
   	this.hydrateWorkoutState = this.hydrateWorkoutState.bind(this);
   	this.hydrateTimerState = this.hydrateTimerState.bind(this);
+  	this.handleMenuActions = this.handleMenuActions.bind(this);
 
 	}
 
@@ -64,8 +65,8 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	handleWorkoutDelete(workoutId){
-
+	handleWorkoutDelete(){
+		
 		//this.confirmDeletion();
 		//this.deleteWorkout(workoutId);
 
@@ -175,7 +176,24 @@ class WorkoutDashboard extends Component {
 
   }
 
+  handleMenuActions(action){
+
+  	switch(action){
+  		
+  		case 'deleteWorkout':
+  		this.handleWorkoutDelete();
+  		break;
+
+  	}
+
+  }
+
 	render(){
+
+		const menuItems = [
+			{ label: "Delete Workout", action: "deleteWorkout" },
+			{ label: "Delete", action: "deleteWorkout" }
+		]
 
 		return (
 
@@ -186,10 +204,9 @@ class WorkoutDashboard extends Component {
 		            <ToolbarTitle title={this.state.workout.title} link={this.props.link} />
 
 					<section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-						<i className="material-icons mdc-toolbar__icon" aria-label="More" title="More">more_vert</i>
-						<div className="mdc-menu-anchor">
-							<Menu />
-						</div>
+
+						<ToolbarMenu items={menuItems} actionHandler={this.handleMenuActions} />
+
 					</section>
 
 		        </Toolbar>
@@ -197,7 +214,6 @@ class WorkoutDashboard extends Component {
 				<LayoutEmpty>
 
 					<h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-					<p onClick={this.handleWorkoutDelete}>DELETE WORKOUT!</p>
 
 					<Grid>
 						<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
