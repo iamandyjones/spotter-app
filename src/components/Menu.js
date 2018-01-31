@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import '@material/menu/dist/mdc.menu.css';
-import './ToolbarMenu.css';
+import './Menu.css';
 
-class ToolbarMenu extends Component {
+class Menu extends Component {
 
 	constructor(props){
 
@@ -52,11 +52,13 @@ class ToolbarMenu extends Component {
 
 	render(){
 
+		const { items, iconClass } = this.props;
+
 		return (
 
 			<Fragment>
 
-			<i onClick={this.handleMenuToggle} className="material-icons mdc-toolbar__icon" aria-label="More" title="More">more_vert</i>
+			<i onClick={this.handleMenuToggle} className={"material-icons " + iconClass} aria-label="More" title="More">more_vert</i>
 			
 			{this.state.showMenu && (
 			
@@ -66,7 +68,7 @@ class ToolbarMenu extends Component {
 						
 						<ul className="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
 
-							{this.props.items.map((item, index) => {
+							{items.map((item, index) => {
 
 								return <li key={index} className="mdc-list-item" role="menuitem" tabIndex="0" onClick={this.generateHandler(item.action)}>{item.label}</li>
 							}
@@ -88,8 +90,10 @@ class ToolbarMenu extends Component {
 
 }
 
-ToolbarMenu.propTypes = {
-	items: PropTypes.array.isRequired
+Menu.propTypes = {
+	items: PropTypes.array.isRequired,
+	actionHandler: PropTypes.func.isRequired,
+	iconClass: PropTypes.string
 }
 
-export default ToolbarMenu;
+export default Menu;

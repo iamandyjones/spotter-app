@@ -5,6 +5,7 @@ import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
 import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
 import ButtonFab from './ButtonFab';
+import Menu from './Menu';
 import '@material/list/dist/mdc.list.css';
 
 class WorkoutList extends Component {
@@ -48,21 +49,32 @@ class WorkoutList extends Component {
 
 	render(){
 
-		const workouts = this.state.workouts.map((w) => (
+		const workouts = this.state.workouts.map((w) => {
 
-			<Link to={`${this.props.path}/${w.id}`} key={w.id} className="mdc-list-item">
-				
-				<span className="mdc-list-item__graphic" role="presentation">
-					<i className="material-icons" aria-hidden="true">fitness_center</i>
-                  </span>
-				<span className="mdc-list-item__text">
-					{w.title}
-					<span className="mdc-list-item__secondary-text">{printDate(w.date)} at {printTime(w.date)}</span>
-				</span>
+			const menuItems = [
+				{ label: "Delete Workout", action: "deleteWorkout" },
+				{ label: "Clone Workout", action: "cloneWorkout" }
+			]
 
-			</Link>
+			return (
 
-		));
+				<Link to={`${this.props.path}/${w.id}`} key={w.id} className="mdc-list-item">
+					
+					<span className="mdc-list-item__graphic" role="presentation">
+						<i className="material-icons" aria-hidden="true">fitness_center</i>
+	              	</span>
+					<span className="mdc-list-item__text">
+						{w.title}
+						<span className="mdc-list-item__secondary-text">{printDate(w.date)} at {printTime(w.date)}</span>
+					</span>
+
+					<Menu items={menuItems} actionHandler={this.handleMenuActions} iconClass="mdc-list-item__meta" />
+
+				</Link>
+
+			)
+
+		});
 
 		return (
 

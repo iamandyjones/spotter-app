@@ -7,7 +7,7 @@ import GridCell from './GridCell';
 import LayoutEmpty from './LayoutEmpty';
 import Toolbar from './Toolbar';
 import ToolbarTitle from './ToolbarTitle';
-import ToolbarMenu from './ToolbarMenu';
+import Menu from './Menu';
 import Dialog from './Dialog';
 import Button from './Button';
 import { uid } from '../utils/GlobalUtils';
@@ -178,7 +178,7 @@ class WorkoutDashboard extends Component {
 
 					<section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
 
-						<ToolbarMenu items={menuItems} actionHandler={this.handleMenuActions} />
+						<Menu items={menuItems} actionHandler={this.handleMenuActions} iconClass="mdc-toolbar__icon" />
 
 					</section>
 
