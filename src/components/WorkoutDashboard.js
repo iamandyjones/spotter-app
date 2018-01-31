@@ -1,16 +1,18 @@
 import React, { Component, Fragment } from 'react';
-
+import { Redirect } from 'react-router-dom';
 import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
-import Timer from './Timer';
 import Grid from './Grid';
+import GridCell from './GridCell';
 import LayoutEmpty from './LayoutEmpty';
 import Toolbar from './Toolbar';
 import ToolbarTitle from './ToolbarTitle';
 import ToolbarMenu from './ToolbarMenu';
+import Dialog from './Dialog';
+import Button from './Button';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
-import { getWorkout, getExercises, getTimer, toggleTimer, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
+import { getWorkout, deleteWorkout, getExercises, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
 
 class WorkoutDashboard extends Component { 
 
@@ -20,18 +22,17 @@ class WorkoutDashboard extends Component {
   	this.state = {
   		workout: {},
       	exercises: [],
-  		timer: {}
+      	requestDelete: false,
+      	confirmDelete: false
   	};
 
   	this.handleCreateForm = this.handleCreateForm.bind(this);
   	this.handleEditForm = this.handleEditForm.bind(this);
-  	this.handleWorkoutDelete = this.handleWorkoutDelete.bind(this);
+  	this.handleWorkoutDeleteRequest = this.handleWorkoutDeleteRequest.bind(this);
+  	this.handleWorkoutDeleteConfirm = this.handleWorkoutDeleteConfirm.bind(this);
+  	this.handleDialogCancel = this.handleDialogCancel.bind(this);
   	this.handleExerciseDelete = this.handleExerciseDelete.bind(this);
-  	this.handleStartClick = this.handleStartClick.bind(this);
-  	this.handleStopClick = this.handleStopClick.bind(this);
-    this.handleRestartClick = this.handleRestartClick.bind(this);
   	this.hydrateWorkoutState = this.hydrateWorkoutState.bind(this);
-  	this.hydrateTimerState = this.hydrateTimerState.bind(this);
   	this.handleMenuActions = this.handleMenuActions.bind(this);
 
 	}
@@ -39,17 +40,14 @@ class WorkoutDashboard extends Component {
 	componentDidMount(){
 		
 		this.hydrateWorkoutState();
-		this.hydrateTimerState();
-
+		
 		this.hydrateWorkoutInterval = setInterval(this.hydrateWorkoutState, 5000);
-		this.hydrateTimerInterval = setInterval(this.hydrateTimerState, 5000);
 
 	}
 
 	componentWillUnmount(){
 
 		clearInterval(this.hydrateWorkoutInterval);
-		clearInterval(this.hydrateTimerInterval);
 
 	}
 
@@ -65,10 +63,17 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	handleWorkoutDelete(){
+	handleWorkoutDeleteRequest(){
 		
-		//this.confirmDeletion();
-		//this.deleteWorkout(workoutId);
+		this.setState({requestDelete: true});
+		//deleteWorkout(this.props.workoutId);
+
+	}
+
+	handleWorkoutDeleteConfirm(){
+
+		deleteWorkout(this.props.workoutId);
+		this.setState({requestDelete: false, confirmDelete: true});
 
 	}
 
@@ -92,15 +97,6 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	hydrateTimerState(){
-
-		getTimer((data) => (
-				this.setState({timer: data})
-			)
-		);
-
-	}
-
 	createExercise(id, exercise){
 
 		const e = Object.assign(exercise, { id: uid(), workoutId: this.props.workoutId, sets: [] });
@@ -108,12 +104,6 @@ class WorkoutDashboard extends Component {
 		this.setState({ exercises: this.state.exercises.concat(e) });
 
     	createExercise(e);
-
-	}
-
-	deleteWorkout(workoutId){
-
-		this.setState({workout: {}, exercises: []});    	
 
 	}
 
@@ -143,61 +133,44 @@ class WorkoutDashboard extends Component {
 
 	}
 
-	handleStartClick(){
-
-		const now = Date.now();
-
-		this.setState({
-			timer: Object.assign({}, this.state.timer, { runningSince: now })
-		});
-
-		toggleTimer({elapsed: this.state.timer.elapsed, runningSince: now});
-
-
-	}
-
-	handleStopClick(){
-
-		const now = Date.now();
-		const lastElapsed = now - this.state.timer.runningSince;
-		this.setState({ 
-			timer: Object.assign({}, this.state.timer, { elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null })
-		});
-
-    	toggleTimer({elapsed: this.state.timer.elapsed + lastElapsed, runningSince: null});
-		
-	}
-
-  handleRestartClick(){
-
-    this.setState({ timer: { elapsed: 0, runningSince: null } });
-
-    toggleTimer({elapsed: 0, runningSince: null});
-
-  }
-
   handleMenuActions(action){
 
   	switch(action){
   		
   		case 'deleteWorkout':
-  		this.handleWorkoutDelete();
+  		this.handleWorkoutDeleteRequest();
   		break;
 
   	}
 
   }
 
+  handleDialogCancel(){
+
+  	this.setState({requestDelete: false});
+
+  }
+
 	render(){
 
 		const menuItems = [
-			{ label: "Delete Workout", action: "deleteWorkout" },
-			{ label: "Delete", action: "deleteWorkout" }
+			{ label: "Delete Workout", action: "deleteWorkout" }
 		]
 
 		return (
 
 			<Fragment>
+
+				{this.state.requestDelete && (
+
+					<Dialog onCancel={this.handleDialogCancel} onSubmit={this.handleWorkoutDeleteConfirm} title="Delete workout?" labelSubmit="Delete">
+							Are you sure you want to permanently delete this workout? Once it's gone. it's gone...
+					</Dialog>
+
+					)
+				}
+
+				{this.state.confirmDelete && <Redirect to="/workouts" />}
 
 				<Toolbar onMenuClick={this.props.onMenuClick}>
 
@@ -213,14 +186,17 @@ class WorkoutDashboard extends Component {
 				
 				<LayoutEmpty>
 
-					<h3 className="mdc-typography--subheading1">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-
 					<Grid>
+
+						<GridCell>
+							<h3 className="mdc-typography--subheading1 mdc-theme--text-hint-on-background collapsed">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
+						</GridCell>
+
 						<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
+
 					</Grid>
 
 					<ToggleExerciseForm onFormSubmit={this.handleCreateForm} />
-					<Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
 
 				</LayoutEmpty>
 

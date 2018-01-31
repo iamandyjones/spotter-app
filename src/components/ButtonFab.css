@@ -1,1 +1,1 @@
-.app-fab--absolute { position: fixed; bottom: 1rem; right: 1rem; }
+.app-fab--absolute { position: fixed; bottom: 90px; right: 1rem; z-index: 2; }

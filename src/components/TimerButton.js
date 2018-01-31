@@ -6,13 +6,13 @@ function TimerButton({timerRunning, onStopClick, onStartClick}){
 	if(timerRunning){
 
 		return (	
-			<i className="material-icons" onClick={onStopClick}>pause_circle_outline</i>
+			<i className="material-icons mdc-theme--primary-dark" onClick={onStopClick}>pause_circle_outline</i>
 		)
 
 	} else {
 
 		return (
-			<i className="material-icons" onClick={onStartClick}>play_circle_outline</i>
+			<i className="material-icons mdc-theme--primary-dark" onClick={onStartClick}>play_circle_outline</i>
 		)
 
 	}

@@ -43,12 +43,8 @@ class ToggleExerciseForm extends Component {
 			<React.Fragment>
 
 				{this.state.isOpen && (
-
-					<Dialog onDialogClose={this.handleFormCancel} title="Add New Exercise">
-						
-						<ExerciseForm onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel}  />
-
-					</Dialog>
+	
+					<ExerciseForm onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel}  />
 
 					)
 				}

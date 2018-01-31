@@ -21,12 +21,11 @@ const Toolbar = ({ children, onMenuClick }) => (
 
 	</header>
 
-
 )
 
 Toolbar.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-	onMenuClick: PropTypes.func.isRequired
+	onMenuClick: PropTypes.func
 }
 
 export default Toolbar;

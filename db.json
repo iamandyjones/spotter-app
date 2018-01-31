@@ -14,62 +14,12 @@
       "id": "id-8z7i54boj1r",
       "title": "New Workout",
       "date": 1515097989544
-    },
-    {
-      "id": "id-l2t6j9bsyi",
-      "title": "New Workout",
-      "date": 1515416960827
-    },
-    {
-      "id": "id-duxh108usow",
-      "title": "New Workout",
-      "date": 1515441577755
-    },
-    {
-      "id": "id-vplqg24i50r",
-      "title": "New Workout",
-      "date": 1515445048353
-    },
-    {
-      "id": "id-v71ah2lzidc",
-      "title": "New Workout",
-      "date": 1515445644359
-    },
-    {
-      "id": "id-mgoysdrb5p",
-      "title": "New Workout",
-      "date": 1515514512544
-    },
-    {
-      "id": "id-odz9bc7dwmh",
-      "title": "New Workout",
-      "date": 1515707961632
-    },
-    {
-      "id": "id-z9vxqh8xkjo",
-      "title": "New Workout",
-      "date": 1516222774213
-    },
-    {
-      "id": "id-eupv3qe2r8n",
-      "title": "New Workout",
-      "date": 1516308987432
-    },
-    {
-      "id": "id-xfei2bekmw",
-      "title": "New Workout",
-      "date": 1516901216971
-    },
-    {
-      "id": "id-n0tnijum7u",
-      "title": "New Workout",
-      "date": 1517004902619
     }
   ],
   "exercises": [
     {
       "id": "id-mbz9g0rhrh",
-      "title": "bent over row",
+      "title": "Bent over row",
       "workout": "",
       "workoutId": 222,
       "sets": [
@@ -129,7 +79,7 @@
     },
     {
       "title": "New exercise",
-      "workout": "WORKOUT field",
+      "workout": "workout field",
       "id": "id-4viy8k8y81y",
       "workoutId": "111",
       "sets": [
@@ -142,11 +92,6 @@
           "reps": "6",
           "load": "16kg",
           "id": "id-rrz8lvtbyp"
-        },
-        {
-          "reps": "",
-          "load": "",
-          "id": "id-v8xqpy41qps"
         }
       ]
     },
@@ -165,7 +110,7 @@
     }
   ],
   "timer": {
-    "elapsed": 6763,
+    "elapsed": 41701,
     "runningSince": null
   },
   "exercise-list": [

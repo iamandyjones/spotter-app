@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { renderTimerString } from '../utils/TimerUtils';
 import TimerButton from './TimerButton';
+import './Timer.css';
 
 class Timer extends Component {
 
@@ -25,10 +26,10 @@ class Timer extends Component {
 
 		return (
 
-			<div>
-				{elapsedString}
+			<div className="timer">
+				<i className="material-icons mdc-theme--primary-dark" onClick={onRestartClick}>replay</i>
+				<span className="timer__string mdc-typography--display1">{elapsedString}</span>
 				<TimerButton timerRunning={!!runningSince} onStartClick={onStartClick} onStopClick={onStopClick} />
-				<i className="material-icons" onClick={onRestartClick}>replay</i>
 			</div>
 
 		)

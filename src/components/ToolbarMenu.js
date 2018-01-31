@@ -12,7 +12,7 @@ class ToolbarMenu extends Component {
 		this.state = { showMenu: false }
 
 		this.handleMenuToggle = this.handleMenuToggle.bind(this);
-		this.handleBlur = this.handleBlur.bind(this);
+		this.handleBlur = this.handleBlur.bind(this);	
 
 	}
 
@@ -26,7 +26,9 @@ class ToolbarMenu extends Component {
 
 	handleMenuToggle(){
 
-		this.setState({ showMenu: !this.state.showMenu });
+		this.setState((prevState, props) => { 
+			return { showMenu: !prevState.showMenu }
+		});
 
 	}
 

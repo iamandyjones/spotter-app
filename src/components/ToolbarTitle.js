@@ -9,7 +9,7 @@ const ToolbarTitle = ({ title, link }) => (
 )
 
 ToolbarTitle.defaultProps = {
-	title: "Spotter App",
+	title: "",
 	link: '/'
 }
 

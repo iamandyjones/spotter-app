@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import Dialog from './Dialog';
 
 class ExerciseForm extends Component {
 
@@ -42,26 +42,15 @@ class ExerciseForm extends Component {
 
 		return (
 
-			<React.Fragment>
+			<Dialog onCancel={this.props.onFormCancel} onSubmit={this.handleSubmit} title={submitText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
 
-				<section id="my-mdc-dialog-description" className="mdc-dialog__body">
+				<label>Title</label>
+				<input type="text" value={this.state.title} onChange={this.handleTitleChange} />
 
-					<label>Title</label>
-					<input type="text" value={this.state.title} onChange={this.handleTitleChange} />
+				<label>Workout</label>
+				<input type="text" value={this.state.workout} onChange={this.handleWorkoutChange} />
 
-					<label>Workout</label>
-					<input type="text" value={this.state.workout} onChange={this.handleWorkoutChange} />
-
-				</section>
-
-				<footer className="mdc-dialog__footer">
-		      
-		      		<Button cssClass="mdc-dialog__footer__button" label="Cancel" onClick={this.props.onFormCancel} />
-		      		<Button cssClass="mdc-dialog__footer__button" label={submitText} onClick={this.handleSubmit} />
-			      
-			    </footer>
-
-		    </React.Fragment>
+		    </Dialog>
 
 		);
 

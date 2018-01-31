@@ -7,6 +7,7 @@ body {
   background: var(--mdc-theme-background);
 }
 
+.collapsed { margin: 0; }
 
 
 .list-divided .mdc-list-item { border-bottom: 1px solid rgba(0, 0, 0, .12); }
@@ -15,7 +16,6 @@ body {
 
 .mdc-list--three-line .mdc-list-item { height: 90px; }
 
-.mdc-card { background: #fff; }
 
 
 /* Rules for sizing the icon. */

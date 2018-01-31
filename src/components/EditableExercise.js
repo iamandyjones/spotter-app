@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import GridCell from './GridCell';
 import ExerciseForm from './ExerciseForm';
 import Exercise from './Exercise';
-import Dialog from './Dialog';
 
 class EditableExercise extends Component {
 
@@ -59,9 +58,7 @@ class EditableExercise extends Component {
 
 				{this.state.editFormOpen && (
 					
-					<Dialog onDialogClose={this.handleFormCancel} title="Edit Exercise">
-						<ExerciseForm id={id} title={title} workout={workout} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
-					</Dialog>
+					<ExerciseForm id={id} title={title} workout={workout} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
 					
 				)}
 				
