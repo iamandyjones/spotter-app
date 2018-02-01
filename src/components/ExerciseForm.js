@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Dialog from './Dialog';
+import TextField from './TextField';
 
 class ExerciseForm extends Component {
 
@@ -44,11 +45,8 @@ class ExerciseForm extends Component {
 
 			<Dialog onCancel={this.props.onFormCancel} onSubmit={this.handleSubmit} title={submitText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
 
-				<label>Title</label>
-				<input type="text" value={this.state.title} onChange={this.handleTitleChange} />
-
-				<label>Workout</label>
-				<input type="text" value={this.state.workout} onChange={this.handleWorkoutChange} />
+				<TextField label="Title" value={this.state.title} onValueChange={this.handleTitleChange} />
+				<TextField label="Workout" value={this.state.workout} onValueChange={this.handleWorkoutChange} />
 
 		    </Dialog>
 
@@ -60,6 +58,7 @@ class ExerciseForm extends Component {
 
 ExerciseForm.propTypes = {
 	id: PropTypes.string,
+	title: PropTypes.string,
 	onFormSubmit: PropTypes.func.isRequired,
 	onFormCancel: PropTypes.func.isRequired
 }

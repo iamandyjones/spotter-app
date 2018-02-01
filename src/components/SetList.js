@@ -74,7 +74,7 @@ class SetList extends Component {
 				</CardMain>
 				
 				<CardActions>
-					<Button className="mdc-button--compact mdc-card__action" onClick={this.handleNewSet} label="Another Set" />
+					<Button className="mdc-button--compact mdc-card__action" onClick={this.handleNewSet} label="New Set" />
 				</CardActions>
 
 			</React.Fragment>

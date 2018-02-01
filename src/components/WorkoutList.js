@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, Fragment } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { getWorkouts, createWorkout } from '../utils/ApiUtils';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
 import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
-import ButtonFab from './ButtonFab';
+import ToggleWorkoutForm from './ToggleWorkoutForm';
 import Menu from './Menu';
 import '@material/list/dist/mdc.list.css';
 
@@ -14,7 +14,7 @@ class WorkoutList extends Component {
 
 		super(props);
 
-		this.state = { workouts: [], fetched: false }
+		this.state = { workouts: [], fetched: false, redirectToWorkout: null }
 
 		this.handleNewWorkout = this.handleNewWorkout.bind(this);
 
@@ -37,13 +37,15 @@ class WorkoutList extends Component {
 
 	}
 
-	handleNewWorkout() {
+	handleNewWorkout(id, workout) {
 
-		const w = { id: uid(), title: 'New Workout', date: Date.now() };
+		const w = Object.assign( {}, { id: uid(), date: Date.now() }, workout);
 
-		this.setState({ workouts: this.state.workouts.concat(w) });
+    	createWorkout(w, () => {
+    		this.setState({ workouts: this.state.workouts.concat(w), redirectToWorkout: w.id });
+    	});
 
-    	createWorkout(w);
+    	this.props.onNotify(`${workout.title} workout added`);
 
   	}
 
@@ -78,14 +80,19 @@ class WorkoutList extends Component {
 
 		return (
 
-			<React.Fragment>
+			<Fragment>
+
+				{this.state.redirectToWorkout && <Redirect push to={`/workouts/${this.state.redirectToWorkout}`} />}
+
 				{!this.state.fetched ? <p>Loading...</p> :
-					<div className="mdc-list mdc-list--two-line mdc-list--avatar-list list-divided" ref={(el) => this.list = el}>
+					<div className="mdc-list mdc-list--two-line list-divided" ref={(el) => this.list = el}>
 					{workouts}
 					</div>
 				}
-				<ButtonFab onClick={this.handleNewWorkout} label="add" ripple absolute />
-			</React.Fragment>
+
+				<ToggleWorkoutForm onFormSubmit={this.handleNewWorkout} />
+
+			</Fragment>
 		)
 
 	}

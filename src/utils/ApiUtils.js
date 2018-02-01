@@ -44,7 +44,7 @@ function deleteWorkout(id) {
   }).then(checkStatus)
 }
 
-function createWorkout(data) {
+function createWorkout(data, success) {
   return fetch('/api/workouts', {
   method: 'POST',
   body: JSON.stringify(data),
@@ -53,6 +53,18 @@ function createWorkout(data) {
     'Content-Type': 'application/json',
   },
   }).then(checkStatus)
+    .then(success)  
+}
+
+function editWorkout(id, data) {
+  return fetch('/api/workouts/'+id, {
+  method: 'PATCH',
+  body: JSON.stringify(data),
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  }).then(checkStatus);
 }
 
 function getExercises(id, success) {
@@ -123,7 +135,8 @@ export {
   getWorkout, 
   getWorkouts, 
   createWorkout, 
-  deleteWorkout, 
+  deleteWorkout,
+  editWorkout, 
   getExercises, 
   getTimer, 
   toggleTimer, 

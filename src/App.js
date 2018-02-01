@@ -9,6 +9,7 @@ import Layout from './components/Layout';
 import LayoutEmpty from './components/LayoutEmpty';
 import Timer from './components/Timer';
 import BottomSheet from './components/BottomSheet';
+import SnackBar from './components/SnackBar';
 import { getTimer, toggleTimer } from './utils/ApiUtils';
 
 import './App.css';
@@ -19,7 +20,7 @@ class App extends Component {
 
     super(props)
 
-    this.state = { open: false, timer: {} }
+    this.state = { open: false, timer: {}, snackBar: {text: '', active: false} }
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleNavClose = this.handleNavClose.bind(this);
@@ -27,6 +28,8 @@ class App extends Component {
     this.handleStopClick = this.handleStopClick.bind(this);
     this.handleRestartClick = this.handleRestartClick.bind(this);
     this.hydrateTimerState = this.hydrateTimerState.bind(this);
+    this.handleNotification = this.handleNotification.bind(this);
+    this.handleNotificationTimeout = this.handleNotificationTimeout.bind(this);
 
   }
 
@@ -100,6 +103,22 @@ class App extends Component {
 
   }
 
+  handleNotification(text){
+
+    this.setState({snackBar: {text: text, active: true}})
+
+  }
+
+  handleNotificationTimeout(){
+
+    this.setState((prevState) => {
+
+      const obj = Object.assign({}, prevState.snackBar, { active: false });
+      return { snackBar: obj }
+    });
+
+  }
+
   render() {
     
     return (
@@ -110,9 +129,9 @@ class App extends Component {
 
         <Switch>
           <Route path='/workouts/:id' render={(matchProps) => (
-            <WorkoutDashboard onMenuClick={this.handleMenuClick} workoutId={matchProps.match.params.id} link={matchProps.match.url} />
+            <WorkoutDashboard onMenuClick={this.handleMenuClick} onNotify={this.handleNotification} workoutId={matchProps.match.params.id} link={matchProps.match.url} />
           )} />
-          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} title="Workouts" onMenuClick={this.handleMenuClick} />
+          <AppRoute path='/workouts' layout={Layout} component={WorkoutList} title="Workouts" onNotify={this.handleNotification} onMenuClick={this.handleMenuClick} />
           <AppRoute exact path='/' layout={LayoutEmpty} component={LandingGrid} title="Spotter App" onMenuClick={this.handleMenuClick} />
 
           <Route render={() => (
@@ -132,6 +151,8 @@ class App extends Component {
         <BottomSheet>
           <Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
         </BottomSheet>
+
+        <SnackBar text={this.state.snackBar.text} active={this.state.snackBar.active} onNotificationTimeout={this.handleNotificationTimeout} />
 
       </div>
       

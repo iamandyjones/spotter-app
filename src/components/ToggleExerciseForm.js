@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ExerciseForm from './ExerciseForm';
-import Dialog from './Dialog';
 import ButtonFab from './ButtonFab';
 
 class ToggleExerciseForm extends Component {
@@ -44,7 +43,7 @@ class ToggleExerciseForm extends Component {
 
 				{this.state.isOpen && (
 	
-					<ExerciseForm onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel}  />
+					<ExerciseForm onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
 
 					)
 				}

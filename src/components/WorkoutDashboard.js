@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import EditableExerciseList from './EditableExerciseList';
 import ToggleExerciseForm from './ToggleExerciseForm';
+import WorkoutForm from './WorkoutForm.js';
 import Grid from './Grid';
 import GridCell from './GridCell';
 import LayoutEmpty from './LayoutEmpty';
@@ -9,10 +10,9 @@ import Toolbar from './Toolbar';
 import ToolbarTitle from './ToolbarTitle';
 import Menu from './Menu';
 import Dialog from './Dialog';
-import Button from './Button';
 import { uid } from '../utils/GlobalUtils';
 import { printDate, printTime } from '../utils/TimerUtils';
-import { getWorkout, deleteWorkout, getExercises, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
+import { getWorkout, deleteWorkout, editWorkout, getExercises, editExercise, createExercise, deleteExercise } from '../utils/ApiUtils';
 
 class WorkoutDashboard extends Component { 
 
@@ -23,7 +23,8 @@ class WorkoutDashboard extends Component {
   		workout: {},
       	exercises: [],
       	requestDelete: false,
-      	confirmDelete: false
+      	confirmDelete: false,
+      	editWorkout: false
   	};
 
   	this.handleCreateForm = this.handleCreateForm.bind(this);
@@ -34,6 +35,9 @@ class WorkoutDashboard extends Component {
   	this.handleExerciseDelete = this.handleExerciseDelete.bind(this);
   	this.hydrateWorkoutState = this.hydrateWorkoutState.bind(this);
   	this.handleMenuActions = this.handleMenuActions.bind(this);
+  	this.handleWorkoutEdit = this.handleWorkoutEdit.bind(this);
+  	this.handleWorkoutEditCancel = this.handleWorkoutEditCancel.bind(this);
+  	this.handleWorkoutEditSubmit = this.handleWorkoutEditSubmit.bind(this);
 
 	}
 
@@ -73,6 +77,7 @@ class WorkoutDashboard extends Component {
 	handleWorkoutDeleteConfirm(){
 
 		deleteWorkout(this.props.workoutId);
+		this.props.onNotify("Workout deleted");
 		this.setState({requestDelete: false, confirmDelete: true});
 
 	}
@@ -80,6 +85,31 @@ class WorkoutDashboard extends Component {
 	handleExerciseDelete(exerciseId){
 
 		this.deleteExercise(exerciseId);
+
+	}
+
+	handleWorkoutEdit(){
+
+		this.setState({editWorkout: true})
+
+	}
+
+	handleWorkoutEditCancel(){
+
+		this.setState({editWorkout: false});
+
+	}
+
+	handleWorkoutEditSubmit(id, attrs){
+
+		this.setState((prevState) => {
+			const w = Object.assign({}, prevState.workout, attrs);
+			return { workout: w }
+		});
+
+		editWorkout(id, attrs);
+
+		this.handleWorkoutEditCancel();
 
 	}
 
@@ -129,7 +159,7 @@ class WorkoutDashboard extends Component {
 			}),
 		});
 
-    editExercise(id, attrs);
+    	editExercise(id, attrs);
 
 	}
 
@@ -140,6 +170,12 @@ class WorkoutDashboard extends Component {
   		case 'deleteWorkout':
   		this.handleWorkoutDeleteRequest();
   		break;
+
+  		case 'editWorkout':
+  		this.handleWorkoutEdit();
+  		break;
+
+  		default:
 
   	}
 
@@ -154,6 +190,7 @@ class WorkoutDashboard extends Component {
 	render(){
 
 		const menuItems = [
+			{ label: "Edit Workout", action: "editWorkout" },
 			{ label: "Delete Workout", action: "deleteWorkout" }
 		]
 
@@ -171,6 +208,8 @@ class WorkoutDashboard extends Component {
 				}
 
 				{this.state.confirmDelete && <Redirect to="/workouts" />}
+
+				{this.state.editWorkout && <WorkoutForm id={this.state.workout.id} title={this.state.workout.title} onFormSubmit={this.handleWorkoutEditSubmit} onFormCancel={this.handleWorkoutEditCancel} />}
 
 				<Toolbar onMenuClick={this.props.onMenuClick}>
 
@@ -190,6 +229,9 @@ class WorkoutDashboard extends Component {
 
 						<GridCell>
 							<h3 className="mdc-typography--subheading1 mdc-theme--text-hint-on-background collapsed">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
+							{!this.state.exercises.length && 
+								<div>Ready to get started?</div>
+							}
 						</GridCell>
 
 						<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />

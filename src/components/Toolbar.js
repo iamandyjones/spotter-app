@@ -11,7 +11,7 @@ const Toolbar = ({ children, onMenuClick }) => (
 
 			<section className="mdc-toolbar__section mdc-toolbar__section--align-start">
 
-				<a href="#" className="material-icons mdc-toolbar__menu-icon" onClick={onMenuClick}>menu</a>
+				<a href="/" className="material-icons mdc-toolbar__menu-icon" onClick={onMenuClick}>menu</a>
 
 				{children}
 

@@ -1,0 +1,5 @@
+.mdc-dialog--simple .mdc-dialog__surface { min-width: 400px; max-width: 400px; }
+
+@media (max-width: 480px) {
+	.mdc-dialog--simple .mdc-dialog__surface { min-width: 280px; }	
+}

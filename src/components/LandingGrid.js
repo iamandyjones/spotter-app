@@ -1,5 +1,4 @@
 import React from 'react';
-import Propypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Grid from './Grid';
 import GridCell from './GridCell';

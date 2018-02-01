@@ -11,9 +11,29 @@
       "date": 1501077594601
     },
     {
-      "id": "id-8z7i54boj1r",
+      "id": "id-da63ctml8f",
       "title": "New Workout",
-      "date": 1515097989544
+      "date": 1517420370689
+    },
+    {
+      "id": "id-8q4xmjwbsee",
+      "date": 1517497694349,
+      "title": "Light Chest"
+    },
+    {
+      "id": "id-ivs6jkll61",
+      "date": 1517503030745,
+      "title": "Legs/Arms"
+    },
+    {
+      "id": "id-c9je73h8k5",
+      "date": 1517505076958,
+      "title": "Full body"
+    },
+    {
+      "id": "id-6guhvdlfmma",
+      "date": 1517506518363,
+      "title": "Shoulders/abs"
     }
   ],
   "exercises": [
@@ -78,24 +98,6 @@
       "sets": []
     },
     {
-      "title": "New exercise",
-      "workout": "workout field",
-      "id": "id-4viy8k8y81y",
-      "workoutId": "111",
-      "sets": [
-        {
-          "reps": "2",
-          "load": "6kg",
-          "id": "id-4sabb4b4kj"
-        },
-        {
-          "reps": "6",
-          "load": "16kg",
-          "id": "id-rrz8lvtbyp"
-        }
-      ]
-    },
-    {
       "title": "Bench Press",
       "workout": "",
       "id": "id-d40fysq1mvu",
@@ -105,12 +107,29 @@
           "reps": "3",
           "load": "10kg",
           "id": "id-p9dmet0j13f"
+        },
+        {
+          "reps": "5",
+          "load": "10kg",
+          "id": "id-v2jfysr0wl"
+        },
+        {
+          "reps": "5",
+          "load": "12kg",
+          "id": "id-cji3y1b9g5t"
         }
       ]
+    },
+    {
+      "title": "Rows",
+      "workout": "testing field",
+      "id": "id-n8k3q2qk8k",
+      "workoutId": "111",
+      "sets": []
     }
   ],
   "timer": {
-    "elapsed": 41701,
+    "elapsed": 36437,
     "runningSince": null
   },
   "exercise-list": [

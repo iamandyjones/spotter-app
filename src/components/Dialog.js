@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import '@material/dialog/dist/mdc.dialog.css';
+import './Dialog.css';
 
 const Dialog = ({ title, children, labelCancel, labelSubmit, onCancel, onSubmit }) => (
 
-	<aside id="my-mdc-dialog" className="mdc-dialog mdc-dialog--open" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
+	<aside id="my-mdc-dialog" className="mdc-dialog mdc-dialog--simple mdc-dialog--open" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
 	  
 	  <div className="mdc-dialog__surface">
 	  
