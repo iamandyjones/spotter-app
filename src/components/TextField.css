@@ -1,1 +1,2 @@
-.mdc-dialog--simple .mdc-text-field { width: 100%; }
+.mdc-dialog--simple .mdc-text-field,
+.mdc-dialog--full .mdc-text-field { width: 100%; }

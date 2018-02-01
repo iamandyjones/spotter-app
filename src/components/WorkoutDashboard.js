@@ -22,6 +22,7 @@ class WorkoutDashboard extends Component {
   	this.state = {
   		workout: {},
       	exercises: [],
+      	fetched: false,
       	requestDelete: false,
       	confirmDelete: false,
       	editWorkout: false
@@ -121,7 +122,7 @@ class WorkoutDashboard extends Component {
 		);
 
 	    getExercises(this.props.workoutId, (data) => (
-	        this.setState({exercises: data})
+	        this.setState({exercises: data, fetched: true})
 	      )  
 	    );
 
@@ -229,12 +230,14 @@ class WorkoutDashboard extends Component {
 
 						<GridCell>
 							<h3 className="mdc-typography--subheading1 mdc-theme--text-hint-on-background collapsed">{printDate(this.state.workout.date)} at {printTime(this.state.workout.date)}</h3>
-							{!this.state.exercises.length && 
+							{(this.state.fetched && !this.state.exercises.length) && 
 								<div>Ready to get started?</div>
 							}
 						</GridCell>
 
-						<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
+						{!this.state.fetched ? <p>Loading...</p> :
+							<EditableExerciseList exercises={this.state.exercises} onFormSubmit={this.handleEditForm} onDeleteClick={this.handleExerciseDelete} onSetChange={this.handleEditForm} />
+						}
 
 					</Grid>
 

@@ -39,11 +39,12 @@ class ExerciseForm extends Component {
 
 	render(){
 
+		const titleText = this.props.id ? 'Edit' : 'New';
 		const submitText = this.props.id ? 'Edit' : 'Create';
 
 		return (
 
-			<Dialog onCancel={this.props.onFormCancel} onSubmit={this.handleSubmit} title={submitText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
+			<Dialog fullscreen onCancel={this.props.onFormCancel} onSubmit={this.handleSubmit} title={titleText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
 
 				<TextField label="Title" value={this.state.title} onValueChange={this.handleTitleChange} />
 				<TextField label="Workout" value={this.state.workout} onValueChange={this.handleWorkoutChange} />

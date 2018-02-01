@@ -26,14 +26,9 @@
       "title": "Legs/Arms"
     },
     {
-      "id": "id-c9je73h8k5",
-      "date": 1517505076958,
-      "title": "Full body"
-    },
-    {
-      "id": "id-6guhvdlfmma",
-      "date": 1517506518363,
-      "title": "Shoulders/abs"
+      "id": "id-66ed7ntcff7",
+      "date": 1517512990047,
+      "title": "Shoulders"
     }
   ],
   "exercises": [
@@ -98,8 +93,8 @@
       "sets": []
     },
     {
-      "title": "Bench Press",
-      "workout": "",
+      "title": "Bench Press!",
+      "workout": "Extra field",
       "id": "id-d40fysq1mvu",
       "workoutId": "111",
       "sets": [
@@ -112,20 +107,8 @@
           "reps": "5",
           "load": "10kg",
           "id": "id-v2jfysr0wl"
-        },
-        {
-          "reps": "5",
-          "load": "12kg",
-          "id": "id-cji3y1b9g5t"
         }
       ]
-    },
-    {
-      "title": "Rows",
-      "workout": "testing field",
-      "id": "id-n8k3q2qk8k",
-      "workoutId": "111",
-      "sets": []
     }
   ],
   "timer": {
