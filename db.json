@@ -14,21 +14,6 @@
       "id": "id-da63ctml8f",
       "title": "New Workout",
       "date": 1517420370689
-    },
-    {
-      "id": "id-8q4xmjwbsee",
-      "date": 1517497694349,
-      "title": "Light Chest"
-    },
-    {
-      "id": "id-ivs6jkll61",
-      "date": 1517503030745,
-      "title": "Legs/Arms"
-    },
-    {
-      "id": "id-66ed7ntcff7",
-      "date": 1517512990047,
-      "title": "Shoulders"
     }
   ],
   "exercises": [
@@ -112,7 +97,7 @@
     }
   ],
   "timer": {
-    "elapsed": 36437,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

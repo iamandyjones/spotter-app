@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import store from './store/configureStore';
 import AppRoute from './components/AppRoute';
 import LandingGrid from './components/LandingGrid';
 import WorkoutDashboard from './components/WorkoutDashboard';
@@ -12,6 +13,8 @@ import BottomSheet from './components/BottomSheet';
 import SnackBar from './components/SnackBar';
 import { getTimer, toggleTimer } from './utils/ApiUtils';
 
+import { showNotification, hideNotification } from './actions/NotificationActions';
+
 import './App.css';
 
 class App extends Component {
@@ -20,7 +23,7 @@ class App extends Component {
 
     super(props)
 
-    this.state = { open: false, timer: {}, snackBar: {text: '', active: false} }
+    this.state = { open: false, timer: {} }
 
     this.handleMenuClick = this.handleMenuClick.bind(this);
     this.handleNavClose = this.handleNavClose.bind(this);
@@ -29,11 +32,12 @@ class App extends Component {
     this.handleRestartClick = this.handleRestartClick.bind(this);
     this.hydrateTimerState = this.hydrateTimerState.bind(this);
     this.handleNotification = this.handleNotification.bind(this);
-    this.handleNotificationTimeout = this.handleNotificationTimeout.bind(this);
 
   }
 
   componentDidMount(){
+
+    store.subscribe(() => this.forceUpdate());
 
     this.hydrateTimerState();
 
@@ -105,17 +109,16 @@ class App extends Component {
 
   handleNotification(text){
 
-    this.setState({snackBar: {text: text, active: true}})
+    // The timeout could potentially be automatically fired from the original dispatch action creator...
+    // Need to first make dispatch available within action creator in correct way
 
-  }
+    store.dispatch(showNotification(text));
 
-  handleNotificationTimeout(){
+    setTimeout(() => {
 
-    this.setState((prevState) => {
+        store.dispatch(hideNotification());
 
-      const obj = Object.assign({}, prevState.snackBar, { active: false });
-      return { snackBar: obj }
-    });
+    }, 3000);
 
   }
 
@@ -152,7 +155,7 @@ class App extends Component {
           <Timer elapsed={this.state.timer.elapsed} runningSince={this.state.timer.runningSince} onStartClick={this.handleStartClick} onStopClick={this.handleStopClick} onRestartClick={this.handleRestartClick} />
         </BottomSheet>
 
-        <SnackBar text={this.state.snackBar.text} active={this.state.snackBar.active} onNotificationTimeout={this.handleNotificationTimeout} />
+        <SnackBar text={store.getState().notification.text} active={store.getState().notification.active} />
 
       </div>
       
