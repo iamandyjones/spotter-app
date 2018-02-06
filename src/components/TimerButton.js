@@ -1,23 +1,23 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-function TimerButton({timerRunning, onStopClick, onStartClick}){
+const TimerButton = ({ timerRunning, onStopClick, onStartClick }) => (
 
-	if(timerRunning){
+	<Fragment>
 
-		return (	
-			<i className="material-icons mdc-theme--primary-dark" onClick={onStopClick}>pause_circle_outline</i>
-		)
+	{timerRunning ? (
+		
+		<i className="material-icons mdc-theme--primary-dark" onClick={onStopClick}>pause_circle_outline</i>
+		
+		) : (
 
-	} else {
+		<i className="material-icons mdc-theme--primary-dark" onClick={onStartClick}>play_circle_outline</i>
 
-		return (
-			<i className="material-icons mdc-theme--primary-dark" onClick={onStartClick}>play_circle_outline</i>
-		)
+	)}
 
-	}
+	</Fragment>
 
-}
+)
 
 TimerButton.proptypes = {
 	timerRunning: PropTypes.bool.isRequired,

@@ -13,7 +13,6 @@ export const hideNotification = () => (
 
 	{
 		type: types.HIDE_NOTIFICATION
-
 	}
 
 );

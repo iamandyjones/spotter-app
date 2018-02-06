@@ -1,11 +1,6 @@
 {
   "workouts": [
     {
-      "id": "111",
-      "title": "Chest and Back",
-      "date": 1501077594601
-    },
-    {
       "id": "222",
       "title": "Pull Sesh",
       "date": 1501077594601
@@ -14,6 +9,11 @@
       "id": "id-da63ctml8f",
       "title": "New Workout",
       "date": 1517420370689
+    },
+    {
+      "id": "id-9sg6y7y4d6t",
+      "date": 1517850943167,
+      "title": "Legs"
     }
   ],
   "exercises": [
@@ -76,28 +76,10 @@
       "workout": "",
       "id": "id-lw61zjrj7lr",
       "sets": []
-    },
-    {
-      "title": "Bench Press!",
-      "workout": "Extra field",
-      "id": "id-d40fysq1mvu",
-      "workoutId": "111",
-      "sets": [
-        {
-          "reps": "3",
-          "load": "10kg",
-          "id": "id-p9dmet0j13f"
-        },
-        {
-          "reps": "5",
-          "load": "10kg",
-          "id": "id-v2jfysr0wl"
-        }
-      ]
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 14591,
     "runningSince": null
   },
   "exercise-list": [
