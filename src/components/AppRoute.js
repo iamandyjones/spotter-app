@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import ToolbarTitle from './ToolbarTitle';
 
-const AppRoute = ({ onMenuClick, title, component: Component, layout: Layout, ...rest }) => (
+const AppRoute = ({ onMenuClick, title, content, layout: Layout, ...rest }) => (
 
 	<Route {...rest} render={matchProps => (
 
@@ -18,7 +18,14 @@ const AppRoute = ({ onMenuClick, title, component: Component, layout: Layout, ..
 
 			<Layout>
 
-				<Component {...matchProps.match} />
+				{
+					content.map((el, i) => {
+
+						let Component = el;
+						return <Component key={i} {...matchProps.match} />;
+
+					})
+				}
 
 			</Layout>
 
@@ -31,7 +38,6 @@ const AppRoute = ({ onMenuClick, title, component: Component, layout: Layout, ..
 AppRoute.propTypes = {
 	onMenuClick: PropTypes.func.isRequired,
 	title: PropTypes.string,
-	component: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
 	layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired
 }
 

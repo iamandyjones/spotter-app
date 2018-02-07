@@ -14,7 +14,7 @@ const Canvas = ({ padded, children }) => (
 
 Canvas.propTypes = {
 	padded: PropTypes.bool,
-	children: PropTypes.object.isRequired
+	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired
 }
 
 export default Canvas;

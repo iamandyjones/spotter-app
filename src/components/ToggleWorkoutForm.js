@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import WorkoutForm from './WorkoutForm.js';
+import WorkoutFormContainer from '../containers/WorkoutFormContainer.js';
 import ButtonFab from './ButtonFab';
 
 class ToggleWorkoutForm extends Component {
@@ -11,28 +11,17 @@ class ToggleWorkoutForm extends Component {
 
 		this.state = { isOpen: false }
 
-		this.handleNewWorkout = this.handleNewWorkout.bind(this);
-		this.handleFormCancel = this.handleFormCancel.bind(this);
-		this.handleFormSubmit = this.handleFormSubmit.bind(this);
-
 	}
 
-	handleNewWorkout(){
+	handleNewWorkout = () => {
 
 		this.setState({ isOpen: true });
 
 	}
 
-	handleFormCancel(){
+	handleFormCancel = () => {
 
 		this.setState({ isOpen: false });
-
-	}
-
-	handleFormSubmit(id, workout){
-
-		this.props.onFormSubmit(id, workout);
-		this.handleFormCancel();
 
 	}
 
@@ -42,9 +31,18 @@ class ToggleWorkoutForm extends Component {
 
 			<Fragment>
 
-				{this.state.isOpen && <WorkoutForm onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />}
+				{this.state.isOpen && 
+					<WorkoutFormContainer
+						onFormCancel={this.handleFormCancel} 
+					/>
+				}
 
-				<ButtonFab onClick={this.handleNewWorkout} label="add" ripple absolute />
+				<ButtonFab 
+					onClick={this.handleNewWorkout} 
+					label="add" 
+					ripple 
+					absolute 
+				/>
 
 			</Fragment>
 
@@ -52,10 +50,6 @@ class ToggleWorkoutForm extends Component {
 
 	}
 
-}
-
-ToggleWorkoutForm.propTypes = {
-	onFormSubmit: PropTypes.func.isRequired
 }
 
 export default ToggleWorkoutForm;

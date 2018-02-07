@@ -18,19 +18,20 @@ class WorkoutList extends Component {
 
 		const { isFetching, items, path } = this.props;
 
-		const workouts = items.map((w) => (
-
-			<ListLink to={`${path}/${w.id}`} key={w.id} title={w.title} icon="fitness_center" meta={`${printDate(w.date)} at ${printTime(w.date)}`} />
-
-		));
-
 		return (
 
 			<Fragment>
 
 				{isFetching ? <p>Loading...</p> :
-					<div className="mdc-list mdc-list--two-line list-divided" ref={(el) => this.list = el}>
-					{workouts}
+
+					<div className="mdc-list mdc-list--two-line list-divided">
+
+					{
+						items.map((w) => (
+							<ListLink to={`${path}/${w.id}`} key={w.id} title={w.title} icon="fitness_center" meta={`${printDate(w.date)} at ${printTime(w.date)}`} />
+						))
+					}
+
 					</div>
 				}
 
@@ -44,7 +45,7 @@ class WorkoutList extends Component {
 WorkoutList.propTypes = {
 	fetchWorkoutsIfNeeded: PropTypes.func.isRequired,
 	isFetching: PropTypes.bool.isRequired,
-	items: PropTypes.array.isRequired,
+	items: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	path: PropTypes.string.isRequired
 }
 

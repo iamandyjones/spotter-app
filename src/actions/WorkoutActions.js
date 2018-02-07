@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes';
-import { getWorkouts } from '../utils/ApiUtils';
+import { getWorkouts, createWorkout, editWorkout } from '../utils/ApiUtils';
+import { uid } from '../utils/GlobalUtils';
 
 const requestWorkouts = () => (
 
@@ -18,13 +19,36 @@ const receiveWorkouts = (data) => (
 
 )
 
+const createWorkoutAction = (w) => (
+
+	{
+
+		type: types.CREATE_WORKOUT,
+		workout: w
+
+	}
+
+)
+
+const editWorkoutAction = (id, w) => (
+
+	{
+
+		type: types.EDIT_WORKOUT,
+		id: id,
+		workout: w
+
+	}
+
+)
+
 export const fetchWorkoutsIfNeeded = () => {
 
 	return function(dispatch){
 
 		dispatch(requestWorkouts());
 
-		getWorkouts((workouts) => {
+		return getWorkouts((workouts) => {
 
 			dispatch(receiveWorkouts(workouts));
 
@@ -33,3 +57,38 @@ export const fetchWorkoutsIfNeeded = () => {
 	}
 
 }
+
+export const AddOrEditWorkout = (id, workout) => {
+
+	return (dispatch) => {
+
+		if(id){
+
+			editWorkout(id, workout);
+			dispatch(editWorkoutAction(id, workout))
+
+		} else {
+
+			const w = Object.assign({}, { id: uid(), date: Date.now() }, workout);
+			createWorkout(w);
+			dispatch(createWorkoutAction(w))
+
+		}
+
+	}
+
+}
+
+/*
+this.setState((prevState) => {
+			const w = Object.assign({}, prevState.workout, attrs);
+			return { workout: w }
+		});
+
+*/		
+
+
+
+
+
+	    	

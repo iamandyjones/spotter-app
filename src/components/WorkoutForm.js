@@ -19,6 +19,7 @@ class WorkoutForm extends Component {
 	handleSubmit(){
 
 		this.props.onFormSubmit(this.props.id, { title: this.state.title });
+		this.props.onFormCancel(); // should be called close really
 
 	}
 

@@ -4,6 +4,7 @@ import AppRoute from './components/AppRoute';
 import LandingGrid from './components/LandingGrid';
 import WorkoutDashboard from './components/WorkoutDashboard';
 import WorkoutListContainer from './containers/WorkoutListContainer';
+import ToggleWorkoutForm from './components/ToggleWorkoutForm';
 import Navigation from './components/Navigation';
 import Layout from './components/Layout';
 import LayoutEmpty from './components/LayoutEmpty';
@@ -52,8 +53,23 @@ class App extends Component {
           <Route path='/workouts/:id' render={(matchProps) => (
             <WorkoutDashboard onMenuClick={this.handleMenuClick} workoutId={matchProps.match.params.id} link={matchProps.match.url} />
           )} />
-          <AppRoute path='/workouts' layout={Layout} component={WorkoutListContainer} title="Workouts" onMenuClick={this.handleMenuClick} />
-          <AppRoute exact path='/' layout={LayoutEmpty} component={LandingGrid} title="Spotter App" onMenuClick={this.handleMenuClick} />
+
+          <AppRoute
+            path='/workouts'
+            layout={Layout}
+            content={[WorkoutListContainer, ToggleWorkoutForm]} 
+            title="Workouts" 
+            onMenuClick={this.handleMenuClick} 
+          />
+          
+          <AppRoute 
+            exact 
+            path='/' 
+            layout={LayoutEmpty} 
+            component={[LandingGrid]} 
+            title="Spotter App" 
+            onMenuClick={this.handleMenuClick} 
+          />
 
           <Route render={() => (
             

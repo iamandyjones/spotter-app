@@ -17,6 +17,10 @@ const workouts = (state = initialState, action) => {
 
 			return { ...state, isFetching: false, items: action.items };
 
+		case types.CREATE_WORKOUT:
+
+			return { ...state, items: state.items.concat(action.workout) }
+
 		default:
 
 			return state;
