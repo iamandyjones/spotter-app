@@ -28,7 +28,15 @@ class WorkoutList extends Component {
 
 					{
 						items.map((w) => (
-							<ListLink to={`${path}/${w.id}`} key={w.id} title={w.title} icon="fitness_center" meta={`${printDate(w.date)} at ${printTime(w.date)}`} />
+
+							<ListLink 
+								to={`${path}/${w.id}`} 
+								key={w.id} 
+								title={w.title} 
+								icon="fitness_center" 
+								meta={`${printDate(w.date)} at ${printTime(w.date)}`} 
+							/>
+
 						))
 					}
 

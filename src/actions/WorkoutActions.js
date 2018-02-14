@@ -44,7 +44,7 @@ const editWorkoutAction = (id, w) => (
 
 export const fetchWorkoutsIfNeeded = () => {
 
-	return function(dispatch){
+	return (dispatch) => {
 
 		dispatch(requestWorkouts());
 

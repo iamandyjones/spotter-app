@@ -25,7 +25,7 @@ const workouts = (state = initialState, action) => {
 
 			return state;
 
-	};
+	}
 
 }
 

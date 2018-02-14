@@ -66,7 +66,7 @@ class App extends Component {
             exact 
             path='/' 
             layout={LayoutEmpty} 
-            component={[LandingGrid]} 
+            content={[LandingGrid]} 
             title="Spotter App" 
             onMenuClick={this.handleMenuClick} 
           />

@@ -19,7 +19,8 @@ class WorkoutForm extends Component {
 	handleSubmit(){
 
 		this.props.onFormSubmit(this.props.id, { title: this.state.title });
-		this.props.onFormCancel(); // should be called close really
+		this.props.onFormClose();
+		this.props.onNotify(`${this.state.title} workout ${this.props.id ? 'updated' : 'added'}`);
 
 	}
 
@@ -36,9 +37,17 @@ class WorkoutForm extends Component {
 
 		return (
 
-			<Dialog onCancel={this.props.onFormCancel} onSubmit={this.handleSubmit} title={titleText + " Workout"} labelCancel="Cancel" labelSubmit={submitText}>
+			<Dialog 
+				onCancel={this.props.onFormClose} 
+				onSubmit={this.handleSubmit} 
+				title={titleText + " Workout"} 
+				labelCancel="Cancel" 
+				labelSubmit={submitText}>
 
-				<TextField label="What are you training today?" value={this.state.title} onValueChange={this.handleTitleChange} />
+				<TextField 
+					label="What are you training today?" 
+					value={this.state.title} 
+					onValueChange={this.handleTitleChange} />
 
 		    </Dialog>
 
@@ -52,7 +61,8 @@ WorkoutForm.propTypes = {
 	id: PropTypes.string,
 	title: PropTypes.string,
 	onFormSubmit: PropTypes.func.isRequired,
-	onFormCancel: PropTypes.func.isRequired
+	onFormClose: PropTypes.func.isRequired,
+	onNotify: PropTypes.func.isRequired
 }
 
 export default WorkoutForm;

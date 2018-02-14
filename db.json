@@ -33,7 +33,27 @@
     {
       "id": "id-srb8xhtn64h",
       "date": 1518041650997,
-      "title": "Abs"
+      "title": "Abs and core"
+    },
+    {
+      "id": "id-5ecw9gl9c66",
+      "date": 1518641402057,
+      "title": "Chest"
+    },
+    {
+      "id": "id-um2lqseltl",
+      "date": 1518641434625,
+      "title": "Another workout"
+    },
+    {
+      "id": "id-4r0dvill9x8",
+      "date": 1518642204387,
+      "title": "Legs heavy"
+    },
+    {
+      "id": "id-emj0mey2n7h",
+      "date": 1518642254772,
+      "title": "Back and biceps"
     }
   ],
   "exercises": [
@@ -99,7 +119,7 @@
     }
   ],
   "timer": {
-    "elapsed": 14591,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

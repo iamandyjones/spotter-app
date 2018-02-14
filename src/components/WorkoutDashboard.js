@@ -210,7 +210,7 @@ class WorkoutDashboard extends Component {
 
 				{this.state.confirmDelete && <Redirect to="/workouts" />}
 
-				{this.state.editWorkout && <WorkoutForm id={this.state.workout.id} title={this.state.workout.title} onFormSubmit={this.handleWorkoutEditSubmit} onFormCancel={this.handleWorkoutEditCancel} />}
+				{this.state.editWorkout && <WorkoutForm id={this.state.workout.id} title={this.state.workout.title} onFormSubmit={this.handleWorkoutEditSubmit} onFormClose={this.handleWorkoutEditCancel} />}
 
 				<Toolbar onMenuClick={this.props.onMenuClick}>
 

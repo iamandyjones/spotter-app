@@ -38,7 +38,8 @@ const AppRoute = ({ onMenuClick, title, content, layout: Layout, ...rest }) => (
 AppRoute.propTypes = {
 	onMenuClick: PropTypes.func.isRequired,
 	title: PropTypes.string,
-	layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired
+	layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
+	content: PropTypes.array.isRequired
 }
 
 export default AppRoute;

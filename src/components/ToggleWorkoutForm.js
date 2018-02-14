@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import WorkoutFormContainer from '../containers/WorkoutFormContainer.js';
 import ButtonFab from './ButtonFab';
 
@@ -19,7 +18,7 @@ class ToggleWorkoutForm extends Component {
 
 	}
 
-	handleFormCancel = () => {
+	handleFormClose = () => {
 
 		this.setState({ isOpen: false });
 
@@ -33,7 +32,7 @@ class ToggleWorkoutForm extends Component {
 
 				{this.state.isOpen && 
 					<WorkoutFormContainer
-						onFormCancel={this.handleFormCancel} 
+						onFormClose={this.handleFormClose} 
 					/>
 				}
 

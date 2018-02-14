@@ -21,7 +21,7 @@ const notification = (state = initialState, action) => {
 
 			return state;
 
-	};
+	}
 
 }
 
