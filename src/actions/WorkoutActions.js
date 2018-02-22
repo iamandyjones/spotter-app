@@ -47,13 +47,12 @@ const createWorkoutAction = (w) => (
 
 )
 
-const editWorkoutAction = (id, w) => (
+const editWorkoutAction = (workout) => (
 
 	{
 
 		type: types.EDIT_WORKOUT,
-		id: id,
-		workout: w
+		workout
 
 	}
 
@@ -106,9 +105,9 @@ export const AddOrEditWorkout = (id, workout) => {
 
 		if(id){
 
-			dispatch(editWorkoutAction(id, workout));
+			dispatch(editWorkoutAction(workout));
 			editWorkout(id, workout);
-			return Promise.resolve();
+			return Promise.resolve(null);
 
 		} else {
 

@@ -19,6 +19,10 @@ const workout = (state = initialState, action) => {
 
 			return { ...state, ...action.workout, isFetching: false };
 
+		case types.EDIT_WORKOUT:
+
+			return { ...state, ...action.workout };
+
 		default:
 
 			return state;

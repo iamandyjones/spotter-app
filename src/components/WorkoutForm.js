@@ -14,14 +14,14 @@ class WorkoutForm extends Component {
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitleChange = this.handleTitleChange.bind(this);
-		this.handleNewWorkout = this.handleNewWorkout.bind(this);
+		this.handleWorkoutEdit = this.handleWorkoutEdit.bind(this);
 
 	}
 
 	handleSubmit(){
 
 		this.props.onFormSubmit({ title: this.state.title })
-		.then(id => this.setState({ redirectToWorkout: id }, this.handleNewWorkout));
+		.then(id => this.setState({ redirectToWorkout: id }, this.handleWorkoutEdit));
 
 	}
 
@@ -31,7 +31,7 @@ class WorkoutForm extends Component {
 
 	}
 
-	handleNewWorkout(){
+	handleWorkoutEdit(){
 
 		this.props.onNotify(`${this.state.title} workout ${this.props.id ? 'updated' : 'added'}`);
 		this.props.onFormClose();
