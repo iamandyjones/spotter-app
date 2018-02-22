@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import AppRoute from './components/AppRoute';
 import LandingGrid from './components/LandingGrid';
-import WorkoutDashboard from './components/WorkoutDashboard';
+import WorkoutDashboardContainer from './containers/WorkoutDashboardContainer';
 import WorkoutListContainer from './containers/WorkoutListContainer';
 import ToggleWorkoutForm from './components/ToggleWorkoutForm';
+import ToggleExerciseForm from './components/ToggleExerciseForm';
 import Navigation from './components/Navigation';
 import Layout from './components/Layout';
 import LayoutEmpty from './components/LayoutEmpty';
 import TimerContainer from './containers/TimerContainer';
 import BottomSheet from './components/BottomSheet';
 import NotificationContainer from './containers/NotificationContainer';
+import WorkoutActionsContainer from './containers/WorkoutActionsContainer';
 
 import './App.css';
 
@@ -50,9 +52,21 @@ class App extends Component {
         <Navigation open={this.state.open} onNavClose={this.handleNavClose} />
 
         <Switch>
+        {/*
           <Route path='/workouts/:id' render={(matchProps) => (
             <WorkoutDashboard onMenuClick={this.handleMenuClick} workoutId={matchProps.match.params.id} link={matchProps.match.url} />
           )} />
+
+*/}
+          <AppRoute
+            path='/workouts/:id'
+            layout={LayoutEmpty}
+            content={[WorkoutDashboardContainer]} 
+            title="Workouts" 
+            onMenuClick={this.handleMenuClick}
+            actions={WorkoutActionsContainer}
+          />
+
 
           <AppRoute
             path='/workouts'

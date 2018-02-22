@@ -3,12 +3,12 @@ import WorkoutForm from '../components/WorkoutForm';
 import { AddOrEditWorkout } from '../actions/WorkoutActions';
 import { toggleNotification } from '../actions/NotificationActions';
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = (dispatch, ownProps) => (
 
 	{
-		onFormSubmit: (id, w) => (
+		onFormSubmit: (w) => (
 
-			dispatch(AddOrEditWorkout(id, w))
+			dispatch(AddOrEditWorkout(ownProps.id, w))
 
 		),
 

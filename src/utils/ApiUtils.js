@@ -44,7 +44,7 @@ function deleteWorkout(id) {
   }).then(checkStatus)
 }
 
-function createWorkout(data, success) {
+function createWorkout(data) {
   return fetch('/api/workouts', {
   method: 'POST',
   body: JSON.stringify(data),
@@ -53,7 +53,7 @@ function createWorkout(data, success) {
     'Content-Type': 'application/json',
   },
   }).then(checkStatus)
-    .then(success)  
+    .then(() => data.id)
 }
 
 function editWorkout(id, data) {
@@ -142,5 +142,6 @@ export {
   toggleTimer, 
   editExercise, 
   createExercise, 
-  deleteExercise };
+  deleteExercise 
+};
 

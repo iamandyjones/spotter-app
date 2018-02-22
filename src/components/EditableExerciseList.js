@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EditableExercise from './EditableExercise';
 
-const EditableExerciseList = (props) => {
+const EditableExerciseList = ({ items, onDeleteClick, onSetChange }) => (
 
-	return props.exercises.map((e) => (
+	items.map((e) => (
 
 		<EditableExercise 
 			key={e.id} 
@@ -12,19 +12,17 @@ const EditableExerciseList = (props) => {
 			title={e.title} 
 			workout={e.workout}  
 			sets={e.sets}
-			onFormSubmit={props.onFormSubmit} 
-			onDeleteClick={props.onDeleteClick}
-			onSetChange={props.onSetChange} />
+			onDeleteClick={onDeleteClick}
+			onSetChange={onSetChange} />
 
-	));
+	))
 
-}
+)
 
 EditableExerciseList.propTypes = {
-	exercises: PropTypes.array.isRequired,
-	onFormSubmit: PropTypes.func.isRequired,
-	onDeleteClick: PropTypes.func.isRequired,
-	onSetChange: PropTypes.func.isRequired
+	items: PropTypes.array.isRequired,
+	onDeleteClick: PropTypes.func,
+	onSetChange: PropTypes.func
 }
 
 export default EditableExerciseList;

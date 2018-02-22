@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import ExerciseForm from './ExerciseForm';
+import React, { Component, Fragment } from 'react';
+import ExerciseFormContainer from '../containers/ExerciseFormContainer';
 import ButtonFab from './ButtonFab';
 
 class ToggleExerciseForm extends Component {
@@ -10,28 +9,17 @@ class ToggleExerciseForm extends Component {
 		super(props);
 		this.state = { isOpen: false }
 
-		this.handleFormOpen = this.handleFormOpen.bind(this);
-		this.handleFormSubmit = this.handleFormSubmit.bind(this);
-		this.handleFormCancel = this.handleFormCancel.bind(this);
-
 	}
 
-	handleFormOpen(){
+	handleFormOpen = () => {
 
 		this.setState({ isOpen: true });
 
 	}
 
-	handleFormCancel(){
+	handleFormClose = () => {
 
 		this.setState({ isOpen: false });
-
-	}
-
-	handleFormSubmit(id, exercise){
-
-		this.props.onFormSubmit(id, exercise);
-		this.setState({ isOpen: false });		
 
 	}
 
@@ -39,27 +27,31 @@ class ToggleExerciseForm extends Component {
 
 		return (
 
-			<React.Fragment>
+			<Fragment>
 
 				{this.state.isOpen && (
-	
-					<ExerciseForm onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
+						
+						<ExerciseFormContainer 
+							onFormClose={this.handleFormClose}	
+							workoutId={this.props.workoutId}
+						/>
 
 					)
 				}
 
-				<ButtonFab absolute ripple label="add" onClick={this.handleFormOpen} />
+				<ButtonFab
+					onClick={this.handleFormOpen}
+					absolute 
+					ripple 
+					label="add"
+				/>
 
-			</React.Fragment>
+			</Fragment>
 
 		)
 
 	}
 
-}
-
-ToggleExerciseForm.propTypes = {
-	onFormSubmit: PropTypes.func.isRequired
 }
 
 export default ToggleExerciseForm;

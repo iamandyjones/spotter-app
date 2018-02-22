@@ -6,23 +6,9 @@ import CardTitle from './CardTitle';
 
 class Exercise extends Component {
 
-	constructor(props){
-
-		super(props);
-
-		this.handleDeleteClick = this.handleDeleteClick.bind(this);
-
-	}
-
-	handleDeleteClick(){
-
-		this.props.onDeleteClick(this.props.id);
-
-	}
-
 	render(){
 
-		const { title, workout, id, sets, onSetChange, onEditClick } = this.props;
+		const { title, workout, id, sets, onSetChange, onEditClick, onDeleteClick } = this.props;
 
 		return (
 
@@ -30,14 +16,12 @@ class Exercise extends Component {
 				
 				<div className="mdc-card__horizontal-block">
 
-					<CardTitle title={title} subtitle={workout}>
-
-					</CardTitle>
+					<CardTitle title={title} subtitle={workout} />
 
 					<div className="mdc-card__media-item">
 						<div className="mdc-card__actions">
 							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={onEditClick}>mode_edit</i>
-							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={this.handleDeleteClick}>delete</i>
+							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={() => onDeleteClick(this.props.id)}>delete</i>
 						</div>
 					</div>
 

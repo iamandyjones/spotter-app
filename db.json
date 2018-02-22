@@ -2,76 +2,36 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Sesh",
+      "title": "Pull Session!",
       "date": 1501077594601
     },
     {
       "id": "id-da63ctml8f",
-      "title": "New Workout",
+      "title": "New Workout Name",
       "date": 1517420370689
     },
     {
       "id": "id-9sg6y7y4d6t",
       "date": 1517850943167,
-      "title": "Legs"
-    },
-    {
-      "id": "id-a2829zgoooi",
-      "date": 1518039125451,
-      "title": "Legs"
-    },
-    {
-      "id": "id-2a6qi0a15d2",
-      "date": 1518039142443,
-      "title": "Test"
-    },
-    {
-      "id": "id-8sbg5cgfk26",
-      "date": 1518041608712,
-      "title": "Chest "
-    },
-    {
-      "id": "id-srb8xhtn64h",
-      "date": 1518041650997,
-      "title": "Abs and core"
-    },
-    {
-      "id": "id-5ecw9gl9c66",
-      "date": 1518641402057,
-      "title": "Chest"
-    },
-    {
-      "id": "id-um2lqseltl",
-      "date": 1518641434625,
-      "title": "Another workout"
-    },
-    {
-      "id": "id-4r0dvill9x8",
-      "date": 1518642204387,
       "title": "Legs heavy"
-    },
-    {
-      "id": "id-emj0mey2n7h",
-      "date": 1518642254772,
-      "title": "Back and biceps"
     }
   ],
   "exercises": [
     {
       "id": "id-mbz9g0rhrh",
-      "title": "Bent over row",
+      "title": "Bent over rows",
       "workout": "",
       "workoutId": 222,
       "sets": [
         {
-          "reps": "20",
-          "load": "10kg",
+          "reps": "3",
+          "load": "16kg",
           "id": "id-c1yu186ygho"
         },
         {
-          "reps": "",
-          "load": "",
-          "id": "id-9m2qd22urw5"
+          "reps": "5",
+          "load": "12kg",
+          "id": "id-2gmwbk1bt0z"
         }
       ]
     },
@@ -119,7 +79,7 @@
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 2529,
     "runningSince": null
   },
   "exercise-list": [

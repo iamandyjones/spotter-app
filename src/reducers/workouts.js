@@ -19,7 +19,11 @@ const workouts = (state = initialState, action) => {
 
 		case types.CREATE_WORKOUT:
 
-			return { ...state, items: state.items.concat(action.workout) }
+			return { ...state, items: [...state.items, action.workout] }
+
+		case types.DELETE_WORKOUT:
+
+			return { ...state, items: state.items.filter(w => w.id !== action.id) }
 
 		default:
 

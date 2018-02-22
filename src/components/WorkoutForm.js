@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import Dialog from './Dialog';
 import TextField from './TextField';
 
@@ -9,24 +10,31 @@ class WorkoutForm extends Component {
 		
 		super(props);
 
-		this.state = { title: this.props.title || ''};
+		this.state = { title: this.props.title || '', redirectToWorkout: null };
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitleChange = this.handleTitleChange.bind(this);
+		this.handleNewWorkout = this.handleNewWorkout.bind(this);
 
 	}
 
 	handleSubmit(){
 
-		this.props.onFormSubmit(this.props.id, { title: this.state.title });
-		this.props.onFormClose();
-		this.props.onNotify(`${this.state.title} workout ${this.props.id ? 'updated' : 'added'}`);
+		this.props.onFormSubmit({ title: this.state.title })
+		.then(id => this.setState({ redirectToWorkout: id }, this.handleNewWorkout));
 
 	}
 
 	handleTitleChange(e){
 
 		this.setState({title: e.target.value});
+
+	}
+
+	handleNewWorkout(){
+
+		this.props.onNotify(`${this.state.title} workout ${this.props.id ? 'updated' : 'added'}`);
+		this.props.onFormClose();
 
 	}
 
@@ -37,19 +45,25 @@ class WorkoutForm extends Component {
 
 		return (
 
-			<Dialog 
-				onCancel={this.props.onFormClose} 
-				onSubmit={this.handleSubmit} 
-				title={titleText + " Workout"} 
-				labelCancel="Cancel" 
-				labelSubmit={submitText}>
+			<Fragment>
 
-				<TextField 
-					label="What are you training today?" 
-					value={this.state.title} 
-					onValueChange={this.handleTitleChange} />
+				<Dialog 
+					onCancel={this.props.onFormClose} 
+					onSubmit={this.handleSubmit} 
+					title={titleText + " Workout"} 
+					labelCancel="Cancel" 
+					labelSubmit={submitText}>
 
-		    </Dialog>
+					<TextField 
+						label="What are you training today?" 
+						value={this.state.title} 
+						onValueChange={this.handleTitleChange} />
+
+			    </Dialog>
+
+			    {this.state.redirectToWorkout && <Redirect push to={`/workouts/${this.state.redirectToWorkout}`} />}
+
+		    </Fragment>
 
 		)
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GridCell from './GridCell';
-import ExerciseForm from './ExerciseForm';
+import ExerciseFormContainer from '../containers/ExerciseFormContainer';
 import Exercise from './Exercise';
 
 class EditableExercise extends Component {
@@ -12,39 +12,19 @@ class EditableExercise extends Component {
 		this.state = { editFormOpen: false };
 
 		this.handleEdit = this.handleEdit.bind(this);
-		this.handleFormSubmit = this.handleFormSubmit.bind(this);
-		this.handleFormCancel = this.handleFormCancel.bind(this);
-
-	}
-
-	openForm(){
-
-		this.setState({ editFormOpen: true });
-
-	}
-
-	closeForm(){
-
-		this.setState({ editFormOpen: false });
+		this.handleFormClose = this.handleFormClose.bind(this);
 
 	}
 
 	handleEdit(){
 
-		this.openForm();
+		this.setState({ editFormOpen: true });
 
 	}
 
-	handleFormSubmit(id, exercise){
+	handleFormClose(){
 
-		this.props.onFormSubmit(id, exercise);
-		this.closeForm();
-
-	}
-
-	handleFormCancel(){
-
-		this.closeForm();
+		this.setState({ editFormOpen: false });
 
 	}
 
@@ -58,11 +38,24 @@ class EditableExercise extends Component {
 
 				{this.state.editFormOpen && (
 					
-					<ExerciseForm id={id} title={title} workout={workout} onFormSubmit={this.handleFormSubmit} onFormCancel={this.handleFormCancel} />
+					<ExerciseFormContainer
+						id={id} 
+						title={title} 
+						workout={workout}
+						onFormClose={this.handleFormClose} 
+					/>
 					
 				)}
 				
-				<Exercise id={id} title={title} workout={workout} sets={sets} onEditClick={this.handleEdit} onDeleteClick={onDeleteClick} onSetChange={onSetChange}  />
+				<Exercise
+					id={id} 
+					title={title} 
+					workout={workout} 
+					sets={sets} 
+					onEditClick={this.handleEdit} 
+					onDeleteClick={onDeleteClick} 
+					onSetChange={onSetChange}  
+				/>
 
 			</GridCell>
 
@@ -78,8 +71,7 @@ EditableExercise.propTypes = {
 	workout: PropTypes.string,
 	sets: PropTypes.array.isRequired,
 	onDeleteClick: PropTypes.func.isRequired,
-	onSetChange: PropTypes.func.isRequired,
-	onFormSubmit: PropTypes.func.isRequired
+	onSetChange: PropTypes.func.isRequired
 }
 
 export default EditableExercise;

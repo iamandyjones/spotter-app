@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import Toolbar from './Toolbar';
 import ToolbarTitle from './ToolbarTitle';
 
-const AppRoute = ({ onMenuClick, title, content, layout: Layout, ...rest }) => (
+const AppRoute = ({ onMenuClick, title, content, layout: Layout, actions: Actions, ...rest }) => (
 
 	<Route {...rest} render={matchProps => (
 
@@ -12,7 +12,13 @@ const AppRoute = ({ onMenuClick, title, content, layout: Layout, ...rest }) => (
 
 			<Toolbar onMenuClick={onMenuClick}>
 
-	            <ToolbarTitle title={title} link={matchProps.match.path} />
+	            <ToolbarTitle title={title} link={matchProps.match.url} />
+
+	            <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+
+	            	{Actions && <Actions />}
+
+				</section>
 
 	        </Toolbar>
 

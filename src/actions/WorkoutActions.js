@@ -1,6 +1,23 @@
 import * as types from '../constants/ActionTypes';
-import { getWorkouts, createWorkout, editWorkout } from '../utils/ApiUtils';
+import { getWorkout, getWorkouts, createWorkout, editWorkout, deleteWorkout } from '../utils/ApiUtils';
 import { uid } from '../utils/GlobalUtils';
+
+const requestWorkout = () => (
+
+	{
+		type: types.REQUEST_WORKOUT
+	}
+
+)
+
+const receiveWorkout = (data) => (
+
+	{
+		type: types.RECEIVE_WORKOUT,
+		workout: data
+	}
+
+)
 
 const requestWorkouts = () => (
 
@@ -42,6 +59,31 @@ const editWorkoutAction = (id, w) => (
 
 )
 
+const removeWorkoutAction = (id) => (
+
+	{
+		type: types.DELETE_WORKOUT,
+		id: id
+	}
+
+)
+
+export const fetchWorkout = (id) => {
+
+	return (dispatch) => {
+
+		dispatch(requestWorkout());
+
+		return getWorkout(id, (workout) => {
+
+			dispatch(receiveWorkout(workout));
+
+		});
+
+	}
+
+}
+
 export const fetchWorkoutsIfNeeded = () => {
 
 	return (dispatch) => {
@@ -64,14 +106,15 @@ export const AddOrEditWorkout = (id, workout) => {
 
 		if(id){
 
+			dispatch(editWorkoutAction(id, workout));
 			editWorkout(id, workout);
-			dispatch(editWorkoutAction(id, workout))
+			return Promise.resolve();
 
 		} else {
 
-			const w = Object.assign({}, { id: uid(), date: Date.now() }, workout);
-			createWorkout(w);
-			dispatch(createWorkoutAction(w))
+			const w = {...workout, id: uid(), date: Date.now()};
+			dispatch(createWorkoutAction(w));
+			return createWorkout(w);
 
 		}
 
@@ -79,16 +122,13 @@ export const AddOrEditWorkout = (id, workout) => {
 
 }
 
-/*
-this.setState((prevState) => {
-			const w = Object.assign({}, prevState.workout, attrs);
-			return { workout: w }
-		});
+export const removeWorkout = (workoutId) =>{
 
-*/		
+	return (dispatch) => {
 
+		deleteWorkout(workoutId);
+		dispatch(removeWorkoutAction(workoutId));
 
+	}
 
-
-
-	    	
+}

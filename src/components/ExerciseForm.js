@@ -21,7 +21,8 @@ class ExerciseForm extends Component {
 
 	handleSubmit(){
 
-		this.props.onFormSubmit(this.props.id, { title: this.state.title, workout: this.state.workout });
+		this.props.onFormSubmit({ title: this.state.title, workout: this.state.workout });
+		this.props.onFormClose();
 
 	}
 
@@ -44,7 +45,7 @@ class ExerciseForm extends Component {
 
 		return (
 
-			<Dialog fullscreen onCancel={this.props.onFormCancel} onSubmit={this.handleSubmit} title={titleText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
+			<Dialog fullscreen onCancel={this.props.onFormClose} onSubmit={this.handleSubmit} title={titleText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
 
 				<TextField label="Title" value={this.state.title} onValueChange={this.handleTitleChange} />
 				<TextField label="Workout" value={this.state.workout} onValueChange={this.handleWorkoutChange} />
@@ -61,7 +62,7 @@ ExerciseForm.propTypes = {
 	id: PropTypes.string,
 	title: PropTypes.string,
 	onFormSubmit: PropTypes.func.isRequired,
-	onFormCancel: PropTypes.func.isRequired
+	onFormClose: PropTypes.func.isRequired
 }
 
 export default ExerciseForm;
