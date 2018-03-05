@@ -4,7 +4,7 @@ const initialState = {
 	isFetching: false,
 	id: null,
 	title: '',
-	date: ''
+	date: null
 };
 
 const workout = (state = initialState, action) => {

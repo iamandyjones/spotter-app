@@ -17,6 +17,7 @@ class ExerciseForm extends Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitleChange = this.handleTitleChange.bind(this);
 		this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
+		this.handleCancel = this.handleCancel.bind(this)
 	}
 
 	handleSubmit(){
@@ -38,6 +39,14 @@ class ExerciseForm extends Component {
 
 	}
 
+	handleCancel(e){
+
+		e.preventDefault();
+		e.stopPropagation();
+		this.props.onFormClose();
+
+	}
+
 	render(){
 
 		const titleText = this.props.id ? 'Edit' : 'New';
@@ -45,7 +54,13 @@ class ExerciseForm extends Component {
 
 		return (
 
-			<Dialog fullscreen onCancel={this.props.onFormClose} onSubmit={this.handleSubmit} title={titleText + " Exercise"} labelCancel="Cancel" labelSubmit={submitText}>
+			<Dialog 
+				fullscreen 
+				onCancel={this.handleCancel} 
+				onSubmit={this.handleSubmit} 
+				title={titleText + " Exercise"} 
+				labelCancel="Cancel" 
+				labelSubmit={submitText}>
 
 				<TextField label="Title" value={this.state.title} onValueChange={this.handleTitleChange} />
 				<TextField label="Workout" value={this.state.workout} onValueChange={this.handleWorkoutChange} />

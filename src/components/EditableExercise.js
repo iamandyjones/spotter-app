@@ -6,25 +6,18 @@ import Exercise from './Exercise';
 
 class EditableExercise extends Component {
 
-	constructor(props){
+	constructor(){
 		
-		super(props);
+		super();
+
 		this.state = { editFormOpen: false };
-
-		this.handleEdit = this.handleEdit.bind(this);
-		this.handleFormClose = this.handleFormClose.bind(this);
+		this.toggleEditForm = this.toggleEditForm.bind(this);
 
 	}
 
-	handleEdit(){
+	toggleEditForm(val){
 
-		this.setState({ editFormOpen: true });
-
-	}
-
-	handleFormClose(){
-
-		this.setState({ editFormOpen: false });
+		return () => this.setState({ editFormOpen: val });
 
 	}
 
@@ -42,7 +35,7 @@ class EditableExercise extends Component {
 						id={id} 
 						title={title} 
 						workout={workout}
-						onFormClose={this.handleFormClose} 
+						onFormClose={this.toggleEditForm(false)} 
 					/>
 					
 				)}
@@ -52,7 +45,7 @@ class EditableExercise extends Component {
 					title={title} 
 					workout={workout} 
 					sets={sets} 
-					onEditClick={this.handleEdit} 
+					onEditClick={this.toggleEditForm(true)} 
 					onDeleteClick={onDeleteClick} 
 					onSetChange={onSetChange}  
 				/>

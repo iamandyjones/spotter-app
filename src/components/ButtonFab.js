@@ -8,7 +8,9 @@ class ButtonFab extends Component {
 
 	componentDidMount(){
 
-		if(this.props.ripple){
+		const { ripple } = this.props;
+
+		if(ripple){
 
 			MDCRipple.attachTo(this.fab);
 			
@@ -34,8 +36,15 @@ class ButtonFab extends Component {
 
 }
 
+ButtonFab.defaultProps = {
+	absolute: true,
+	label: "add",
+	ripple: true
+}
+
 ButtonFab.propTypes = {
 	absolute: PropTypes.bool,
+	ripple: PropTypes.bool,
 	label: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired
 }

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import '@material/menu/dist/mdc.menu.css';
 import './Menu.css';
 
@@ -52,7 +53,7 @@ class Menu extends Component {
 
 	render(){
 
-		const { items, iconClass } = this.props;
+		const { items, iconClass, url } = this.props;
 
 		return (
 
@@ -69,8 +70,9 @@ class Menu extends Component {
 						<ul className="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
 
 							{items.map((item, index) => {
-
-								return <li key={index} className="mdc-list-item" role="menuitem" tabIndex="0" onClick={this.generateHandler(item.action)}>{item.label}</li>
+								
+								//return <li key={index} className="mdc-list-item" role="menuitem" tabIndex="0" onClick={this.generateHandler(item)}>{item.label}</li>
+								return <Link key={index} className="mdc-list-item" to={`${url}/${item.action}`} replace={true} role="menuitem" tabIndex="0">{item.label}</Link>
 							}
 							)}
 
@@ -93,7 +95,8 @@ class Menu extends Component {
 Menu.propTypes = {
 	items: PropTypes.array.isRequired,
 	actionHandler: PropTypes.func.isRequired,
-	iconClass: PropTypes.string
+	iconClass: PropTypes.string,
+	url: PropTypes.string.isRequired
 }
 
 export default Menu;

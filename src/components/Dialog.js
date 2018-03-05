@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Toolbar from './Toolbar';
-import ToolbarTitle from './ToolbarTitle';
 import '@material/dialog/dist/mdc.dialog.css';
 import './Dialog.css';
 
@@ -24,15 +23,12 @@ const Dialog = ({ title, fullscreen, children, labelCancel, labelSubmit, onCance
 		  	
 		  	{fullscreen ? (
 		  		
-		  			<Toolbar>
+		  			<Toolbar
+		  				title={title}
+		  				menuIcon="clear"
+		  				onMenuIconClick={onCancel}>
 
-			            <ToolbarTitle title={title} />
-
-			            <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-
-							<i onClick={onSubmit} className="material-icons mdc-toolbar__icon" aria-label="Done" title="Done">done</i>
-
-						</section>
+						<span onClick={onSubmit} className="mdc-toolbar__icon" aria-label="save" title="Save">SAVE</span>
 
 			        </Toolbar>
 

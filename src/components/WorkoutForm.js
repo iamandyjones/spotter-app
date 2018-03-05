@@ -14,14 +14,15 @@ class WorkoutForm extends Component {
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleTitleChange = this.handleTitleChange.bind(this);
-		this.handleWorkoutEdit = this.handleWorkoutEdit.bind(this);
+		this.triggerNotification = this.triggerNotification.bind(this);
+		this.handleFormClose = this.handleFormClose.bind(this);
 
 	}
 
 	handleSubmit(){
 
 		this.props.onFormSubmit({ title: this.state.title })
-		.then(id => this.setState({ redirectToWorkout: id }, this.handleWorkoutEdit));
+		.then(id => this.setState({ redirectToWorkout: id }, this.triggerNotification));
 
 	}
 
@@ -31,24 +32,34 @@ class WorkoutForm extends Component {
 
 	}
 
-	handleWorkoutEdit(){
+	triggerNotification(){
 
 		this.props.onNotify(`${this.state.title} workout ${this.props.id ? 'updated' : 'added'}`);
-		this.props.onFormClose();
+
+	}
+
+	handleFormClose(){
+
+		if(this.props.id){
+			this.setState({ redirectToWorkout: this.props.id });
+		} else {
+			this.props.onFormClose();
+		}	
 
 	}
 
 	render(){
 
-		const submitText = this.props.id ? 'Edit' : 'Create';
-		const titleText = this.props.id ? 'Edit' : 'New';
+		const { id } = this.props;
+		const submitText = id ? 'Edit' : 'Create';
+		const titleText = id ? 'Edit' : 'New';
 
 		return (
 
 			<Fragment>
 
 				<Dialog 
-					onCancel={this.props.onFormClose} 
+					onCancel={this.handleFormClose} 
 					onSubmit={this.handleSubmit} 
 					title={titleText + " Workout"} 
 					labelCancel="Cancel" 
@@ -61,11 +72,11 @@ class WorkoutForm extends Component {
 
 			    </Dialog>
 
-			    {this.state.redirectToWorkout && <Redirect push to={`/workouts/${this.state.redirectToWorkout}`} />}
+			    {this.state.redirectToWorkout && <Redirect push={id ? false : true} to={`/workouts/${this.state.redirectToWorkout}`} />}
 
 		    </Fragment>
 
-		)
+		)	
 
 	}
 
@@ -75,7 +86,7 @@ WorkoutForm.propTypes = {
 	id: PropTypes.string,
 	title: PropTypes.string,
 	onFormSubmit: PropTypes.func.isRequired,
-	onFormClose: PropTypes.func.isRequired,
+	onFormClose: PropTypes.func,
 	onNotify: PropTypes.func.isRequired
 }
 

@@ -107,7 +107,7 @@ export const AddOrEditWorkout = (id, workout) => {
 
 			dispatch(editWorkoutAction(workout));
 			editWorkout(id, workout);
-			return Promise.resolve(null);
+			return Promise.resolve(id);
 
 		} else {
 
@@ -125,8 +125,8 @@ export const removeWorkout = (workoutId) =>{
 
 	return (dispatch) => {
 
-		deleteWorkout(workoutId);
 		dispatch(removeWorkoutAction(workoutId));
+		return deleteWorkout(workoutId);
 
 	}
 

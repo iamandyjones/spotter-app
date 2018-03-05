@@ -1,17 +1,20 @@
 import { connect } from 'react-redux';
 import WorkoutDashboard from '../components/WorkoutDashboard';
 import { fetchExercises, removeExercise, AddOrEditExercise } from '../actions/ExerciseActions';
-import { fetchWorkout } from '../actions/WorkoutActions';
+import { fetchWorkout, removeWorkout } from '../actions/WorkoutActions';
+import { toggleNotification } from '../actions/NotificationActions';
 
 const mapStateToProps = (state) => {
 
 	const { items, isFetching } = state.exercises;
-	const { date } = state.workout;
+	const { id, date, title } = state.workout; // should this id be grabbed from own props? 
 
 	return {
 		items,
 		isFetching,
-		date
+		id,
+		date,
+		title
 	}
 
 }
@@ -40,6 +43,18 @@ const mapDispatchToProps = (dispatch) => (
 		onSetChange: (id, attrs) => (
 
 			dispatch(AddOrEditExercise(id, attrs))
+
+		),
+
+		deleteWorkout: (workoutId) => (
+
+			dispatch(removeWorkout(workoutId))
+
+		),
+
+		onNotify: (text) => (
+
+			dispatch(toggleNotification(text))
 
 		)
 	}

@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import '@material/toolbar/dist/mdc.toolbar.css';
 import './Toolbar.css';
 
-const Toolbar = ({ children, onMenuClick }) => (
+const Toolbar = ({ children, onMenuIconClick, link, title, menuIcon }) => (
 
 	<header className="mdc-toolbar">
 
@@ -11,9 +12,15 @@ const Toolbar = ({ children, onMenuClick }) => (
 
 			<section className="mdc-toolbar__section mdc-toolbar__section--align-start">
 
-				<a href="/" className="material-icons mdc-toolbar__menu-icon" onClick={onMenuClick}>menu</a>
+				<a href="/" className="material-icons mdc-toolbar__menu-icon" onClick={onMenuIconClick}>{menuIcon}</a>
 
-				{children}
+				<Link to={link} className="mdc-toolbar__title mdc-theme--text-primary-on-primary">{title}</Link>
+
+			</section>
+
+			<section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+
+	            {children}
 
 			</section>
 
@@ -23,9 +30,18 @@ const Toolbar = ({ children, onMenuClick }) => (
 
 )
 
+Toolbar.defaultProps = {
+	title: "",
+	link: '/',
+	menuIcon: 'menu'
+}
+
 Toolbar.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-	onMenuClick: PropTypes.func
+	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+	onMenuIconClick: PropTypes.func,
+	title: PropTypes.string.isRequired,
+	link: PropTypes.string.isRequired,
+	menuIcon: PropTypes.string.isRequired
 }
 
 export default Toolbar;

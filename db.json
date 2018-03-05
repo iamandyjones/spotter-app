@@ -2,30 +2,25 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Session!",
+      "title": "Pull Heavy!",
       "date": 1501077594601
     },
     {
-      "id": "id-da63ctml8f",
-      "title": "New Workout Name",
-      "date": 1517420370689
-    },
-    {
-      "title": "new workout!!",
-      "id": "id-ltz3i76dwtm",
-      "date": 1519333743518
+      "title": "Chest and shoulders",
+      "id": "id-mrahuxm9m1b",
+      "date": 1520270362353
     }
   ],
   "exercises": [
     {
       "id": "id-mbz9g0rhrh",
-      "title": "Bent over rows!",
+      "title": "Bent over rows",
       "workout": "",
-      "workoutId": 222,
+      "workoutId": "222",
       "sets": [
         {
           "reps": "3",
-          "load": "16kg",
+          "load": "20kg",
           "id": "id-c1yu186ygho"
         },
         {
@@ -79,7 +74,7 @@
     }
   ],
   "timer": {
-    "elapsed": 2529,
+    "elapsed": 3056,
     "runningSince": null
   },
   "exercise-list": [

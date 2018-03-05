@@ -7,7 +7,7 @@ class ListLink extends Component {
 
 	componentDidMount(){
 		
-		//MDCRipple.attachTo(this.listLink);
+		MDCRipple.attachTo(this.listLink);
 
 	}
 
@@ -17,7 +17,7 @@ class ListLink extends Component {
 
 		 return (
 
-		 	<Link to={to} className="mdc-list-item" ref={el => this.listLink = el}>
+		 	<Link to={to} className="mdc-list-item" innerRef={el => this.listLink = el}>
 					
 				<span className="mdc-list-item__graphic" role="presentation">
 					<i className="material-icons" aria-hidden="true">{icon}</i>

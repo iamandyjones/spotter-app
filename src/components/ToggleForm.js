@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import ExerciseFormContainer from '../containers/ExerciseFormContainer';
+import PropTypes from 'prop-types';
 import ButtonFab from './ButtonFab';
 
-class ToggleExerciseForm extends Component {
+class ToggleForm extends Component {
 
 	constructor(props){
 
@@ -25,15 +25,17 @@ class ToggleExerciseForm extends Component {
 
 	render(){
 
+		const { component: Component, ...rest } = this.props;
+
 		return (
 
 			<Fragment>
 
 				{this.state.isOpen && (
 						
-						<ExerciseFormContainer 
+						<Component 
 							onFormClose={this.handleFormClose}	
-							workoutId={this.props.workoutId}
+							{...rest}
 						/>
 
 					)
@@ -41,9 +43,6 @@ class ToggleExerciseForm extends Component {
 
 				<ButtonFab
 					onClick={this.handleFormOpen}
-					absolute 
-					ripple 
-					label="add"
 				/>
 
 			</Fragment>
@@ -54,4 +53,8 @@ class ToggleExerciseForm extends Component {
 
 }
 
-export default ToggleExerciseForm;
+ToggleForm.propTypes = {
+	component: PropTypes.func.isRequired
+}
+
+export default ToggleForm;

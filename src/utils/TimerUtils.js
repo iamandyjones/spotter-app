@@ -34,8 +34,8 @@ function pad(numberString, size) {
 
 export function printDate(ms) {
 
-	var d = new Date(ms);
-	var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	const d = new Date(ms);
+	const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 	return `${days[d.getDay()]} ${d.getDate()}/${(d.getMonth()+1)}/${d.getFullYear()}`;
 
@@ -43,7 +43,7 @@ export function printDate(ms) {
 
 export function printTime(ms) {
 
-	var d = new Date(ms);
+	const d = new Date(ms);
 	return `${d.getHours()}:${d.getMinutes()}`;
 
 }

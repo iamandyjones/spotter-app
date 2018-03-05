@@ -2,36 +2,23 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import Toolbar from './Toolbar';
-import ToolbarTitle from './ToolbarTitle';
+import MenuActions from './MenuActions';
 
-const AppRoute = ({ onMenuClick, title, content, layout: Layout, actions: Actions, ...rest }) => (
+const AppRoute = ({ component: Component, layout: Layout, actions, ...rest }) => (
 
 	<Route {...rest} render={matchProps => (
 
 		<Fragment>
 
-			<Toolbar onMenuClick={onMenuClick}>
+			<Toolbar link={matchProps.match.url} {...rest}>
 
-	            <ToolbarTitle title={title} link={matchProps.match.url} />
-
-	            <section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-
-	            	{Actions && <Actions />}
-
-				</section>
+            	{actions && <MenuActions actions={actions} url={matchProps.match.url} />}
 
 	        </Toolbar>
 
 			<Layout>
 
-				{
-					content.map((el, i) => {
-
-						let Component = el;
-						return <Component key={i} {...matchProps.match} />;
-
-					})
-				}
+				<Component {...matchProps} />
 
 			</Layout>
 
@@ -42,10 +29,10 @@ const AppRoute = ({ onMenuClick, title, content, layout: Layout, actions: Action
 )
 
 AppRoute.propTypes = {
-	onMenuClick: PropTypes.func.isRequired,
+	onMenuIconClick: PropTypes.func.isRequired,
 	title: PropTypes.string,
 	layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
-	content: PropTypes.array.isRequired
+	component: PropTypes.func.isRequired
 }
 
 export default AppRoute;
