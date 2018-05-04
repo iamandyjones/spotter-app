@@ -22,7 +22,7 @@ class SetList extends Component {
 		const sets = this.props.sets.map((set)=>{
 
 			if(id === set.id){
-				return Object.assign({}, set, obj);
+				return { ...set, ...obj }
 			} else {
 				return set;
 			}
@@ -57,9 +57,9 @@ class SetList extends Component {
 
 	render(){
 
-		const sets = this.props.sets.map((s)=>(
+		const sets = this.props.sets.map(({ id, reps, load }) => (
 
-			<Set key={s.id} id={s.id} reps={s.reps} load={s.load} onSetChange={this.handleSetChange} onSetDelete={this.handleSetDelete} />
+			<Set key={id} id={id} reps={reps} load={load} onSetChange={this.handleSetChange} onSetDelete={this.handleSetDelete} />
 
 		));
 	

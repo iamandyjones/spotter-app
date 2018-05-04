@@ -25,8 +25,7 @@ class WorkoutDashboard extends Component {
 
 	componentDidMount(){
 
-		const { fetchWorkout, fetchExercises } = this.props;
-		const { id } = this.props.match.params;
+		const { fetchWorkout, fetchExercises, match: { params: { id } } } = this.props;
 
 		fetchWorkout(id);
 		fetchExercises(id);
@@ -53,8 +52,7 @@ class WorkoutDashboard extends Component {
 
 	render(){
 
-		const { isFetching, items, onDeleteClick, onSetChange, date, id, title } = this.props;
-		const { url } = this.props.match;		
+		const { isFetching, items, onDeleteClick, onSetChange, date, id, title, match: { url } } = this.props;
 
 		if(this.state.isDeleted){
 			return <Redirect to="/" />

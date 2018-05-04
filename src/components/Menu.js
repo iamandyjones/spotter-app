@@ -69,12 +69,12 @@ class Menu extends Component {
 						
 						<ul className="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
 
-							{items.map((item, index) => {
+							{items.map(({ action, label }, index) => (
 								
-								//return <li key={index} className="mdc-list-item" role="menuitem" tabIndex="0" onClick={this.generateHandler(item)}>{item.label}</li>
-								return <Link key={index} className="mdc-list-item" to={`${url}/${item.action}`} replace={true} role="menuitem" tabIndex="0">{item.label}</Link>
-							}
-							)}
+								//<li key={index} className="mdc-list-item" role="menuitem" tabIndex="0" onClick={this.generateHandler(item)}>{label}</li>
+								<Link key={index} className="mdc-list-item" to={`${url}/${action}`} replace={true} role="menuitem" tabIndex="0">{label}</Link>
+								
+							))}
 
 						</ul>
 

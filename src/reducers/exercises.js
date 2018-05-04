@@ -19,7 +19,7 @@ const exercises = (state = initialState, action) => {
 
 		case types.EDIT_EXERCISE:
 
-			return {...state, items: state.items.map((e) => {
+			return {...state, items: state.items.map(e => {
 
 				if(e.id === action.id){
 

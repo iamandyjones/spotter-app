@@ -2,31 +2,36 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Heavy!",
+      "title": "Pull Heavy",
       "date": 1501077594601
     },
     {
-      "title": "Chest and shoulders",
-      "id": "id-mrahuxm9m1b",
-      "date": 1520270362353
+      "title": "Legs",
+      "id": "id-vulckva2pf8",
+      "date": 1521053412776
     }
   ],
   "exercises": [
     {
       "id": "id-mbz9g0rhrh",
-      "title": "Bent over rows",
+      "title": "Bent over row",
       "workout": "",
       "workoutId": "222",
       "sets": [
         {
-          "reps": "3",
-          "load": "20kg",
+          "reps": "10",
+          "load": "16kg",
           "id": "id-c1yu186ygho"
         },
         {
-          "reps": "5",
-          "load": "12kg",
+          "reps": "9",
+          "load": "16kg",
           "id": "id-2gmwbk1bt0z"
+        },
+        {
+          "reps": "",
+          "load": "",
+          "id": "id-rpobrsizr1h"
         }
       ]
     },
@@ -71,10 +76,28 @@
       "workout": "",
       "id": "id-lw61zjrj7lr",
       "sets": []
+    },
+    {
+      "title": "Bench Press!",
+      "workout": "",
+      "id": "id-ofjbwdcc1m",
+      "workoutId": "222",
+      "sets": [
+        {
+          "reps": "7",
+          "load": "2kg",
+          "id": "id-x34phahlgeq"
+        },
+        {
+          "reps": "2",
+          "load": "12kg",
+          "id": "id-n3i9bfshqj"
+        }
+      ]
     }
   ],
   "timer": {
-    "elapsed": 3056,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

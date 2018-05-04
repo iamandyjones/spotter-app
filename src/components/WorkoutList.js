@@ -18,8 +18,7 @@ class WorkoutList extends Component {
 
 	render(){
 
-		const { isFetching, items } = this.props;
-		const { path } = this.props.match;
+		const { isFetching, items, match: { path } } = this.props;
 
 		return (
 
@@ -30,14 +29,14 @@ class WorkoutList extends Component {
 					<div className="mdc-list mdc-list--two-line list-divided">
 
 					{
-						items.map((w) => (
+						items.map(({ id, title, date }) => (
 
 							<ListLink 
-								to={`${path}/${w.id}`} 
-								key={w.id} 
-								title={w.title} 
+								to={`${path}/${id}`} 
+								key={id} 
+								title={title} 
 								icon="fitness_center" 
-								meta={`${printDate(w.date)} at ${printTime(w.date)}`} 
+								meta={`${printDate(date)} at ${printTime(date)}`} 
 							/>
 
 						))

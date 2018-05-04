@@ -4,7 +4,7 @@ import EditableExercise from './EditableExercise';
 
 const EditableExerciseList = ({ items, onDeleteClick, onSetChange }) => (
 
-	items.map((e) => (
+	items.map(e => (
 
 		<EditableExercise 
 			key={e.id} 
