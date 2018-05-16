@@ -1,12 +1,18 @@
 ## Starting the App...
 
-1. Start the fake REST api
+### Start the fake REST api
+
+The app currently utilises [JSON Server](https://github.com/typicode/json-server) to provide a mock rest api.
+
+Before starting the app, be sure to boot the api server. From the project root, run the following command:
 
 ```javascript
 npm run start-api
 ```
 
-2. Start the app
+### Start the app
+
+Once the api is running, you can start the client app with:
 
 ```javascript
 npm start
