@@ -2,7 +2,7 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Heavy",
+      "title": "Pull Heavy!",
       "date": 1501077594601
     },
     {
@@ -97,7 +97,7 @@
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 4381,
     "runningSince": null
   },
   "exercise-list": [

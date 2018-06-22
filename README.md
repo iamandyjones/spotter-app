@@ -4,7 +4,7 @@
 
 The app currently utilises [JSON Server](https://github.com/typicode/json-server) to provide a mock rest api.
 
-Before starting the app, be sure to boot the api server. From the project root, run the following command:
+Before starting the app, be sure to boot the server api. From the project root, run the following command:
 
 ```javascript
 npm run start-api
@@ -12,7 +12,7 @@ npm run start-api
 
 ### Start the app
 
-Once the api is running, you can start the client app with:
+Once the server api is running, you can start the client app with:
 
 ```javascript
 npm start
