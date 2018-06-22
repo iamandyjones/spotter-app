@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
 import '@material/menu/dist/mdc.menu.css';
 import './Menu.css';
 
@@ -13,7 +14,13 @@ class Menu extends Component {
 		this.state = { showMenu: false }
 
 		this.handleMenuToggle = this.handleMenuToggle.bind(this);
-		this.handleBlur = this.handleBlur.bind(this);	
+		this.handleBlur = this.handleBlur.bind(this);
+
+	}
+
+	componentDidMount(){
+
+		MDCRipple.attachTo(this.trigger);
 
 	}
 
@@ -27,7 +34,7 @@ class Menu extends Component {
 
 	handleMenuToggle(){
 
-		this.setState((prevState, props) => { 
+		this.setState((prevState, props) => {
 			return { showMenu: !prevState.showMenu }
 		});
 
@@ -59,26 +66,26 @@ class Menu extends Component {
 
 			<Fragment>
 
-			<i onClick={this.handleMenuToggle} className={"material-icons " + iconClass} aria-label="More" title="More">more_vert</i>
-			
+			<i onClick={this.handleMenuToggle} className={"material-icons " + iconClass} aria-label="More" title="More" ref={el => this.trigger = el}>more_vert</i>
+
 			{this.state.showMenu && (
-			
+
 				<div className="mdc-menu-anchor">
-				
+
 					<div className="mdc-simple-menu mdc-simple-menu--open" ref={el => this.menu = el} onBlur={this.handleBlur} tabIndex="0">
-						
+
 						<ul className="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
 
 							{items.map(({ action, label }, index) => (
-								
+
 								//<li key={index} className="mdc-list-item" role="menuitem" tabIndex="0" onClick={this.generateHandler(item)}>{label}</li>
 								<Link key={index} className="mdc-list-item" to={`${url}/${action}`} replace={true} role="menuitem" tabIndex="0">{label}</Link>
-								
+
 							))}
 
 						</ul>
 
-					</div>	
+					</div>
 
 				</div>
 

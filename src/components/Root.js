@@ -17,19 +17,19 @@ const actions = [
 ]
 
 const routes = [
-  
+
   {
     path: "/workouts/:id",
     layout: LayoutEmpty,
     component: WorkoutDashboardContainer,
-    title: "Workout",
-    actions: actions
+    actions: actions,
+    workout: true
   },
   {
     path: "/workouts",
     layout: Layout,
     component: WorkoutListContainer,
-    title: "Workouts" 
+    title: "Workouts"
   },
   {
     exact: true,
@@ -46,7 +46,7 @@ const routes = [
 
 ]
 
-const Root = ({ onNavOpen }) => (
+const Root = ({ onNavOpen, workoutTitle }) => (
 
   <Switch>
 
@@ -58,7 +58,7 @@ const Root = ({ onNavOpen }) => (
         exact={r.exact}
         layout={r.layout}
         component={r.component}
-        title={r.title}
+        title={r.workout ? workoutTitle : r.title}
         onMenuIconClick={onNavOpen}
         actions={r.actions}
       />
@@ -70,7 +70,8 @@ const Root = ({ onNavOpen }) => (
 )
 
 Root.propTypes = {
-  onNavOpen: PropTypes.func.isRequired
+  onNavOpen: PropTypes.func.isRequired,
+  workoutTitle: PropTypes.string
 }
 
 export default Root;

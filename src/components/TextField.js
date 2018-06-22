@@ -18,13 +18,13 @@ class TextField extends Component {
 
 		return (
 
-			<div className="mdc-text-field" ref={el => this.textField = el}>
+			<div className="mdc-text-field mdc-text-field--box" ref={el => this.textField = el}>
 
 				<input type="text" id="my-text-field" className="mdc-text-field__input" value={value} onChange={onValueChange} />
 
-				<label className="mdc-text-field__label" htmlFor="my-text-field">{label}</label>
+				<label className="mdc-floating-label" htmlFor="my-text-field">{label}</label>
 
-				<div className="mdc-text-field__bottom-line"></div>
+				<div className="mdc-line-ripple"></div>
 
 			</div>
 

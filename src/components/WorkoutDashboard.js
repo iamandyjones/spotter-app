@@ -66,8 +66,8 @@ class WorkoutDashboard extends Component {
 
 					<GridCell>
 
-						<h3 className="mdc-typography--subheading1 mdc-theme--text-hint-on-background collapsed">
-							{title} - {printDate(date)} at {printTime(date)}
+						<h3 className="mdc-typography--subheading1 collapsed">
+							{printDate(date)} at {printTime(date)}
 						</h3>
 
 						{(!isFetching && !items.length) && <div>Ready to get started?</div>}

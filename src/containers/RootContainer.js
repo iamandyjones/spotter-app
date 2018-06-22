@@ -5,7 +5,7 @@ import { openNavigation } from '../actions/UiActions';
 const mapStateToProps = (state) => (
 
 	{
-		
+		workoutTitle: state.workout.title
 	}
 
 )
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => (
 			evt.stopPropagation();
 			dispatch(openNavigation());
 
-		}	
+		}
 	}
 
 )
