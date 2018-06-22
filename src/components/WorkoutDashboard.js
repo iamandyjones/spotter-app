@@ -10,7 +10,7 @@ import GridCell from './GridCell';
 import Dialog from './Dialog';
 import { printDate, printTime } from '../utils/TimerUtils';
 
-class WorkoutDashboard extends Component { 
+class WorkoutDashboard extends Component {
 
 	constructor(){
 
@@ -39,7 +39,7 @@ class WorkoutDashboard extends Component {
 		deleteWorkout(id).then(() => {
 			this.setState({ isDeleted: true });
 		});
-		
+
 		onNotify("Workout deleted");
 
 	}
@@ -55,13 +55,13 @@ class WorkoutDashboard extends Component {
 		const { isFetching, items, onDeleteClick, onSetChange, date, id, title, match: { url } } = this.props;
 
 		if(this.state.isDeleted){
-			return <Redirect to="/" />
+			return <Redirect to="/workouts" />
 		}
 
 		return (
 
 			<Fragment>
-			
+
 				<Grid>
 
 					<GridCell>
@@ -69,16 +69,16 @@ class WorkoutDashboard extends Component {
 						<h3 className="mdc-typography--subheading1 mdc-theme--text-hint-on-background collapsed">
 							{title} - {printDate(date)} at {printTime(date)}
 						</h3>
-						
+
 						{(!isFetching && !items.length) && <div>Ready to get started?</div>}
 
 					</GridCell>
 
 					{isFetching ? <p>Loading...</p> :
 
-						<EditableExerciseList 
+						<EditableExerciseList
 							items={items}
-							onDeleteClick={onDeleteClick} 
+							onDeleteClick={onDeleteClick}
 							onSetChange={onSetChange}
 						/>
 
@@ -87,20 +87,20 @@ class WorkoutDashboard extends Component {
 				</Grid>
 
 				<Route path={`${url}/edit`} render={() => (
-					
+
 					<WorkoutFormContainer
-						id={id} 
+						id={id}
 						title={title}
 					/>
 
 				)} />
 
 				<Route path={`${url}/delete`} render={() => (
-					
-					<Dialog 
-						onCancel={this.handleDialogCancel} 
-						onSubmit={this.handleWorkoutDelete} 
-						title="Delete workout?" 
+
+					<Dialog
+						onCancel={this.handleDialogCancel}
+						onSubmit={this.handleWorkoutDelete}
+						title="Delete workout?"
 						labelSubmit="Delete">
 							Are you sure you want to permanently delete this workout? Once it's gone. it's gone...
 					</Dialog>
@@ -108,8 +108,8 @@ class WorkoutDashboard extends Component {
 				)} />
 
 				<ToggleForm
-					component={ExerciseFormContainer} 
-					workoutId={id} 
+					component={ExerciseFormContainer}
+					workoutId={id}
 				/>
 
 			</Fragment>

@@ -4,11 +4,6 @@
       "id": "222",
       "title": "Pull Heavy!",
       "date": 1501077594601
-    },
-    {
-      "title": "Legs",
-      "id": "id-vulckva2pf8",
-      "date": 1521053412776
     }
   ],
   "exercises": [
@@ -97,7 +92,7 @@
     }
   ],
   "timer": {
-    "elapsed": 4381,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

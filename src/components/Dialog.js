@@ -18,11 +18,11 @@ const Dialog = ({ title, fullscreen, children, labelCancel, labelSubmit, onCance
 	return (
 
 		<aside id="my-mdc-dialog" className={classNames} role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
-		  
+
 		  <div className="mdc-dialog__surface">
-		  	
+
 		  	{fullscreen ? (
-		  		
+
 		  			<Toolbar
 		  				title={title}
 		  				menuIcon="clear"
@@ -35,7 +35,7 @@ const Dialog = ({ title, fullscreen, children, labelCancel, labelSubmit, onCance
 		  		) : (
 
 		  			<header className="mdc-dialog__header">
-		  
+
 			      		<h2 id="my-mdc-dialog-label" className="mdc-dialog__header__title">{title}</h2>
 
 				    </header>
@@ -52,10 +52,10 @@ const Dialog = ({ title, fullscreen, children, labelCancel, labelSubmit, onCance
 	    	{!fullscreen && (
 
 		    	<footer className="mdc-dialog__footer">
-				      
+
 		      		<Button cssClass="mdc-dialog__footer__button" label={labelCancel} onClick={onCancel} />
-		      		<Button cssClass="mdc-dialog__footer__button" label={labelSubmit} onClick={onSubmit} />
-			      
+		      		<Button cssClass="mdc-dialog__footer__button mdc-button--raised" label={labelSubmit} onClick={onSubmit} />
+
 			    </footer>
 
 		    )}
