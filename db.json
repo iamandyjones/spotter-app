@@ -2,15 +2,14 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Heavy!",
+      "title": "Pull Heavy",
       "date": 1501077594601
     }
   ],
   "exercises": [
     {
       "id": "id-mbz9g0rhrh",
-      "title": "Bent over row",
-      "workout": "",
+      "title": "Bent over rows!",
       "workoutId": "222",
       "sets": [
         {
@@ -22,59 +21,47 @@
           "reps": "9",
           "load": "16kg",
           "id": "id-2gmwbk1bt0z"
-        },
-        {
-          "reps": "",
-          "load": "",
-          "id": "id-rpobrsizr1h"
         }
-      ]
+      ],
+      "notes": "Heavy set"
     },
     {
       "title": "Testing 123",
-      "workout": "",
       "id": "id-7y3ztjn32qg",
       "sets": []
     },
     {
       "title": "Testing 123",
-      "workout": "",
       "id": "id-t8ze5nlt4ud",
       "sets": []
     },
     {
       "title": "Testing 123",
-      "workout": "",
       "id": "id-7oiar1t06ka",
       "sets": []
     },
     {
       "title": "New exercise",
-      "workout": "workout field",
       "id": "id-mbx78ssuc3j",
       "sets": []
     },
     {
       "title": "New exercise",
-      "workout": "",
       "id": "id-dyjnjm0r12r",
       "sets": []
     },
     {
       "title": "test",
-      "workout": "",
       "id": "id-cihrpt0s58i",
       "sets": []
     },
     {
       "title": "test",
-      "workout": "",
       "id": "id-lw61zjrj7lr",
       "sets": []
     },
     {
-      "title": "Bench Press!",
-      "workout": "",
+      "title": "Bench Press",
       "id": "id-ofjbwdcc1m",
       "workoutId": "222",
       "sets": [
@@ -88,7 +75,8 @@
           "load": "12kg",
           "id": "id-n3i9bfshqj"
         }
-      ]
+      ],
+      "notes": "Low rest"
     }
   ],
   "timer": {

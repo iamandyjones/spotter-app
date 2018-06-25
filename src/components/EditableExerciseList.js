@@ -6,14 +6,12 @@ const EditableExerciseList = ({ items, onDeleteClick, onSetChange }) => (
 
 	items.map(e => (
 
-		<EditableExercise 
-			key={e.id} 
-			id={e.id} 
-			title={e.title} 
-			workout={e.workout}  
-			sets={e.sets}
+		<EditableExercise
+			key={e.id}
 			onDeleteClick={onDeleteClick}
-			onSetChange={onSetChange} />
+			onSetChange={onSetChange}
+			{...e}
+		/>
 
 	))
 

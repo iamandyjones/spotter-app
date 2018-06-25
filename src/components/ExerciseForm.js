@@ -6,36 +6,42 @@ import TextField from './TextField';
 class ExerciseForm extends Component {
 
 	constructor(props){
-		
+
 		super(props);
 
 		this.state = {
-			title: this.props.title || '',
-			workout: this.props.workout || ''
+			fields: {
+				title: this.props.title || '',
+				notes: this.props.notes || ''
+			},
+			errors: {}
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
-		this.handleTitleChange = this.handleTitleChange.bind(this);
-		this.handleWorkoutChange = this.handleWorkoutChange.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleCancel = this.handleCancel.bind(this)
 	}
 
 	handleSubmit(){
 
-		this.props.onFormSubmit({ title: this.state.title, workout: this.state.workout });
+		const errors = this.validate(this.state.fields);
+		this.setState({errors});
+
+		if(Object.keys(errors).length) return;
+
+		this.props.onFormSubmit(this.state.fields);
 		this.props.onFormClose();
 
 	}
 
-	handleTitleChange(e){
+	handleInputChange(e){
 
-		this.setState({title: e.target.value});
-
-	}
-
-	handleWorkoutChange(e){
-
-		this.setState({workout: e.target.value});
+		this.setState({
+			fields: {
+				...this.state.fields,
+				[e.target.name]: e.target.value
+			}
+		});
 
 	}
 
@@ -47,23 +53,44 @@ class ExerciseForm extends Component {
 
 	}
 
+	validate(fields){
+
+		const errors = {};
+		if(!fields.title) errors.title = 'Please add a title';
+		return errors;
+
+	}
+
 	render(){
 
-		const titleText = this.props.id ? 'Edit' : 'New';
-		const submitText = this.props.id ? 'Edit' : 'Create';
+		const id = this.props.id;
+		const titleText = id ? 'Edit' : 'New';
+		const submitText = id ? 'Edit' : 'Create';
 
 		return (
 
-			<Dialog 
-				fullscreen 
-				onCancel={this.handleCancel} 
-				onSubmit={this.handleSubmit} 
-				title={titleText + " Exercise"} 
-				labelCancel="Cancel" 
+			<Dialog
+				fullscreen
+				onCancel={this.handleCancel}
+				onSubmit={this.handleSubmit}
+				title={titleText + " Exercise"}
+				labelCancel="Cancel"
 				labelSubmit={submitText}>
 
-				<TextField label="Title" value={this.state.title} onValueChange={this.handleTitleChange} />
-				<TextField label="Workout" value={this.state.workout} onValueChange={this.handleWorkoutChange} />
+				<TextField
+					label="Title"
+					name="title"
+					value={this.state.fields.title}
+					error={this.state.errors.title}
+					onValueChange={this.handleInputChange}
+					required
+				/>
+				<TextField
+					label="Notes"
+					name="notes"
+					value={this.state.fields.notes}
+					onValueChange={this.handleInputChange}
+				/>
 
 		    </Dialog>
 

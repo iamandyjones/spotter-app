@@ -8,20 +8,20 @@ class Exercise extends Component {
 
 	render(){
 
-		const { title, workout, id, sets, onSetChange, onEditClick, onDeleteClick } = this.props;
+		const { title, notes, id, sets, onSetChange, onEditClick, onDeleteClick } = this.props;
 
 		return (
 
 			<Card>
-				
+
 				<div className="mdc-card__horizontal-block">
 
-					<CardTitle title={title} subtitle={workout} />
+					<CardTitle title={title} subtitle={notes} />
 
 					<div className="mdc-card__media-item">
 						<div className="mdc-card__actions">
 							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={onEditClick}>mode_edit</i>
-							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={() => onDeleteClick(this.props.id)}>delete</i>
+							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={() => onDeleteClick(id)}>delete</i>
 						</div>
 					</div>
 

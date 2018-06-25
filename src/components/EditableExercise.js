@@ -7,7 +7,7 @@ import Exercise from './Exercise';
 class EditableExercise extends Component {
 
 	constructor(){
-		
+
 		super();
 
 		this.state = { editFormOpen: false };
@@ -23,31 +23,26 @@ class EditableExercise extends Component {
 
 	render(){
 
-		const { id, title, workout, sets, onDeleteClick, onSetChange } = this.props;
+		const { onDeleteClick, onSetChange, ...rest } = this.props;
 
 		return (
 
 			<GridCell>
 
 				{this.state.editFormOpen && (
-					
+
 					<ExerciseFormContainer
-						id={id} 
-						title={title} 
-						workout={workout}
-						onFormClose={this.toggleEditForm(false)} 
+						onFormClose={this.toggleEditForm(false)}
+						{...rest}
 					/>
-					
+
 				)}
-				
+
 				<Exercise
-					id={id} 
-					title={title} 
-					workout={workout} 
-					sets={sets} 
-					onEditClick={this.toggleEditForm(true)} 
-					onDeleteClick={onDeleteClick} 
-					onSetChange={onSetChange}  
+					onEditClick={this.toggleEditForm(true)}
+					onDeleteClick={onDeleteClick}
+					onSetChange={onSetChange}
+					{...rest}
 				/>
 
 			</GridCell>
@@ -61,7 +56,6 @@ class EditableExercise extends Component {
 EditableExercise.propTypes = {
 	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	workout: PropTypes.string,
 	sets: PropTypes.array.isRequired,
 	onDeleteClick: PropTypes.func.isRequired,
 	onSetChange: PropTypes.func.isRequired

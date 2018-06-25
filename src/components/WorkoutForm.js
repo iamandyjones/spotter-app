@@ -7,7 +7,7 @@ import TextField from './TextField';
 class WorkoutForm extends Component {
 
 	constructor(props){
-		
+
 		super(props);
 
 		this.state = { title: this.props.title || '', redirectToWorkout: null };
@@ -44,7 +44,7 @@ class WorkoutForm extends Component {
 			this.setState({ redirectToWorkout: this.props.id });
 		} else {
 			this.props.onFormClose();
-		}	
+		}
 
 	}
 
@@ -58,15 +58,16 @@ class WorkoutForm extends Component {
 
 			<Fragment>
 
-				<Dialog 
-					onCancel={this.handleFormClose} 
-					onSubmit={this.handleSubmit} 
-					title={titleText + " Workout"} 
-					labelCancel="Cancel" 
+				<Dialog
+					onCancel={this.handleFormClose}
+					onSubmit={this.handleSubmit}
+					title={titleText + " Workout"}
+					labelCancel="Cancel"
 					labelSubmit={submitText}>
 
-					<TextField 
-						label="What are you training today?" 
+					<TextField
+						label="What are you training today?"
+						name="title"
 						value={this.state.title} 
 						onValueChange={this.handleTitleChange} />
 
@@ -76,7 +77,7 @@ class WorkoutForm extends Component {
 
 		    </Fragment>
 
-		)	
+		)
 
 	}
 
