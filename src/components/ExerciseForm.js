@@ -14,7 +14,13 @@ class ExerciseForm extends Component {
 				title: this.props.title || '',
 				notes: this.props.notes || ''
 			},
-			errors: {}
+			errors: {},
+			exercises: [
+				"Bench Press",
+				"Squats",
+				"Pull Ups",
+				"Lunges"
+			]
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,15 +85,17 @@ class ExerciseForm extends Component {
 
 				<TextField
 					label="Title"
-					name="title"
+					id="title"
+					datalist={this.state.exercises}
 					value={this.state.fields.title}
 					error={this.state.errors.title}
 					onValueChange={this.handleInputChange}
 					required
 				/>
+
 				<TextField
 					label="Notes"
-					name="notes"
+					id="notes"
 					value={this.state.fields.notes}
 					onValueChange={this.handleInputChange}
 				/>

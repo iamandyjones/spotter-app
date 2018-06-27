@@ -14,7 +14,15 @@ class TextField extends Component {
 
 	render(){
 
-		const { value, label, onValueChange, name, required, error } = this.props;
+		const {
+			value,
+			label,
+			onValueChange,
+			id,
+			required,
+			error,
+			datalist
+		} = this.props;
 
 		return (
 
@@ -26,17 +34,24 @@ class TextField extends Component {
 
 					<input
 						type="text"
-						id="my-text-field"
 						className="mdc-text-field__input"
-						name={name}
+						id={id}
+						name={id}
 						value={value}
 						onChange={onValueChange}
 						required={required}
+						list={datalist ? `list-${id}` : null}
 					/>
+
+					{datalist && (
+						<datalist id={`list-${id}`}>
+							{datalist.map((el, i) => <option key={i} value={el} />)}
+						</datalist>
+					)}
 
 					<label
 						className="mdc-floating-label"
-						htmlFor="my-text-field">
+						htmlFor={id}>
 						{label}
 					</label>
 
@@ -58,9 +73,10 @@ TextField.propTypes = {
 	value: PropTypes.string,
 	label: PropTypes.string.isRequired,
 	onValueChange: PropTypes.func.isRequired,
-	name: PropTypes.string.isRequired,
+	id: PropTypes.string.isRequired,
 	required: PropTypes.bool,
-	error: PropTypes.string
+	error: PropTypes.string,
+	datalist: PropTypes.array
 }
 
 export default TextField;
