@@ -36,7 +36,8 @@ class WorkoutDashboard extends Component {
 
 		const { id, deleteWorkout, onNotify } = this.props;
 
-		deleteWorkout(id).then(() => {
+		deleteWorkout(id)
+		.then(() => {
 			this.setState({ isDeleted: true });
 		});
 

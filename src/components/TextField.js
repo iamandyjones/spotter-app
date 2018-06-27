@@ -20,11 +20,25 @@ class TextField extends Component {
 
 			<Fragment>
 
-				<div className={`mdc-text-field mdc-text-field--box ${error ? 'mdc-text-field--invalid' : ''}`} ref={el => this.textField = el}>
+				<div
+					className={`mdc-text-field mdc-text-field--box ${error ? 'mdc-text-field--invalid' : ''}`}
+					ref={el => this.textField = el}>
 
-					<input type="text" id="my-text-field" className="mdc-text-field__input" name={name} value={value} onChange={onValueChange} required={required} />
+					<input
+						type="text"
+						id="my-text-field"
+						className="mdc-text-field__input"
+						name={name}
+						value={value}
+						onChange={onValueChange}
+						required={required}
+					/>
 
-					<label className="mdc-floating-label" htmlFor="my-text-field">{label}</label>
+					<label
+						className="mdc-floating-label"
+						htmlFor="my-text-field">
+						{label}
+					</label>
 
 					<div className="mdc-line-ripple"></div>
 
