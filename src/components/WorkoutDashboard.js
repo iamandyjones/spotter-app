@@ -39,7 +39,8 @@ class WorkoutDashboard extends Component {
 		deleteWorkout(id)
 		.then(() => {
 			this.setState({ isDeleted: true });
-		});
+		})
+		.catch(err => console.log(err));
 
 		onNotify("Workout deleted");
 

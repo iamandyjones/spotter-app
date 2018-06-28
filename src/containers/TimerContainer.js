@@ -62,24 +62,24 @@ class TimerContainer extends Component {
 
 	hydrateTimerState(){
 
-		getTimer((data) => (
-			this.setState(data)
-		));
+		getTimer()
+		.then(data => this.setState(data))
+		.catch(err => console.log(err));
 
 	}
 
 	render(){
 
 		return (
-		
-			<Timer 
-				elapsed={this.state.elapsed} 
-				runningSince={this.state.runningSince} 
-				onStartClick={this.handleStartClick} 
-				onStopClick={this.handleStopClick} 
-				onRestartClick={this.handleRestartClick} 
+
+			<Timer
+				elapsed={this.state.elapsed}
+				runningSince={this.state.runningSince}
+				onStartClick={this.handleStartClick}
+				onStopClick={this.handleStopClick}
+				onRestartClick={this.handleRestartClick}
 			/>
-		
+
 		)
 	}
 

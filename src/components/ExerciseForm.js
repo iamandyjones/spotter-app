@@ -27,7 +27,8 @@ class ExerciseForm extends Component {
 	componentDidMount(){
 
 		getExerciseDatabase()
-		.then(data => this.setState({exercises: data}));
+		.then(data => this.setState({exercises: data}))
+		.catch(err => console.log(err));
 
 	}
 

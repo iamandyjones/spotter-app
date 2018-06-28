@@ -1,147 +1,142 @@
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  } else {
-    const error = new Error(`HTTP Error ${response.statusText}`);
-    error.status = response.statusText;
-    error.response = response;
-    console.log(error);
-    throw error;
-  }
+const API = '/api/';
+
+const parseJSON = response => response.json();
+
+const handleErrors = response => {
+
+    if (response.ok) {
+        return response;
+    }
+
+    return Promise.reject(response.status);
+
 }
 
-function parseJSON(response) {
-  return response.json();
-}
-
-function getWorkouts(success) {
-  return fetch('/api/workouts/', {
+const getWorkouts = () => {
+  return fetch(`${API}workouts/`, {
   headers: {
     'Accept': 'application/json',
   },
-  }).then(checkStatus)
+  }).then(handleErrors)
     .then(parseJSON)
-    .then(success);
 }
 
-function getWorkout(id, success) {
-  return fetch('/api/workouts/'+id, {
+const getWorkout = (id) => {
+  return fetch(`${API}workouts/${id}`, {
   headers: {
     'Accept': 'application/json',
   },
-  }).then(checkStatus)
-    .then(parseJSON)
-    .then(success);
+  }).then(handleErrors)
+    .then(parseJSON);
 }
 
-function deleteWorkout(id) {
-  return fetch('/api/workouts/'+id, {
+const deleteWorkout = id => {
+  return fetch(`${API}workouts/${id}`, {
   method: 'DELETE',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus)
+  }).then(handleErrors)
 }
 
-function createWorkout(data) {
-  return fetch('/api/workouts', {
+const createWorkout = data => {
+  return fetch(`${API}workouts`, {
   method: 'POST',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus)
+  }).then(handleErrors)
     .then(() => data.id)
 }
 
-function editWorkout(id, data) {
-  return fetch('/api/workouts/'+id, {
+const editWorkout = (id, data) => {
+  return fetch(`${API}workouts/${id}`, {
   method: 'PATCH',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus);
+  }).then(handleErrors);
 }
 
-function getExercises(id, success) {
-  return fetch('/api/exercises?workoutId='+id, {
+const getExercises = id => {
+  return fetch(`${API}exercises?workoutId=${id}`, {
   headers: {
     'Accept': 'application/json',
   },
-  }).then(checkStatus)
-    .then(parseJSON)
-    .then(success);
+  }).then(handleErrors)
+    .then(parseJSON);
 }
 
-function createExercise(data) {
-  return fetch('/api/exercises', {
+const createExercise = data => {
+  fetch(`${API}exercises`, {
   method: 'POST',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus)
+  }).then(handleErrors)
+  .catch(err => console.log(err));
 }
 
-function deleteExercise(id) {
-  return fetch('/api/exercises/'+id, {
+const deleteExercise = id => {
+  fetch(`${API}exercises/${id}`, {
   method: 'DELETE',
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus)
+  }).then(handleErrors)
+  .catch(err => console.log(err));
 }
 
-function getTimer(success) {
-  return fetch('/api/timer', {
+const getTimer = () => {
+  return fetch(`${API}timer`, {
   headers: {
     'Accept': 'application/json',
   },
-  }).then(checkStatus)
-    .then(parseJSON)
-    .then(success);
+  }).then(handleErrors)
+    .then(parseJSON);
 }
 
-function toggleTimer(data) {
-  return fetch('/api/timer/', {
+const toggleTimer = data => {
+  fetch(`${API}timer/`, {
   method: 'PUT',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus);
+  }).then(handleErrors)
+  .catch(err => console.log(err));
 }
 
-function editExercise(id, data) {
-  return fetch('/api/exercises/'+id, {
+const editExercise = (id, data) => {
+  fetch(`${API}exercises/${id}`, {
   method: 'PATCH',
   body: JSON.stringify(data),
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
-  }).then(checkStatus);
+  }).then(handleErrors)
+  .catch(err => console.log(err));;
 }
 
-function getExerciseDatabase(){
-
-    return fetch('/api/exercise-list', {
+const getExerciseDatabase = () => {
+    return fetch(`${API}exercise-list`, {
         headers: {
           'Accept': 'application/json',
         },
     })
-    .then(checkStatus)
+    .then(handleErrors)
     .then(parseJSON)
-
 }
-
 
 export {
   getWorkout,

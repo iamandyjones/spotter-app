@@ -22,7 +22,8 @@ class WorkoutForm extends Component {
 	handleSubmit(){
 
 		this.props.onFormSubmit({ title: this.state.title })
-		.then(id => this.setState({ redirectToWorkout: id }, this.triggerNotification));
+		.then(id => this.setState({ redirectToWorkout: id }, this.triggerNotification))
+		.catch(err => console.log(err));
 
 	}
 

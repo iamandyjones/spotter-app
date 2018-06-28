@@ -73,11 +73,9 @@ export const fetchWorkout = (id) => {
 
 		dispatch(requestWorkout());
 
-		return getWorkout(id, (workout) => {
-
-			dispatch(receiveWorkout(workout));
-
-		});
+		return getWorkout(id)
+		.then(workout => dispatch(receiveWorkout(workout)))
+		.catch(err => console.log(err));
 
 	}
 
@@ -89,11 +87,9 @@ export const fetchWorkoutsIfNeeded = () => {
 
 		dispatch(requestWorkouts());
 
-		return getWorkouts((workouts) => {
-
-			dispatch(receiveWorkouts(workouts));
-
-		});
+		return getWorkouts()
+		.then(workouts => dispatch(receiveWorkouts(workouts)))
+		.catch(err => console.log(err));
 
 	}
 

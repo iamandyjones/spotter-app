@@ -9,7 +9,7 @@
   "exercises": [
     {
       "id": "id-mbz9g0rhrh",
-      "title": "Bent over rows",
+      "title": "Bent over rows!",
       "workoutId": "222",
       "sets": [
         {
@@ -61,22 +61,11 @@
       "sets": []
     },
     {
-      "title": "Pull Ups",
-      "id": "id-ofjbwdcc1m",
+      "title": "Bench Press",
+      "notes": "heavy",
+      "id": "id-wzfxe2ls658",
       "workoutId": "222",
-      "sets": [
-        {
-          "reps": "7",
-          "load": "2kg",
-          "id": "id-x34phahlgeq"
-        },
-        {
-          "reps": "2",
-          "load": "12kg",
-          "id": "id-n3i9bfshqj"
-        }
-      ],
-      "notes": "Low rest"
+      "sets": []
     }
   ],
   "timer": {

@@ -57,11 +57,9 @@ export const fetchExercises = (workoutId) => {
 
 		dispatch(requestExercises());
 
-		return getExercises(workoutId, (exercises) => {
-
-			dispatch(receiveExercises(exercises));
-
-		});
+		return getExercises(workoutId)
+		.then(exercises => dispatch(receiveExercises(exercises)))
+		.catch(err => console.log(err));
 
 	}
 
@@ -98,5 +96,3 @@ export const removeExercise = (exerciseId) => {
 	}
 
 }
-
-    	
