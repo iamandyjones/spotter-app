@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Dialog from './Dialog';
 import TextField from './TextField';
+import { getExerciseDatabase } from '../utils/ApiUtils';
 
 class ExerciseForm extends Component {
 
@@ -15,17 +16,19 @@ class ExerciseForm extends Component {
 				notes: this.props.notes || ''
 			},
 			errors: {},
-			exercises: [
-				"Bench Press",
-				"Squats",
-				"Pull Ups",
-				"Lunges"
-			]
+			exercises: []
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleCancel = this.handleCancel.bind(this)
+	}
+
+	componentDidMount(){
+
+		getExerciseDatabase()
+		.then(data => this.setState({exercises: data}));
+
 	}
 
 	handleSubmit(){

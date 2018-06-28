@@ -2,7 +2,7 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Heavy",
+      "title": "Pull Heavy!",
       "date": 1501077594601
     }
   ],
@@ -61,7 +61,7 @@
       "sets": []
     },
     {
-      "title": "Bench Press",
+      "title": "Pull Ups",
       "id": "id-ofjbwdcc1m",
       "workoutId": "222",
       "sets": [
@@ -88,13 +88,139 @@
       "name": "Bench Press"
     },
     {
+      "name": "Incline Bench Press"
+    },
+    {
+      "name": "Decline Bench Press"
+    },
+    {
+      "name": "Flat DB Press"
+    },
+    {
+      "name": "Incline DB Press"
+    },
+    {
+      "name": "Decline DB Press"
+    },
+    {
+      "name": "Machine Chest Press"
+    },
+    {
+      "name": "DB Flies"
+    },
+    {
+      "name": "Cable Flies"
+    },
+    {
+      "name": "Press Ups"
+    },
+    {
+      "name": "Smith Machine Press"
+    },
+    {
       "name": "Pull Ups"
+    },
+    {
+      "name": "Chin Ups"
     },
     {
       "name": "Lat Pull Down"
     },
     {
-      "name": "Bent Over Row"
+      "name": "DB Rows"
+    },
+    {
+      "name": "Bent Over Rows"
+    },
+    {
+      "name": "Machine Rows"
+    },
+    {
+      "name": "Overhead BB Press"
+    },
+    {
+      "name": "Seated DB Press"
+    },
+    {
+      "name": "Lat Raises"
+    },
+    {
+      "name": "Front Raises"
+    },
+    {
+      "name": "BB Curls"
+    },
+    {
+      "name": "Preacher Curls"
+    },
+    {
+      "name": "DB Curls"
+    },
+    {
+      "name": "Hammer Curls"
+    },
+    {
+      "name": "Isolation Curls"
+    },
+    {
+      "name": "Reverse BB Curls"
+    },
+    {
+      "name": "Reverse EZ Curls"
+    },
+    {
+      "name": "Cable Curls"
+    },
+    {
+      "name": "Tricep Dips"
+    },
+    {
+      "name": "Skull Crushers"
+    },
+    {
+      "name": "Rope Pulldowns"
+    },
+    {
+      "name": "Cable Tricep Press"
+    },
+    {
+      "name": "Overhead Tricep Press"
+    },
+    {
+      "name": "Back Squats"
+    },
+    {
+      "name": "Front Squats"
+    },
+    {
+      "name": "Leg Press"
+    },
+    {
+      "name": "Leg Extensions"
+    },
+    {
+      "name": "Leg Curls"
+    },
+    {
+      "name": "Calf Raises"
+    },
+    {
+      "name": "Seated Calf Raises"
+    },
+    {
+      "name": "Deadlifts"
+    },
+    {
+      "name": "Bodyweight Lunges"
+    },
+    {
+      "name": "DB Lunges"
+    },
+    {
+      "name": "Split Squat"
+    },
+    {
+      "name": "Smith Machine Split Squat"
     }
   ]
 }

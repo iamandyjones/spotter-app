@@ -67,8 +67,9 @@ class WorkoutForm extends Component {
 
 					<TextField
 						label="What are you training today?"
+						id="title"
 						name="title"
-						value={this.state.title} 
+						value={this.state.title}
 						onValueChange={this.handleTitleChange} />
 
 			    </Dialog>

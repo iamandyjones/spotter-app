@@ -45,7 +45,7 @@ class TextField extends Component {
 
 					{datalist && (
 						<datalist id={`list-${id}`}>
-							{datalist.map((el, i) => <option key={i} value={el} />)}
+							{datalist.map((el, i) => <option key={i} value={el.name} />)}
 						</datalist>
 					)}
 
@@ -76,7 +76,9 @@ TextField.propTypes = {
 	id: PropTypes.string.isRequired,
 	required: PropTypes.bool,
 	error: PropTypes.string,
-	datalist: PropTypes.array
+	datalist: PropTypes.arrayOf(PropTypes.shape({
+		name: PropTypes.string.isRequired
+	}))
 }
 
 export default TextField;

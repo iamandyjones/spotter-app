@@ -21,7 +21,7 @@ function getWorkouts(success) {
   },
   }).then(checkStatus)
     .then(parseJSON)
-    .then(success); 
+    .then(success);
 }
 
 function getWorkout(id, success) {
@@ -31,7 +31,7 @@ function getWorkout(id, success) {
   },
   }).then(checkStatus)
     .then(parseJSON)
-    .then(success); 
+    .then(success);
 }
 
 function deleteWorkout(id) {
@@ -74,7 +74,7 @@ function getExercises(id, success) {
   },
   }).then(checkStatus)
     .then(parseJSON)
-    .then(success); 
+    .then(success);
 }
 
 function createExercise(data) {
@@ -130,18 +130,30 @@ function editExercise(id, data) {
   }).then(checkStatus);
 }
 
+function getExerciseDatabase(){
 
-export { 
-  getWorkout, 
-  getWorkouts, 
-  createWorkout, 
+    return fetch('/api/exercise-list', {
+        headers: {
+          'Accept': 'application/json',
+        },
+    })
+    .then(checkStatus)
+    .then(parseJSON)
+
+}
+
+
+export {
+  getWorkout,
+  getWorkouts,
+  createWorkout,
   deleteWorkout,
-  editWorkout, 
-  getExercises, 
-  getTimer, 
-  toggleTimer, 
-  editExercise, 
-  createExercise, 
-  deleteExercise 
+  editWorkout,
+  getExercises,
+  getTimer,
+  toggleTimer,
+  editExercise,
+  createExercise,
+  deleteExercise,
+  getExerciseDatabase
 };
-
