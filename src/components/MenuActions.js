@@ -5,7 +5,7 @@ import Menu from './Menu';
 class MenuActions extends Component {
 
 	handleMenuActions(actionItem){
-	
+
 		// If menu items need custom behaviour, handle them here...
 
 	}
@@ -16,7 +16,7 @@ class MenuActions extends Component {
 
 		return (
 
-			<Menu url={url} items={actions} actionHandler={this.handleMenuActions} iconClass="mdc-toolbar__icon" />
+			<Menu url={url} items={actions} actionHandler={this.handleMenuActions} iconClass="mdc-top-app-bar__action-item" />
 
 		)
 

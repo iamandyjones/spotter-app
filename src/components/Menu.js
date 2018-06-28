@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { MDCRipple } from '@material/ripple/dist/mdc.ripple';
 import '@material/menu/dist/mdc.menu.css';
 import './Menu.css';
 
@@ -15,12 +14,6 @@ class Menu extends Component {
 
 		this.handleMenuToggle = this.handleMenuToggle.bind(this);
 		this.handleBlur = this.handleBlur.bind(this);
-
-	}
-
-	componentDidMount(){
-
-		MDCRipple.attachTo(this.trigger);
 
 	}
 
@@ -66,7 +59,7 @@ class Menu extends Component {
 
 			<Fragment>
 
-			<i onClick={this.handleMenuToggle} className={"material-icons " + iconClass} aria-label="More" title="More" ref={el => this.trigger = el}>more_vert</i>
+			<i onClick={this.handleMenuToggle} className={"material-icons " + iconClass} aria-label="More" title="More">more_vert</i>
 
 			{this.state.showMenu && (
 

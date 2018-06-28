@@ -1,24 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import '@material/toolbar/dist/mdc.toolbar.css';
+import '@material/top-app-bar/dist/mdc.top-app-bar.css';
 import './Toolbar.css';
 
 const Toolbar = ({ children, onMenuIconClick, link, title, menuIcon }) => (
 
-	<header className="mdc-toolbar">
+	<header className="mdc-top-app-bar">
 
-		<div className="mdc-toolbar__row">
+		<div className="mdc-top-app-bar__row">
 
-			<section className="mdc-toolbar__section mdc-toolbar__section--align-start">
+			<section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
 
-				<a href="/" className="material-icons mdc-toolbar__menu-icon" onClick={onMenuIconClick}>{menuIcon}</a>
+				<a href="/" className="material-icons mdc-top-app-bar__navigation-icon" onClick={onMenuIconClick}>{menuIcon}</a>
 
-				<Link to={link} className="mdc-toolbar__title mdc-theme--text-primary-on-primary">{title}</Link>
+				<Link to={link} className="mdc-top-app-bar__title mdc-theme--text-primary-on-primary">{title}</Link>
 
 			</section>
 
-			<section className="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+			<section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
 
 	            {children}
 

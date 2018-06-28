@@ -1,5 +1,7 @@
+.mdc-top-app-bar { position: relative; }
+
 @media screen and (min-width: 600px) {
 
-	.mdc-toolbar { height: 150px; }
+	.mdc-top-app-bar { height: 150px; }
 
 }

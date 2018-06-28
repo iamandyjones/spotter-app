@@ -28,7 +28,7 @@ const Dialog = ({ title, fullscreen, children, labelCancel, labelSubmit, onCance
 		  				menuIcon="clear"
 		  				onMenuIconClick={onCancel}>
 
-						<span onClick={onSubmit} className="mdc-toolbar__icon" aria-label="save" title="Save">SAVE</span>
+						<span onClick={onSubmit} className="mdc-top-app-bar__action-item" aria-label="save" title="Save">SAVE</span>
 
 			        </Toolbar>
 
