@@ -6,14 +6,14 @@ import NotificationContainer from './containers/NotificationContainer';
 import RootContainer from './containers/RootContainer';
 import './App.css';
 
-const NotBlocked = withRouter(RootContainer);
+const RootUnblocked = withRouter(RootContainer);
 
 const App = () => (
-      
+
     <div className="app mdc-typography">
 
         <NavigationContainer />
-        <NotBlocked />
+        <RootUnblocked />
         <TimerContainer />
         <NotificationContainer />
 

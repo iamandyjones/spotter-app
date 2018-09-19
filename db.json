@@ -2,8 +2,13 @@
   "workouts": [
     {
       "id": "222",
-      "title": "Pull Heavy!",
+      "title": "Pull Heavy",
       "date": 1501077594601
+    },
+    {
+      "title": "Legs",
+      "id": "id-0taxg7sr1tlb",
+      "date": 1536660308710
     }
   ],
   "exercises": [
@@ -13,13 +18,13 @@
       "workoutId": "222",
       "sets": [
         {
-          "reps": "10",
+          "reps": "5",
           "load": "16kg",
           "id": "id-c1yu186ygho"
         },
         {
           "reps": "9",
-          "load": "16kg",
+          "load": "8kg",
           "id": "id-2gmwbk1bt0z"
         }
       ],
@@ -61,11 +66,24 @@
       "sets": []
     },
     {
-      "title": "Bench Press",
-      "notes": "heavy",
-      "id": "id-wzfxe2ls658",
+      "title": "pull ups",
+      "notes": "long rest",
+      "id": "id-7bv8w8ysptq",
       "workoutId": "222",
       "sets": []
+    },
+    {
+      "title": "Bench Press",
+      "notes": "heavy",
+      "id": "id-5seb9j3qi2k",
+      "workoutId": "222",
+      "sets": [
+        {
+          "reps": "4",
+          "load": "18kg",
+          "id": "id-fr84hpxycac"
+        }
+      ]
     }
   ],
   "timer": {

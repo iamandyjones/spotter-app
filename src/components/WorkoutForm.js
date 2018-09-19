@@ -71,7 +71,9 @@ class WorkoutForm extends Component {
 						id="title"
 						name="title"
 						value={this.state.title}
-						onValueChange={this.handleTitleChange} />
+						onValueChange={this.handleTitleChange}
+					 	autoFocus
+					/>
 
 			    </Dialog>
 

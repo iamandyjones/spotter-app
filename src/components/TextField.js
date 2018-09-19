@@ -10,6 +10,7 @@ class TextField extends Component {
 
 		MDCTextField.attachTo(this.textField);
 
+
 	}
 
 	render(){
@@ -21,7 +22,8 @@ class TextField extends Component {
 			id,
 			required,
 			error,
-			datalist
+			datalist,
+			autoFocus
 		} = this.props;
 
 		return (
@@ -41,6 +43,8 @@ class TextField extends Component {
 						onChange={onValueChange}
 						required={required}
 						list={datalist ? `list-${id}` : null}
+						ref={el => this.textFieldInput = el}
+						autoFocus={autoFocus}
 					/>
 
 					{datalist && (
@@ -76,6 +80,7 @@ TextField.propTypes = {
 	id: PropTypes.string.isRequired,
 	required: PropTypes.bool,
 	error: PropTypes.string,
+	autoFocus: PropTypes.bool,
 	datalist: PropTypes.arrayOf(PropTypes.shape({
 		name: PropTypes.string.isRequired
 	}))
