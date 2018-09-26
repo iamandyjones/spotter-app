@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
 	const { items, isFetching } = state.workouts;
 
 	return {
-		items,
+		items: items.sort((a, b) => b.date - a.date),
 		isFetching
 	}
 

@@ -6,7 +6,7 @@ const LayoutEmpty = ({children}) => (
 	<div className="app__main">
 
 		{children}
-	
+
 	</div>
 
 )

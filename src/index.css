@@ -1,10 +1,16 @@
-:root { --mdc-theme-background: #eee; }
+:root { --mdc-theme-background: #fff; }
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background: var(--mdc-theme-background);
+}
+
+@media screen and (min-width: 600px) {
+    body {
+        background: #eee;
+    }
 }
 
 .collapsed { margin: 0; }
