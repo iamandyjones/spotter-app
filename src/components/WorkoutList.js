@@ -8,15 +8,19 @@ class WorkoutList extends Component {
 
 	componentDidMount(){
 
-		const { fetchWorkoutsIfNeeded } = this.props;
-
-		fetchWorkoutsIfNeeded();
+		this.props.fetchWorkoutsIfNeeded();
 
 	}
 
 	render(){
 
-		const { isFetching, items, match: { path } } = this.props;
+		const {
+			isFetching,
+			items,
+			match: {
+				path
+			}
+		} = this.props;
 
 		return (
 

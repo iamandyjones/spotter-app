@@ -1,5 +1,5 @@
 export function renderTimerString(elapsed, runningSince) {
-    
+
 	let totalElapsed = elapsed;
 	if (runningSince) {
 		totalElapsed += Date.now() - runningSince;
@@ -9,7 +9,7 @@ export function renderTimerString(elapsed, runningSince) {
 }
 
 function millisecondsToHuman(ms) {
-	
+
 	const seconds = Math.floor((ms / 1000) % 60);
 	const minutes = Math.floor((ms / 1000 / 60) % 60);
 	const hours = Math.floor(ms / 1000 / 60 / 60);
@@ -29,7 +29,7 @@ function pad(numberString, size) {
 	let padded = numberString;
 	while (padded.length < size) padded = `0${padded}`;
 	return padded;
-	
+
 }
 
 export function printDate(ms) {
@@ -44,6 +44,6 @@ export function printDate(ms) {
 export function printTime(ms) {
 
 	const d = new Date(ms);
-	return `${d.getHours()}:${d.getMinutes()}`;
+	return `${d.getHours()}:${pad(d.getMinutes().toString(), 2)}`;
 
 }
