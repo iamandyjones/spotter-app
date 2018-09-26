@@ -13,9 +13,9 @@ class ButtonFab extends Component {
 		if(ripple){
 
 			MDCRipple.attachTo(this.fab);
-			
+
 		}
-		
+
 	}
 
 	render(){
@@ -24,9 +24,9 @@ class ButtonFab extends Component {
 
 		return (
 
-			<button className={"mdc-fab material-icons" + (absolute ? " app-fab--absolute" : "")} aria-label={label} ref={(el) => this.fab = el} onClick={onClick}>
-				
-				<span className="mdc-fab__icon">{label}</span>
+			<button className={"mdc-fab" + (absolute ? " app-fab--absolute" : "")} aria-label={label} ref={(el) => this.fab = el} onClick={onClick}>
+
+				<span className="mdc-fab__icon material-icons">{label}</span>
 
 			</button>
 

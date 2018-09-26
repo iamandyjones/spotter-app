@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import Toolbar from './Toolbar';
-import MenuActions from './MenuActions';
+import ToolbarActions from './ToolbarActions';
 
-const AppRoute = ({ component: Component, layout: Layout, actions, ...rest }) => (
+const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 
 	<Route {...rest} render={matchProps => (
 
@@ -12,7 +12,7 @@ const AppRoute = ({ component: Component, layout: Layout, actions, ...rest }) =>
 
 			<Toolbar link={matchProps.match.url} {...rest}>
 
-            	{actions && <MenuActions actions={actions} url={matchProps.match.url} />}
+				<ToolbarActions />
 
 	        </Toolbar>
 

@@ -25,24 +25,32 @@ class ToggleForm extends Component {
 
 	render(){
 
-		const { component: Component, ...rest } = this.props;
+		const {
+			component: Component,
+			trigger: Trigger,
+			action,
+			label,
+			...rest
+		} = this.props;
 
 		return (
 
 			<Fragment>
 
 				{this.state.isOpen && (
-						
-						<Component 
-							onFormClose={this.handleFormClose}	
+
+						<Component
+							onFormClose={this.handleFormClose}
 							{...rest}
 						/>
 
 					)
 				}
 
-				<ButtonFab
+				<Trigger
 					onClick={this.handleFormOpen}
+					action={action}
+					label={label}
 				/>
 
 			</Fragment>
@@ -53,8 +61,15 @@ class ToggleForm extends Component {
 
 }
 
+ToggleForm.defaultProps = {
+	trigger: ButtonFab
+}
+
 ToggleForm.propTypes = {
-	component: PropTypes.func.isRequired
+	component: PropTypes.func.isRequired,
+	trigger: PropTypes.func.isRequired,
+	action: PropTypes.string,
+	label: PropTypes.string
 }
 
 export default ToggleForm;

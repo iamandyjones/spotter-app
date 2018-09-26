@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from './Button';
 import Toolbar from './Toolbar';
+import Icon from './Icon';
 import '@material/dialog/dist/mdc.dialog.css';
 import './Dialog.css';
 
@@ -28,7 +29,11 @@ const Dialog = ({ title, fullscreen, children, labelCancel, labelSubmit, onCance
 		  				menuIcon="clear"
 		  				onMenuIconClick={onCancel}>
 
-						<span onClick={onSubmit} className="mdc-top-app-bar__action-item" aria-label="save" title="Save">SAVE</span>
+						<Icon
+							onClick={onSubmit}
+							action="done"
+							label="Done"
+						/>
 
 			        </Toolbar>
 

@@ -9,20 +9,12 @@ import PageNotFound from './PageNotFound';
 import Layout from './Layout';
 import LayoutEmpty from './LayoutEmpty';
 
-const actions = [
-
-  { label: "Edit Workout", action: "edit" },
-  { label: "Delete Workout", action: "delete" }
-
-]
-
 const routes = [
 
   {
     path: "/workouts/:id",
     layout: LayoutEmpty,
     component: WorkoutDashboardContainer,
-    actions: actions,
     workout: true
   },
   {
@@ -60,7 +52,6 @@ const Root = ({ onNavOpen, workoutTitle }) => (
         component={r.component}
         title={r.workout ? workoutTitle : r.title}
         onMenuIconClick={onNavOpen}
-        actions={r.actions}
       />
 
     ))}

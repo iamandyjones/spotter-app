@@ -104,7 +104,7 @@ class WorkoutDashboard extends Component {
 						onSubmit={this.handleWorkoutDelete}
 						title="Delete workout?"
 						labelSubmit="Delete">
-							Are you sure you want to permanently delete this workout? Once it's gone. it's gone...
+							Are you sure you want to permanently delete this workout? Once it's gone, it's gone...
 					</Dialog>
 
 				)} />

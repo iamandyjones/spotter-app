@@ -6,7 +6,7 @@ import store from './store/configureStore';
 import App from './App';
 import '@material/theme/dist/mdc.theme.css';
 import '@material/typography/dist/mdc.typography.css';
-import '@material/layout-grid/dist/mdc.layout-grid.css'
+import '@material/layout-grid/dist/mdc.layout-grid.css';
 import './index.css';
 
 ReactDOM.render(

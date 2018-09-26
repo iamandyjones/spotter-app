@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import ListLink from './ListLink';
-import ToggleForm from './ToggleForm';
-import WorkoutFormContainer from '../containers/WorkoutFormContainer.js';
 import { printDate, printTime } from '../utils/TimerUtils';
 import '@material/list/dist/mdc.list.css';
 
@@ -31,12 +29,12 @@ class WorkoutList extends Component {
 					{
 						items.map(({ id, title, date }) => (
 
-							<ListLink 
-								to={`${path}/${id}`} 
-								key={id} 
-								title={title} 
-								icon="fitness_center" 
-								meta={`${printDate(date)} at ${printTime(date)}`} 
+							<ListLink
+								to={`${path}/${id}`}
+								key={id}
+								title={title}
+								icon="fitness_center"
+								meta={`${printDate(date)} at ${printTime(date)}`}
 							/>
 
 						))
@@ -44,10 +42,6 @@ class WorkoutList extends Component {
 
 					</div>
 				}
-
-				<ToggleForm
-					component={WorkoutFormContainer}
-				/>
 
 			</Fragment>
 		)
