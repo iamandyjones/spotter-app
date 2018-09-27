@@ -7,9 +7,7 @@ class Button extends Component {
 
 	componentDidMount(){
 
-		const { ripple } = this.props;
-
-		if(ripple){
+		if(this.props.ripple){
 
 			MDCRipple.attachTo(this.button);
 

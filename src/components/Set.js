@@ -45,7 +45,7 @@ class Set extends Component {
 	render(){
 
 		const reps = [1,2,3,4,5,6,7,8,9,10];
-		const weights = ["2kg","4kg","6kg","8kg","10kg","12kg","14kg","16kg","18kg","20kg"];
+		const weights = ["Body weight", "2kg","4kg","6kg","8kg","10kg","12kg","14kg","16kg","18kg","20kg"];
 
 		return (
 

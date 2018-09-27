@@ -37,7 +37,7 @@ class WorkoutList extends Component {
 								to={`${path}/${id}`}
 								key={id}
 								title={title}
-								icon="fitness_center"
+								icon="person"
 								meta={`${printDate(date)} at ${printTime(date)}`}
 							/>
 

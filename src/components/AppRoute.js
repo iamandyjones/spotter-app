@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import Toolbar from './Toolbar';
-import ToolbarActions from './ToolbarActions';
+import ToolbarActionsContainer from '../containers/ToolbarActionsContainer';
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 
@@ -12,7 +12,7 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }) => (
 
 			<Toolbar link={matchProps.match.url} {...rest}>
 
-				<ToolbarActions />
+				<ToolbarActionsContainer />
 
 	        </Toolbar>
 

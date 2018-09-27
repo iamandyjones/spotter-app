@@ -4,11 +4,6 @@
       "id": "222",
       "title": "Pull Heavy",
       "date": 1501077594601
-    },
-    {
-      "title": "chest",
-      "id": "id-ue7d4c385u",
-      "date": 1537974482588
     }
   ],
   "exercises": [
@@ -70,24 +65,17 @@
       "notes": "long rest",
       "id": "id-7bv8w8ysptq",
       "workoutId": "222",
-      "sets": []
-    },
-    {
-      "title": "Bench Press",
-      "notes": "heavy",
-      "id": "id-5seb9j3qi2k",
-      "workoutId": "222",
       "sets": [
         {
-          "reps": "4",
-          "load": "18kg",
-          "id": "id-fr84hpxycac"
+          "reps": "",
+          "load": "",
+          "id": "id-wzyirregyq"
         }
       ]
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 1816,
     "runningSince": null
   },
   "exercise-list": [

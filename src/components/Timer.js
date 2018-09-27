@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { renderTimerString } from '../utils/TimerUtils';
-import TimerButton from './TimerButton';
+import IconButton from './IconButton';
+import Button from './Button';
 import BottomSheet from './BottomSheet';
 import './Timer.css';
 
@@ -10,7 +11,7 @@ class Timer extends Component {
 	componentDidMount(){
 
 		this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
-		
+
 	}
 
 	componentWillUnmount(){
@@ -20,19 +21,37 @@ class Timer extends Component {
 	}
 
 	render(){
-		
-		const { elapsed, runningSince, onStartClick, onStopClick, onRestartClick } = this.props;
+
+		const {
+			elapsed,
+			runningSince,
+			onStartClick,
+			onStopClick,
+			onRestartClick,
+			fullscreen
+		} = this.props;
 
 		const elapsedString = renderTimerString(elapsed, runningSince);
 
 		return (
 
-			<BottomSheet>
+			<BottomSheet fullscreen={fullscreen}>
 
 				<div className="timer">
-					<i className="material-icons mdc-theme--primary-dark" onClick={onRestartClick}>replay</i>
+
+					<IconButton onClick={onRestartClick} label="Restart" action="replay" />
 					<span className="timer__string mdc-typography--display1">{elapsedString}</span>
-					<TimerButton timerRunning={!!runningSince} onStartClick={onStartClick} onStopClick={onStopClick} />
+
+					{!!runningSince ? (
+
+						<IconButton onClick={onStopClick} label="Pause" action="pause_circle_filled" />
+
+						) : (
+
+						<IconButton onClick={onStartClick} label="Play" action="play_circle_filled" />
+
+					)}
+
 				</div>
 
 			</BottomSheet>
