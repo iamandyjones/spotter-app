@@ -13,10 +13,8 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
 
 	{
-		onNavOpen: (evt) => {
+		onNavOpen: () => {
 
-			evt.preventDefault();
-			evt.stopPropagation();
 			dispatch(openNavigation());
 
 		}

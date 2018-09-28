@@ -24,7 +24,7 @@ class Nav extends Component {
 	componentDidUpdate(prevProps){
 
 		if(prevProps.open !== this.props.open){
-			this.drawer.open = this.props.open;	
+			this.drawer.open = this.props.open;
 		}
 
 	}
@@ -42,7 +42,7 @@ class Nav extends Component {
 			<aside className="mdc-drawer mdc-drawer--temporary" ref={(el) => this.drawerEl = el}>
 			  <nav className="mdc-drawer__drawer">
 			    <header className="mdc-drawer__header">
-			      <div className="mdc-drawer__header-content mdc-theme--text-primary-on-primary mdc-theme--primary-bg">
+			      <div className="mdc-drawer__header-content mdc-theme--on-primary mdc-theme--primary-bg">
 			        Spotter App
 			      </div>
 			    </header>
@@ -76,5 +76,3 @@ class Nav extends Component {
 }
 
 export default Nav;
-
-

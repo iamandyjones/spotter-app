@@ -18,11 +18,11 @@ class ButtonFab extends Component {
 
 	render(){
 
-		const { absolute, label, onClick } = this.props;
+		const { absolute, label, onClick, theme } = this.props;
 
 		return (
 
-			<button className={"mdc-fab mdc-theme--primary-bg" + (absolute ? " app-fab--absolute" : "")} aria-label={label} ref={(el) => this.fab = el} onClick={onClick}>
+			<button className={`mdc-fab ${theme} ${absolute ? 'app-fab--absolute' : ''}`} aria-label={label} ref={(el) => this.fab = el} onClick={onClick}>
 
 				<span className="mdc-fab__icon material-icons">{label}</span>
 
@@ -37,14 +37,16 @@ class ButtonFab extends Component {
 ButtonFab.defaultProps = {
 	absolute: true,
 	label: "add",
-	ripple: true
+	ripple: true,
+	theme: "mdc-theme--primary-bg"
 }
 
 ButtonFab.propTypes = {
 	absolute: PropTypes.bool,
 	ripple: PropTypes.bool,
 	label: PropTypes.string.isRequired,
-	onClick: PropTypes.func.isRequired
+	onClick: PropTypes.func.isRequired,
+	theme: PropTypes.string.isRequired
 }
 
 export default ButtonFab;

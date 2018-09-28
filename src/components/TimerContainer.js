@@ -14,6 +14,7 @@ class TimerContainer extends Component {
 	    this.handleStopClick = this.handleStopClick.bind(this);
 	    this.handleRestartClick = this.handleRestartClick.bind(this);
 	    this.hydrateTimerState = this.hydrateTimerState.bind(this);
+		this.handleToggleFullscreen = this.handleToggleFullscreen.bind(this);
 
 	}
 
@@ -60,6 +61,12 @@ class TimerContainer extends Component {
 
 	}
 
+	handleToggleFullscreen(){
+
+		this.props.toggleFullscreen();
+
+	}
+
 	hydrateTimerState(){
 
 		getTimer()
@@ -71,7 +78,8 @@ class TimerContainer extends Component {
 	render(){
 
 		const {
-			timerOpen
+			timerOpen,
+			timerFullscreen
 		} = this.props;
 
 		if(!timerOpen){
@@ -86,7 +94,8 @@ class TimerContainer extends Component {
 				onStartClick={this.handleStartClick}
 				onStopClick={this.handleStopClick}
 				onRestartClick={this.handleRestartClick}
-				fullscreen={true}
+				onToggleFullscreen={this.handleToggleFullscreen}
+				fullscreen={timerFullscreen}
 			/>
 
 		)

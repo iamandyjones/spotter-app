@@ -72,10 +72,17 @@
           "id": "id-wzyirregyq"
         }
       ]
+    },
+    {
+      "title": "Chest flies",
+      "notes": "db",
+      "id": "id-8payja01kl3",
+      "workoutId": "222",
+      "sets": []
     }
   ],
   "timer": {
-    "elapsed": 1816,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

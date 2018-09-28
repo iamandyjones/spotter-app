@@ -4,17 +4,17 @@ import { Link } from 'react-router-dom';
 import '@material/top-app-bar/dist/mdc.top-app-bar.css';
 import './Toolbar.css';
 
-const Toolbar = ({ children, onMenuIconClick, link, title, menuIcon }) => (
+const Toolbar = ({ children, onMenuIconClick, link, title, menuIcon, secondaryTheme }) => (
 
-	<header className="mdc-top-app-bar">
+	<header className={`mdc-top-app-bar ${secondaryTheme ? 'mdc-theme--secondary-bg' : ''}`}>
 
 		<div className="mdc-top-app-bar__row">
 
 			<section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
 
-				<a href="/" className="material-icons mdc-top-app-bar__navigation-icon" onClick={onMenuIconClick}>{menuIcon}</a>
+				<i className="material-icons mdc-top-app-bar__navigation-icon" onClick={onMenuIconClick}>{menuIcon}</i>
 
-				<Link to={link} className="mdc-top-app-bar__title mdc-theme--text-primary-on-primary">{title}</Link>
+				<Link to={link} className="mdc-top-app-bar__title mdc-theme--on-primary">{title}</Link>
 
 			</section>
 
@@ -41,7 +41,8 @@ Toolbar.propTypes = {
 	onMenuIconClick: PropTypes.func,
 	title: PropTypes.string.isRequired,
 	link: PropTypes.string.isRequired,
-	menuIcon: PropTypes.string.isRequired
+	menuIcon: PropTypes.string.isRequired,
+	secondaryTheme: PropTypes.bool
 }
 
 export default Toolbar;
