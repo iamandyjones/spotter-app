@@ -82,10 +82,6 @@ class TimerContainer extends Component {
 			timerFullscreen
 		} = this.props;
 
-		if(!timerOpen){
-			return null;
-		}
-
 		return (
 
 			<Timer
@@ -96,6 +92,7 @@ class TimerContainer extends Component {
 				onRestartClick={this.handleRestartClick}
 				onToggleFullscreen={this.handleToggleFullscreen}
 				fullscreen={timerFullscreen}
+				isOpen={timerOpen}
 			/>
 
 		)

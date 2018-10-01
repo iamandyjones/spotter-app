@@ -54,7 +54,7 @@ class WorkoutDashboard extends Component {
 
 	render(){
 
-		const { isFetching, items, onDeleteClick, onSetChange, date, id, title, match: { url } } = this.props;
+		const { isFetching, items, onDeleteClick, onSetChange, date, id, title, match: { url }, timerOpen } = this.props;
 
 		if(this.state.isDeleted){
 			return <Redirect to="/workouts" />
@@ -112,6 +112,7 @@ class WorkoutDashboard extends Component {
 				<ToggleForm
 					component={ExerciseFormContainer}
 					workoutId={id}
+					offset={timerOpen}
 				/>
 
 			</Fragment>

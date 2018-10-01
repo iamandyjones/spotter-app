@@ -6,6 +6,12 @@
 	height: 56px;
 	line-height: 70px;
 	color: #fff;
+	transform: translate3d(0,100%,0);
+	transition: transform 250ms ease;
+}
+
+.bottom-sheet--open {
+	transform: translate3d(0,0,0);
 }
 
 .bottom-sheet--fullscreen {

@@ -1,1 +1,12 @@
-.app-fab--absolute { position: fixed; bottom: 70px; right: 1rem; z-index: 2; }
+.app-fab--absolute {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	z-index: 2;
+	transform: translate3d(0,0,0);
+	transition: transform 250ms ease;
+}
+
+.app-fab--offset {
+	transform: translate3d(0,-50px,0);
+}

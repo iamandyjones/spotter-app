@@ -8,28 +8,35 @@ import { workoutActions } from '../constants/ToolbarActions';
 
 const ToolbarActions = ({ toggleTimer }) => (
 
-    <Switch>
+    <Fragment>
 
-        <Route path="/workouts/:id" render={matchProps => (
-            <Fragment>
-                <Icon
-                    onClick={toggleTimer}
-                    action="timer"
-                    label="Timer"
-                />
-                <MenuActions
-                    actions={workoutActions}
-                    url={matchProps.match.url}
-                />
-            </Fragment>
-        )} />
-
-        <Route path="/workouts" render={() => (
-            <ToggleForm
-                component={WorkoutFormContainer}
-                trigger={Icon}
+        <Route render={matchProps => (
+            <Icon
+                onClick={toggleTimer}
+                action="timer"
+                label="Timer"
             />
         )} />
+
+        <Switch>
+
+            <Route path="/workouts/:id" render={matchProps => (
+                <Fragment>
+                    <MenuActions
+                        actions={workoutActions}
+                        url={matchProps.match.url}
+                    />
+                </Fragment>
+            )} />
+
+            <Route path="/workouts" render={() => (
+                <ToggleForm
+                    component={WorkoutFormContainer}
+                    trigger={Icon}
+                />
+            )} />
+
+        </Switch>
 
         <Route path="/" exact render={() => (
             <ToggleForm
@@ -38,7 +45,7 @@ const ToolbarActions = ({ toggleTimer }) => (
             />
         )} />
 
-    </Switch>
+    </Fragment>
 
 )
 

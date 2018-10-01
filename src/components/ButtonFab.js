@@ -18,11 +18,28 @@ class ButtonFab extends Component {
 
 	render(){
 
-		const { absolute, label, onClick, theme } = this.props;
+		const {
+			absolute,
+			label,
+			onClick,
+			theme,
+			offset
+		} = this.props;
+
+		let classes = `mdc-fab ${theme}`;
+
+		if(absolute){
+			classes += " app-fab--absolute";
+
+			if(offset){
+				classes += " app-fab--offset";
+			}
+
+		}
 
 		return (
 
-			<button className={`mdc-fab ${theme} ${absolute ? 'app-fab--absolute' : ''}`} aria-label={label} ref={(el) => this.fab = el} onClick={onClick}>
+			<button className={classes} aria-label={label} ref={(el) => this.fab = el} onClick={onClick}>
 
 				<span className="mdc-fab__icon material-icons">{label}</span>
 
@@ -46,7 +63,8 @@ ButtonFab.propTypes = {
 	ripple: PropTypes.bool,
 	label: PropTypes.string.isRequired,
 	onClick: PropTypes.func.isRequired,
-	theme: PropTypes.string.isRequired
+	theme: PropTypes.string.isRequired,
+	offset: PropTypes.bool
 }
 
 export default ButtonFab;

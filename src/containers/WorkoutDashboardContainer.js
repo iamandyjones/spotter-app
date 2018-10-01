@@ -4,17 +4,19 @@ import { fetchExercises, removeExercise, AddOrEditExercise } from '../actions/Ex
 import { fetchWorkout, removeWorkout } from '../actions/WorkoutActions';
 import { toggleNotification } from '../actions/NotificationActions';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, { id }) => {
 
 	const { items, isFetching } = state.exercises;
-	const { id, date, title } = state.workout; // should this id be grabbed from own props? 
+	const { date, title } = state.workout;
+	const { isOpen: timerOpen } = state.timer;
 
 	return {
 		items,
 		isFetching,
 		id,
 		date,
-		title
+		title,
+		timerOpen
 	}
 
 }

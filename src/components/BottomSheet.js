@@ -2,17 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './BottomSheet.css';
 
-const BottomSheet = ({ children, fullscreen }) => (
+const BottomSheet = ({ children, fullscreen, isOpen }) => {
 
-	<div className={`bottom-sheet mdc-theme--secondary-bg ${fullscreen ? 'bottom-sheet--fullscreen' : ''}`}>
-		{children}
-	</div>
+	let classes = "bottom-sheet mdc-theme--secondary-bg";
 
-)
+	if(isOpen){
+		classes += " bottom-sheet--open"
+	}
+
+	if(fullscreen){
+		classes += " bottom-sheet--fullscreen"
+	}
+
+	return (
+
+		<div className={classes}>
+			{children}
+		</div>
+
+	)
+
+}
 
 BottomSheet.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-	fullscreen: PropTypes.bool
+	fullscreen: PropTypes.bool,
+	isOpen: PropTypes.bool
 }
 
 export default BottomSheet;

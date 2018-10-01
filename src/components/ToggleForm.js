@@ -30,6 +30,7 @@ class ToggleForm extends Component {
 			trigger: Trigger,
 			action,
 			label,
+			offset,
 			...rest
 		} = this.props;
 
@@ -51,6 +52,7 @@ class ToggleForm extends Component {
 					onClick={this.handleFormOpen}
 					action={action}
 					label={label}
+					offset={offset}
 				/>
 
 			</Fragment>
@@ -69,7 +71,8 @@ ToggleForm.propTypes = {
 	component: PropTypes.func.isRequired,
 	trigger: PropTypes.func.isRequired,
 	action: PropTypes.string,
-	label: PropTypes.string
+	label: PropTypes.string,
+	offset: PropTypes.bool
 }
 
 export default ToggleForm;

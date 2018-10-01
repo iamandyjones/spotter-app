@@ -105,14 +105,15 @@ class Timer extends Component {
 		const {
 			elapsed,
 			runningSince,
-			fullscreen
+			fullscreen,
+			isOpen
 		} = this.props;
 
 		const elapsedString = renderTimerString(elapsed, runningSince);
 
 		return (
 
-			<BottomSheet fullscreen={fullscreen}>
+			<BottomSheet isOpen={isOpen} fullscreen={fullscreen}>
 
 				<div className={fullscreen ? 'timer timer--fullscreen' : 'timer'}>
 
