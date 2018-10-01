@@ -4,11 +4,6 @@
       "id": "222",
       "title": "Pull Heavy",
       "date": 1501077594601
-    },
-    {
-      "title": "Legs",
-      "id": "id-tmstp39s4h",
-      "date": 1538389739605
     }
   ],
   "exercises": [
@@ -87,7 +82,7 @@
     }
   ],
   "timer": {
-    "elapsed": 7614,
+    "elapsed": 0,
     "runningSince": null
   },
   "exercise-list": [

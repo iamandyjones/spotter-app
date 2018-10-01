@@ -4,10 +4,10 @@ import { fetchExercises, removeExercise, AddOrEditExercise } from '../actions/Ex
 import { fetchWorkout, removeWorkout } from '../actions/WorkoutActions';
 import { toggleNotification } from '../actions/NotificationActions';
 
-const mapStateToProps = (state, { id }) => {
+const mapStateToProps = (state) => {
 
 	const { items, isFetching } = state.exercises;
-	const { date, title } = state.workout;
+	const { id, date, title } = state.workout;
 	const { isOpen: timerOpen } = state.timer;
 
 	return {
