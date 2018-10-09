@@ -4,6 +4,11 @@
       "id": "222",
       "title": "Pull Heavy",
       "date": 1501077594601
+    },
+    {
+      "title": "legs",
+      "id": "id-72tx10wuq6n",
+      "date": 1539082927588
     }
   ],
   "exercises": [
@@ -70,19 +75,17 @@
           "reps": "",
           "load": "",
           "id": "id-wzyirregyq"
+        },
+        {
+          "reps": "4",
+          "load": "10kg",
+          "id": "id-ig364mex4a"
         }
       ]
-    },
-    {
-      "title": "Chest flies",
-      "notes": "db",
-      "id": "id-8payja01kl3",
-      "workoutId": "222",
-      "sets": []
     }
   ],
   "timer": {
-    "elapsed": 0,
+    "elapsed": 7673,
     "runningSince": null
   },
   "exercise-list": [

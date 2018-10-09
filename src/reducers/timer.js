@@ -2,7 +2,9 @@ import * as types from '../constants/ActionTypes';
 
 const initialState = {
 	isOpen: false,
-	isFullscreen: false
+	isFullscreen: false,
+	runningSince: null,
+	elapsed: null
 };
 
 const timer = (state = initialState, action) => {
@@ -16,6 +18,10 @@ const timer = (state = initialState, action) => {
 		case types.TOGGLE_TIMER_FULLSCREEN:
 
 			return { ...state, isFullscreen: !state.isFullscreen };
+
+		case types.SET_TIMER:
+
+			return { ...state, ...action.data }
 
 		default:
 

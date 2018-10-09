@@ -1,144 +1,123 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { renderTimerString } from '../utils/TimerUtils';
-import Icon from './Icon';
-import IconButton from './IconButton';
-import BottomSheet from './BottomSheet';
-import Toolbar from './Toolbar';
-import ButtonFab from './ButtonFab';
-import './Timer.css';
+import React, { Component } from 'react';
+import TimerSlim from '../components/TimerSlim';
+import TimerFull from '../components/TimerFull';
+import { getTimer, toggleTimer } from '../utils/ApiUtils';
 
-class Timer extends Component {
+class TimerContainer extends Component {
+
+	constructor(props){
+
+		super(props);
+
+		this.handleStartClick = this.handleStartClick.bind(this);
+	    this.handleStopClick = this.handleStopClick.bind(this);
+	    this.handleRestartClick = this.handleRestartClick.bind(this);
+	    this.hydrateTimerState = this.hydrateTimerState.bind(this);
+		this.handleToggleFullscreen = this.handleToggleFullscreen.bind(this);
+
+	}
 
 	componentDidMount(){
 
-		this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 50);
+		this.hydrateTimerState();
 
 	}
 
-	componentWillUnmount(){
-
-		clearInterval(this.forceUpdateInterval);
-
-	}
-
-	renderTimer(elapsedString){
+	handleStartClick(){
 
 		const {
-			onRestartClick,
-			onToggleFullscreen,
-			runningSince,
-			onStopClick,
-			onStartClick
+			setTimer,
+			elapsed
 		} = this.props;
 
-		return (
+		const timer = {elapsed: elapsed, runningSince: Date.now()}
 
-			<Fragment>
-
-				<div className="timer__expand">
-
-					<IconButton onClick={onToggleFullscreen} label="Expand" action="keyboard_arrow_up" />
-
-				</div>
-
-				<IconButton onClick={onRestartClick} label="Restart" action="replay" />
-
-				<span className="timer__string mdc-typography--display1">{elapsedString}</span>
-
-				{!!runningSince ? (
-
-					<IconButton onClick={onStopClick} label="Pause" action="pause_circle_filled" />
-
-				) : (
-
-					<IconButton onClick={onStartClick} label="Play" action="play_circle_filled" />
-
-				)}
-
-			</Fragment>
-
-		)
+		setTimer(timer);
+		toggleTimer(timer);
 
 	}
 
-	renderFullscreenTimer(elapsedString){
+	handleStopClick(){
 
 		const {
-			onRestartClick,
-			onToggleFullscreen,
-			runningSince,
-			onStopClick,
-			onStartClick
+			setTimer,
+			elapsed,
+			runningSince
 		} = this.props;
 
-		return (
+		const lastElapsed = Date.now() - runningSince;
+		const timer = { elapsed: elapsed + lastElapsed, runningSince: null };
 
-			<Fragment>
+		setTimer(timer);
+		toggleTimer(timer);
 
-				<Toolbar menuIcon="clear" onMenuIconClick={onToggleFullscreen} secondaryTheme>
+	}
 
-					<Icon onClick={onRestartClick} action="replay" label="Restart" />
+	handleRestartClick(){
 
-				</Toolbar>
+		const timer = { elapsed: 0, runningSince: null }
 
-				<span className="timer__string">{elapsedString}</span>
+		this.props.setTimer(timer);
+		toggleTimer(timer);
 
-				{!!runningSince ? (
+	}
 
-					<ButtonFab onClick={onStopClick} label="pause" theme="mdc-theme--background mdc-theme--secondary" />
+	handleToggleFullscreen(){
 
-				) : (
+		this.props.toggleFullscreen();
 
-					<ButtonFab onClick={onStartClick} label="play_arrow" theme="mdc-theme--background mdc-theme--secondary" />
+	}
 
-				)}
+	hydrateTimerState(){
 
-			</Fragment>
-
-		)
+		getTimer()
+		.then(data => this.props.setTimer(data))
+		.catch(err => console.log(err));
 
 	}
 
 	render(){
 
 		const {
-			elapsed,
+			timerOpen,
+			timerFullscreen,
 			runningSince,
-			fullscreen,
-			isOpen
+			elapsed
 		} = this.props;
 
-		const elapsedString = renderTimerString(elapsed, runningSince);
+		if(timerFullscreen){
+			return (
 
-		return (
+				<TimerFull
+					elapsed={elapsed}
+					runningSince={runningSince}
+					onStartClick={this.handleStartClick}
+					onStopClick={this.handleStopClick}
+					onRestartClick={this.handleRestartClick}
+					onToggleFullscreen={this.handleToggleFullscreen}
+					fullscreen={timerFullscreen}
+					isOpen={timerOpen}
+				/>
 
-			<BottomSheet isOpen={isOpen} fullscreen={fullscreen}>
+			)
+		} else {
+			return (
 
-				<div className={fullscreen ? 'timer timer--fullscreen' : 'timer'}>
+				<TimerSlim
+					elapsed={elapsed}
+					runningSince={runningSince}
+					onStartClick={this.handleStartClick}
+					onStopClick={this.handleStopClick}
+					onRestartClick={this.handleRestartClick}
+					onToggleFullscreen={this.handleToggleFullscreen}
+					isOpen={timerOpen}
+				/>
 
-					{fullscreen ? (
-						this.renderFullscreenTimer(elapsedString)
-					) : (
-						this.renderTimer(elapsedString)
-					)}
-
-				</div>
-
-			</BottomSheet>
-
-		)
+			)
+		}
 
 	}
 
 }
 
-Timer.propTypes = {
-	elapsed: PropTypes.number,
-	runningSince: PropTypes.number,
-	onStartClick: PropTypes.func.isRequired,
-	onStopClick: PropTypes.func.isRequired,
-	onRestartClick: PropTypes.func.isRequired
-}
-
-export default Timer;
+export default TimerContainer;

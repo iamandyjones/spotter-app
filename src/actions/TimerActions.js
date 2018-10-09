@@ -16,7 +16,17 @@ const toggleFullscreen = () => (
 
 )
 
+const setTimer = data => (
+
+	{
+		type: types.SET_TIMER,
+		data
+	}
+
+)
+
 export {
 	toggleTimerVisibility,
-	toggleFullscreen
+	toggleFullscreen,
+	setTimer
 }
