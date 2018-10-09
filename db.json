@@ -13,79 +13,33 @@
   ],
   "exercises": [
     {
-      "id": "id-mbz9g0rhrh",
-      "title": "Bent over rows",
+      "title": "Pull ups",
+      "notes": "heavy",
+      "id": "id-q2rbx53k7k",
       "workoutId": "222",
       "sets": [
         {
           "reps": "5",
-          "load": "16kg",
-          "id": "id-c1yu186ygho"
-        },
-        {
-          "reps": "9",
           "load": "8kg",
-          "id": "id-2gmwbk1bt0z"
-        }
-      ],
-      "notes": "Heavy set"
-    },
-    {
-      "title": "Testing 123",
-      "id": "id-7y3ztjn32qg",
-      "sets": []
-    },
-    {
-      "title": "Testing 123",
-      "id": "id-t8ze5nlt4ud",
-      "sets": []
-    },
-    {
-      "title": "Testing 123",
-      "id": "id-7oiar1t06ka",
-      "sets": []
-    },
-    {
-      "title": "New exercise",
-      "id": "id-mbx78ssuc3j",
-      "sets": []
-    },
-    {
-      "title": "New exercise",
-      "id": "id-dyjnjm0r12r",
-      "sets": []
-    },
-    {
-      "title": "test",
-      "id": "id-cihrpt0s58i",
-      "sets": []
-    },
-    {
-      "title": "test",
-      "id": "id-lw61zjrj7lr",
-      "sets": []
-    },
-    {
-      "title": "pull ups",
-      "notes": "long rest",
-      "id": "id-7bv8w8ysptq",
-      "workoutId": "222",
-      "sets": [
-        {
-          "reps": "",
-          "load": "",
-          "id": "id-wzyirregyq"
+          "id": "id-m9sp2auoev"
         },
         {
-          "reps": "4",
+          "reps": "6",
           "load": "10kg",
-          "id": "id-ig364mex4a"
+          "id": "id-813dqsd210h"
         }
       ]
+    },
+    {
+      "title": "Bench press",
+      "notes": "",
+      "id": "id-b0lqfl5xnrq",
+      "workoutId": "222",
+      "sets": []
     }
   ],
   "timer": {
-    "elapsed": 7673,
+    "elapsed": 12216,
     "runningSince": null
   },
   "exercise-list": [

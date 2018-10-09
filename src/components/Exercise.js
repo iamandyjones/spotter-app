@@ -3,31 +3,67 @@ import PropTypes from 'prop-types';
 import SetList from './SetList';
 import Card from './Card';
 import CardTitle from './CardTitle';
+import CardMain from './CardMain';
+import CardActions from './CardActions';
+import Button from './Button';
+import IconButton from './IconButton';
+import { uid } from '../utils/GlobalUtils';
 
 class Exercise extends Component {
 
+	constructor(){
+
+		super();
+
+		this.handleNewSet = this.handleNewSet.bind(this);
+
+	}
+
+	handleNewSet(){
+
+		const {
+			sets,
+			id,
+			onSetChange
+		} = this.props;
+
+		const setsNew = sets.concat( { reps: '', load: '', id: uid() } );
+
+		onSetChange(id, { sets: setsNew });
+
+	}
+
 	render(){
 
-		const { title, notes, id, sets, onSetChange, onEditClick, onDeleteClick } = this.props;
+		const {
+			title,
+			notes,
+			id,
+			sets,
+			onSetChange,
+			onEditClick,
+			onDeleteClick
+		} = this.props;
 
 		return (
 
 			<Card>
 
-				<div className="mdc-card__horizontal-block">
+				<CardTitle title={title} subtitle={notes} />
 
-					<CardTitle title={title} subtitle={notes} />
+				<CardMain>
+					<SetList id={id} sets={sets} onSetChange={onSetChange} />
+				</CardMain>
 
-					<div className="mdc-card__media-item">
-						<div className="mdc-card__actions">
-							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={onEditClick}>mode_edit</i>
-							<i className="material-icons mdc-card__action mdc-theme--text-icon-on-background" onClick={() => onDeleteClick(id)}>delete</i>
-						</div>
+				<CardActions>
+					<div className="mdc-card__action-buttons">
+						<Button className="mdc-card__action mdc-card__action--button" onClick={this.handleNewSet} label="New Set" />
 					</div>
-
-				</div>
-
-				<SetList id={id} sets={sets} onSetChange={onSetChange} />
+					<div className="mdc-card__action-icons">
+						<IconButton onClick={onEditClick} label="Edit" action="mode_edit" cssClass="mdc-card__action mdc-card__action--icon" />
+						<IconButton onClick={() => onDeleteClick(id)} label="Delete" action="delete" cssClass="mdc-card__action mdc-card__action--icon" />
+					</div>
+				</CardActions>
 
 			</Card>
 

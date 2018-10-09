@@ -1,3 +1,10 @@
+/*
 .mdc-card { background: #fff; }
 .mdc-card__supporting-text .mdc-list-item { margin-left: -16px; margin-right: -16px; }
 .mdc-card__primary .mdc-card__title--large { padding-top: 0; }
+*/
+
+.mdc-card__primary { padding: 1rem; }
+.mdc-card__title,
+.mdc-card__subtitle { margin: 0; }
+.mdc-card .mdc-list { padding-top: 0; }

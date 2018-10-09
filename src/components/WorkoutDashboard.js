@@ -68,7 +68,7 @@ class WorkoutDashboard extends Component {
 
 					<GridCell>
 
-						<h3 className="mdc-typography--subheading1 collapsed">
+						<h3 className="mdc-typography--subtitle1 collapsed">
 							{printDate(date)} at {printTime(date)}
 						</h3>
 

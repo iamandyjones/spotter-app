@@ -47,7 +47,7 @@ class TimerSlim extends Component {
 
 					<IconButton onClick={onRestartClick} label="Restart" action="replay" />
 
-					<span className="timer__string mdc-typography--display1">{elapsedString}</span>
+					<span className="timer__string mdc-typography--headline5">{elapsedString}</span>
 
 					{!!runningSince ? (
 

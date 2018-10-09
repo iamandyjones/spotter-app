@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import Set from './Set';
-import CardMain from './CardMain';
-import CardActions from './CardActions';
-import Button from './Button';
-import { uid } from '../utils/GlobalUtils';
 import '@material/list/dist/mdc.list.css';
 
 class SetList extends Component {
 
 	constructor(props){
+
 		super(props);
 
 		this.handleSetChange = this.handleSetChange.bind(this);
 		this.handleSetDelete = this.handleSetDelete.bind(this);
-		this.handleNewSet = this.handleNewSet.bind(this);
 
 	}
 
@@ -36,14 +32,6 @@ class SetList extends Component {
 	handleSetDelete(id){
 
 		const sets = this.props.sets.filter((s) => s.id !== id);
-		
-		this.changeSets(sets);
-
-	}
-
-	handleNewSet(){
-
-		const sets = this.props.sets.concat( { reps: '', load: '', id: uid() } );
 
 		this.changeSets(sets);
 
@@ -62,22 +50,12 @@ class SetList extends Component {
 			<Set key={id} id={id} reps={reps} load={load} onSetChange={this.handleSetChange} onSetDelete={this.handleSetDelete} />
 
 		));
-	
+
 		return (
 
-			<React.Fragment>
-
-				<CardMain>
-					<ul className="mdc-list">
-					{sets}
-					</ul>
-				</CardMain>
-				
-				<CardActions>
-					<Button className="mdc-button--compact mdc-card__action" onClick={this.handleNewSet} label="New Set" />
-				</CardActions>
-
-			</React.Fragment>
+			<ul className="mdc-list">
+			{sets}
+			</ul>
 
 		);
 
