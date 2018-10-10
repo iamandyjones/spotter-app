@@ -1,5 +1,5 @@
 .timer { text-align: center; }
-.timer__string { padding: 0 5px; }
+.timer__string { padding: 0 5px; vertical-align: text-bottom; }
 .timer__expand { position: absolute; left: 10px; }
 
 .timer--fullscreen .timer__string {
