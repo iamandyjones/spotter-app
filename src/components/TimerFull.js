@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { renderTimerString } from '../utils/TimerUtils';
 import Icon from './Icon';
@@ -7,64 +7,48 @@ import Toolbar from './Toolbar';
 import ButtonFab from './ButtonFab';
 import './Timer.css';
 
-class TimerFull extends Component {
+const TimerFull = (props) => {
 
-	componentDidMount(){
+	const {
+		elapsed,
+		runningSince,
+		onRestartClick,
+		onToggleFullscreen,
+		onStopClick,
+		onStartClick
+	} = props;
 
-		this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 1000);
+	const elapsedString = renderTimerString(elapsed, runningSince);
 
-	}
+	return (
 
-	componentWillUnmount(){
+		<BottomSheet isOpen fullscreen>
 
-		clearInterval(this.forceUpdateInterval);
+			<div className="timer timer--fullscreen">
 
-	}
+				<Toolbar menuIcon="clear" onMenuIconClick={onToggleFullscreen} secondaryTheme>
 
-	render(){
+					<Icon onClick={onRestartClick} action="replay" label="Restart" />
 
-		const {
-			elapsed,
-			runningSince,
-			onRestartClick,
-			onToggleFullscreen,
-			onStopClick,
-			onStartClick
-		} = this.props;
+				</Toolbar>
 
-		const elapsedString = renderTimerString(elapsed, runningSince);
+				<span className="timer__string">{elapsedString}</span>
 
-		return (
+				{!!runningSince ? (
 
-			<BottomSheet isOpen fullscreen>
+					<ButtonFab onClick={onStopClick} label="pause" theme="mdc-theme--background mdc-theme--secondary" />
 
-				<div className="timer timer--fullscreen">
+				) : (
 
-					<Toolbar menuIcon="clear" onMenuIconClick={onToggleFullscreen} secondaryTheme>
+					<ButtonFab onClick={onStartClick} label="play_arrow" theme="mdc-theme--background mdc-theme--secondary" />
 
-						<Icon onClick={onRestartClick} action="replay" label="Restart" />
+				)}
 
-					</Toolbar>
+			</div>
 
-					<span className="timer__string">{elapsedString}</span>
+		</BottomSheet>
 
-					{!!runningSince ? (
-
-						<ButtonFab onClick={onStopClick} label="pause" theme="mdc-theme--background mdc-theme--secondary" />
-
-					) : (
-
-						<ButtonFab onClick={onStartClick} label="play_arrow" theme="mdc-theme--background mdc-theme--secondary" />
-
-					)}
-
-				</div>
-
-			</BottomSheet>
-
-		)
-
-	}
+	)
 
 }
 

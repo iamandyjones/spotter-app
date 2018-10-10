@@ -21,6 +21,14 @@ class TimerContainer extends Component {
 
 		this.hydrateTimerState();
 
+		this.forceUpdateInterval = setInterval(() => this.forceUpdate(), 1000);
+
+	}
+
+	componentWillUnmount(){
+
+		clearInterval(this.forceUpdateInterval);
+
 	}
 
 	handleStartClick(){
@@ -85,36 +93,25 @@ class TimerContainer extends Component {
 			elapsed
 		} = this.props;
 
+		let Component = TimerSlim;
+
 		if(timerFullscreen){
-			return (
-
-				<TimerFull
-					elapsed={elapsed}
-					runningSince={runningSince}
-					onStartClick={this.handleStartClick}
-					onStopClick={this.handleStopClick}
-					onRestartClick={this.handleRestartClick}
-					onToggleFullscreen={this.handleToggleFullscreen}
-					fullscreen={timerFullscreen}
-					isOpen={timerOpen}
-				/>
-
-			)
-		} else {
-			return (
-
-				<TimerSlim
-					elapsed={elapsed}
-					runningSince={runningSince}
-					onStartClick={this.handleStartClick}
-					onStopClick={this.handleStopClick}
-					onRestartClick={this.handleRestartClick}
-					onToggleFullscreen={this.handleToggleFullscreen}
-					isOpen={timerOpen}
-				/>
-
-			)
+			Component = TimerFull;
 		}
+
+		return (
+
+			<Component
+				elapsed={elapsed}
+				runningSince={runningSince}
+				onStartClick={this.handleStartClick}
+				onStopClick={this.handleStopClick}
+				onRestartClick={this.handleRestartClick}
+				onToggleFullscreen={this.handleToggleFullscreen}
+				isOpen={timerOpen}
+			/>
+
+		)
 
 	}
 
