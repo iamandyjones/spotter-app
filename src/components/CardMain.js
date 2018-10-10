@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const CardMain = ({ children }) => (
 
-	<section>
+	<section className="mdc-card__secondary mdc-typography--body2">
 		{children}
 	</section>
 

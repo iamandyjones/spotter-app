@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SelectBox from './Select';
+import IconButton from './IconButton';
 import './Set.css';
 
 class Set extends Component {
@@ -53,7 +54,7 @@ class Set extends Component {
 
 				<SelectBox options={reps} value={this.state.reps} defaultValue="Reps" onChange={this.handleRepsChange} />
 				<SelectBox options={weights} value={this.state.load} defaultValue="Weight" onChange={this.handleLoadChange} />
-				<i className="mdc-list-item__meta material-icons" onClick={this.handleRemoveSet}>remove_circle_outline</i>
+				<IconButton label="Remove set" action="remove_circle_outline" onClick={this.handleRemoveSet} cssClass="mdc-list-item__meta" />
 
 			</li>
 

@@ -5,6 +5,8 @@
 */
 
 .mdc-card__primary { padding: 1rem; }
+.mdc-card__secondary { padding: 0 1rem 8px; }
 .mdc-card__title,
 .mdc-card__subtitle { margin: 0; }
+.mdc-card__subtitle { color: var(--mdc-theme-text-secondary-on-background,rgba(0,0,0,.54)); }
 .mdc-card .mdc-list { padding-top: 0; }

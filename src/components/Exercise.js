@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import SetList from './SetList';
 import Card from './Card';
 import CardTitle from './CardTitle';
-import CardMain from './CardMain';
 import CardActions from './CardActions';
 import Button from './Button';
 import IconButton from './IconButton';
@@ -51,9 +50,7 @@ class Exercise extends Component {
 
 				<CardTitle title={title} subtitle={notes} />
 
-				<CardMain>
-					<SetList id={id} sets={sets} onSetChange={onSetChange} />
-				</CardMain>
+				<SetList id={id} sets={sets} onSetChange={onSetChange} />
 
 				<CardActions>
 					<div className="mdc-card__action-buttons">
