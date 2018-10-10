@@ -17,7 +17,7 @@
     "@material/list": "^0.28.0",
     "@material/menu": "^0.29.0",
     "@material/ripple": "^0.40.0",
-    "@material/select": "^0.29.0",
+    "@material/select": "^0.40.1",
     "@material/snackbar": "^0.29.0",
     "@material/textfield": "^0.36.1",
     "@material/theme": "^0.40.0",

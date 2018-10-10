@@ -35,7 +35,18 @@
       "notes": "",
       "id": "id-b0lqfl5xnrq",
       "workoutId": "222",
-      "sets": []
+      "sets": [
+        {
+          "reps": "",
+          "load": "",
+          "id": "id-pm79ktkbgfe"
+        },
+        {
+          "reps": "",
+          "load": "",
+          "id": "id-1hxmp688ded"
+        }
+      ]
     }
   ],
   "timer": {

@@ -50,13 +50,13 @@ class Set extends Component {
 
 		return (
 
-			<li className="mdc-list-item">
+			<div>
 
 				<SelectBox options={reps} value={this.state.reps} defaultValue="Reps" onChange={this.handleRepsChange} />
 				<SelectBox options={weights} value={this.state.load} defaultValue="Weight" onChange={this.handleLoadChange} />
 				<IconButton label="Remove set" action="remove_circle_outline" onClick={this.handleRemoveSet} cssClass="mdc-list-item__meta" />
 
-			</li>
+			</div>
 
 		)
 

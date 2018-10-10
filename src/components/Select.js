@@ -6,14 +6,14 @@ const SelectBox = ({options, value, defaultValue, onChange}) => (
 
 	<div className="mdc-select">
 
-		<select className="mdc-select__surface" onChange={onChange} value={value}>
+		<select className="mdc-select__native-control" onChange={onChange} value={value}>
 
 			<option>{defaultValue}</option>
 			{options.map((opt,index) => <option key={opt+index} value={opt}>{opt}</option>)}
 
 		</select>
 
-		<div className="mdc-select__bottom-line"></div>
+	    <div className="mdc-line-ripple"></div>
 
 	</div>
 )

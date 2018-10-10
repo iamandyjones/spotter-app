@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Set from './Set';
-import '@material/list/dist/mdc.list.css';
 
 class SetList extends Component {
 
@@ -51,13 +50,7 @@ class SetList extends Component {
 
 		));
 
-		return (
-
-			<ul className="mdc-list">
-			{sets}
-			</ul>
-
-		);
+		return sets;
 
 	}
 
